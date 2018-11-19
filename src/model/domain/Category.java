@@ -3,15 +3,20 @@ package model.domain;
 public class Category {
     private String title;
     private String description;
-    private Category category;
+    private Category superCategory;
+    public Category(String title, String description) {
+        setTitle(title);
+        setDescription(description);
+    }
+
     public Category(String title, String description, Category category) {
         setTitle(title);
         setDescription(description);
-        setCategory(category);
+        setSuperCategory(category);
     }
 
-    private void setCategory(Category category) {
-        this.category = category;
+    private void setSuperCategory(Category category) {
+        this.superCategory = category;
     }
 
     private void setTitle(String title) {
@@ -30,7 +35,7 @@ public class Category {
         return title;
     }
 
-    public Category getCategory() {
-        return category;
+    public Category getSubCategory() {
+        return superCategory;
     }
 }
