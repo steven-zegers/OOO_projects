@@ -20,7 +20,6 @@ import view.panels.TestPane;
 public class Main extends Application {
 
 	public static void main(String[] args) {
-		QuestionDB questions = new QuestionDB();
 		try
 		{
 			Application.launch(args);

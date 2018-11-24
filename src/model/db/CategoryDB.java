@@ -2,15 +2,19 @@ package model.db;
 
 import model.domain.Category;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryDB extends ArrayList<Category> {
     List<Category> categories;
+    private String path = "src/model/db/groep.txt";
 	private static final long serialVersionUID = 1L;
 
 	public CategoryDB() {
-		CategoryDbBuilder builder = new CategoryDbBuilder("src/model/db/groep.txt");
+		CategoryDbBuilder builder = new CategoryDbBuilder(path);
 		this.categories = builder.readCategories();
 		//readCategories();
 	}
@@ -25,11 +29,8 @@ public class CategoryDB extends ArrayList<Category> {
     }
 
     public Category getCategory(String title) {
-	    System.out.println(title);
 		for (Category category : categories) {
-		    System.out.println(category.getTitle());
 			if (category.getTitle().toLowerCase().equals(title.toLowerCase())) {
-			    System.out.print("hello");
 				return category;
 			}
 		}
@@ -40,4 +41,21 @@ public class CategoryDB extends ArrayList<Category> {
 	    return this.categories;
     }
 
+    public void addCategory(Category category) {
+        try {
+            String title = category.getTitle();
+            String description = category.getDescription();
+            String string = title + ": " + description;
+            FileWriter fileWriter = new FileWriter(path, true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            if (category.getSuperCategory() != null) {
+                string += ": " + category.getSuperCategory();
+            }
+            bufferedWriter.write(string);
+            bufferedWriter.newLine();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

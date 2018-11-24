@@ -24,9 +24,9 @@ public class QuestionDbBuilder {
             FileReader fileReader = new FileReader(this.getPath());
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
                 String[] lineString = line.split(": ");
                 Category questionCategory = categoryDB.getCategory(lineString[0]);
-
                 String question = lineString[1];
                 String feedback = lineString[2];
                 Question question1 = new Question(question, questionCategory, feedback);

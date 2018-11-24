@@ -19,7 +19,7 @@ public class MainWindow extends Stage {
 	private Stage stage;
 
 	public MainWindow(Stage stage) {
-		this.setStage(stage);
+		/*this.setStage(stage);
 
 		CategoryController categoryController = new CategoryController();
 
@@ -43,7 +43,7 @@ public class MainWindow extends Stage {
 
 		root.getChildren().add(borderPane);
 		stage.setScene(scene);
-		stage.sizeToScene();
+		stage.sizeToScene();*/
 	}
 
 	public void setMainPane(BorderPane mainPane) {
