@@ -5,6 +5,10 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.db.CategoryDB;
+import model.db.QuestionDB;
+import model.domain.Category;
+import model.domain.Question;
 import view.panels.AssesMainPane;
 import view.panels.CategoryDetailPane;
 import view.panels.CategoryOverviewPane;
@@ -16,6 +20,7 @@ import view.panels.TestPane;
 public class Main extends Application {
 
 	public static void main(String[] args) {
+		QuestionDB questions = new QuestionDB();
 		try
 		{
 			Application.launch(args);

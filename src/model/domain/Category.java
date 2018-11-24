@@ -35,7 +35,7 @@ public class Category {
         return title;
     }
 
-    public Category getSubCategory() {
+    public Category getSuperCategory() {
         return superCategory;
     }
 }
