@@ -8,11 +8,13 @@ public class Question {
     private List<String> statements = new ArrayList<>();
     private Category category;
     private String feedback;
+    private String categoryTitle;
 
     public Question(String question, Category category, String feedback){
         setQuestion(question);
         setCategory(category);
         setFeedback(feedback);
+        setCategoryTitle(category.getTitle());
     }
 
     public String getQuestion() {
@@ -49,5 +51,13 @@ public class Question {
 
     public void setFeedback(String feedback) {
         this.feedback = feedback;
+    }
+
+    public String getCategoryTitle() {
+        return categoryTitle;
+    }
+
+    public void setCategoryTitle(String categoryTitle) {
+        this.categoryTitle = categoryTitle;
     }
 }

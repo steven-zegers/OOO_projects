@@ -49,5 +49,9 @@ public class QuestionDB {
         }
     }
 
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
 
 }
