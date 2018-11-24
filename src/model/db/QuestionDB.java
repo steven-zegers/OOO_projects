@@ -29,6 +29,7 @@ public class QuestionDB {
     }
 
     public void addQuestion(Question question) {
+        questions.add(question);
         try {
             String question1 = question.getQuestion();
             String categoryTitle = question.getCategory().getTitle();

@@ -42,6 +42,7 @@ public class CategoryDB extends ArrayList<Category> {
     }
 
     public void addCategory(Category category) {
+	    categories.add(category);
         try {
             String title = category.getTitle();
             String description = category.getDescription();
