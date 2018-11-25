@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import model.db.CategoryDB;
 import model.domain.Category;
+import model.domain.SubCategory;
 import view.panes.NewCategoryPane;
 import view.windows.NewCategoryWindow;
 
@@ -42,12 +43,14 @@ public class NewCategoryController {
                 CategoryDB db = new CategoryDB();
                 String title = pane.getTitleField().getText();
                 String description = pane.getDescriptionField().getText();
-                Category superCategory = null;
                 if (pane.getCategoryField().getValue() != null) {
-                    superCategory = db.getCategory((String) pane.getCategoryField().getValue());
+                    Category superCategory = db.getCategory((String) pane.getCategoryField().getValue());
+                    SubCategory newSubCategory = new SubCategory(title, description, superCategory);
+                    db.addCategory(newSubCategory);
+                } else {
+                    Category newCategory = new Category(title, description);
+                    db.addCategory(newCategory);
                 }
-                Category newCategory = new Category(title, description, superCategory );
-                db.addCategory(newCategory);
                 window.stop();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);

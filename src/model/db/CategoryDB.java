@@ -99,7 +99,7 @@ public class CategoryDB extends ArrayList<Category> {
             FileWriter fileWriter = new FileWriter(path, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             if (category instanceof SubCategory) {
-                string += ": " + ((SubCategory) category).getSuperCategory();
+                string += ": " + ((SubCategory) category).getSuperCategory().getTitle();
             }
             bufferedWriter.write(string);
             bufferedWriter.newLine();
