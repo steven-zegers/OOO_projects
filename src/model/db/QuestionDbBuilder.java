@@ -9,12 +9,34 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * QuestionDbBuilder is a tool for creating Questions from information stored within a given text file.
+ * The file is read and Question-objects are created and stored in a List for use within the program.
+ */
+
 public class QuestionDbBuilder {
+
+    /**
+     * The path to the file containing the Questions.
+     */
+
     private String path;
+
+    /**
+     * Creates a new Builder using the given String as a path to the text file to be read.
+     * @param path
+     * The path to be used as a String
+     */
 
     public QuestionDbBuilder(String path) {
         setPath(path);
     }
+
+    /**
+     * Reads in all Questions from the specified text file and turns them into Question-objects. Afterwards a List containing the new objects is returned.
+     * @return
+     * A List of Question-objects
+     */
 
     public List<Question> readQuestions() {
         List<Question> questions = new ArrayList<>();
@@ -43,9 +65,22 @@ public class QuestionDbBuilder {
         return questions;
     }
 
+    /**
+     * Returns the path to the text file containing the Questions.
+     * @return
+     * path as a String
+     */
+
     public String getPath() {
         return path;
     }
+
+    /**
+     * Sets the path to be used.
+     * @param path
+     * Path to be used as a String
+     */
+
     public void setPath(String path) {
         this.path = path;
     }
