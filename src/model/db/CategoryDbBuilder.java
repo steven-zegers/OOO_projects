@@ -7,12 +7,34 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This Builder reads Categories from a text file to convert them into Category-objects. Afterwards a List of those objects will be returned.
+ * @author
+ */
+
 public class CategoryDbBuilder {
+
+    /**
+     * The path where the text file containing the Categories is located.
+     */
+
     private String path;
+
+    /**
+     * Creates a new Builder with the search path set to the given String
+     * @param path
+     * Path where the text file is located
+     */
 
     public CategoryDbBuilder(String path) {
         this.setPath(path);
     }
+
+    /**
+     * Reads in all existing Categories from the text file and loads them into a List as Category-objects.
+     * @return
+     * A List of Category-objects.
+     */
 
     public List<Category> readCategories() {
         List<Category> categories = new ArrayList<>();
@@ -52,9 +74,21 @@ public class CategoryDbBuilder {
         return categories;
     }
 
+    /**
+     * Returns the path of the text file containing the Categories.
+     * @return
+     * path as a String
+     */
+
     public String getPath() {
         return path;
     }
+
+    /**
+     * Sets the file path to the given String.
+     * @param path
+     * The path as a String
+     */
 
     public void setPath(String path) {
         this.path = path;
