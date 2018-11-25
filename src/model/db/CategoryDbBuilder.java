@@ -1,6 +1,7 @@
 package model.db;
 
 import model.domain.Category;
+import model.domain.CategoryFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -19,17 +20,17 @@ public class CategoryDbBuilder {
         try {
             FileReader fileReader = new FileReader(this.getPath());
             BufferedReader bufferedReader = new BufferedReader(fileReader);
+            CategoryFactory factory = new CategoryFactory();
             while ((line = bufferedReader.readLine()) != null) {
                 String[] lineString = line.split(": ");
                 if (lineString.length == 2) {
-                    Category category = new Category(lineString[0], lineString[1]);
+                    Category category = factory.createCategory(lineString[0], lineString[1], null);
                     categories.add(category);
                 } else {
                     boolean found = false;
                     for (Category category : categories) {
                         if (category.getTitle().equals(lineString[2])) {
-                            Category superCategory = category;
-                            Category newCategory = new Category(lineString[0], lineString[1], superCategory);
+                            Category newCategory = factory.createCategory(lineString[0], lineString[1], category);
                             categories.add(newCategory);
                             found = true;
                             break;

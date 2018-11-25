@@ -20,13 +20,7 @@ public class Category {
     private String description;
 
     /**
-     * The Category which this Category extends and further specifies.
-     */
-
-    private Category superCategory;
-
-    /**
-     * Creates a Category-object with a given title and description. It will not have a super Category.
+     * Creates a Category-object with a given title, description and super Category.
      * @param title
      * The title of the Category, to be given as String
      * @param description
@@ -37,33 +31,6 @@ public class Category {
         setTitle(title);
         setDescription(description);
     }
-
-    /**
-     * Creates a Category-object with a given title, description and super Category.
-     * @param title
-     * The title of the Category, to be given as String
-     * @param description
-     * The description of the Category, to be given as String
-     * @param category
-     * The existing Category which this new instance will further specify.
-     */
-
-    public Category(String title, String description, Category category) {
-        setTitle(title);
-        setDescription(description);
-        setSuperCategory(category);
-    }
-
-    /**
-     * Sets the super Category.
-     * @param category
-     * An existing Category object which this new instance will further specify.
-     */
-
-    private void setSuperCategory(Category category) {
-        this.superCategory = category;
-    }
-
     /**
      * Sets the title of this Category.
      * @param title
@@ -102,15 +69,5 @@ public class Category {
 
     public String getTitle() {
         return title;
-    }
-
-    /**
-     * Returns the super Category.
-     * @return
-     * superCategory as a Category
-     */
-
-    public Category getSuperCategory() {
-        return superCategory;
     }
 }

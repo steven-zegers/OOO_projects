@@ -1,6 +1,7 @@
 package model.db;
 
 import model.domain.Category;
+import model.domain.SubCategory;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -22,8 +23,9 @@ public class CategoryDB extends ArrayList<Category> {
     private void readCategories() {
 	    for (Category cat : categories) {
 	        System.out.print(cat.getTitle() + ": " + cat.getDescription());
-	        if (cat.getSuperCategory() != null) {
-                System.out.print(": " + cat.getSuperCategory().getTitle());
+	        if (cat instanceof SubCategory) {
+	            SubCategory subCategory = (SubCategory) cat;
+                System.out.print(": " + subCategory.getSuperCategory().getTitle());
             }
         }
     }
@@ -49,8 +51,8 @@ public class CategoryDB extends ArrayList<Category> {
             String string = title + ": " + description;
             FileWriter fileWriter = new FileWriter(path, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            if (category.getSuperCategory() != null) {
-                string += ": " + category.getSuperCategory();
+            if (category instanceof SubCategory) {
+                string += ": " + ((SubCategory) category).getSuperCategory();
             }
             bufferedWriter.write(string);
             bufferedWriter.newLine();
