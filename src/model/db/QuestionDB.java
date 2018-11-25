@@ -37,13 +37,13 @@ public class QuestionDB {
             List<String> statements = question.getStatements();
             FileWriter fileWriter = new FileWriter(path, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.newLine();
             String string = categoryTitle + ": " + question1 + ": " + feedback + ": ";
             for (String statement : statements) {
                 string += statement + "; ";
             }
             string = string.substring(0, string.length()-2);
             bufferedWriter.write(string);
-            bufferedWriter.newLine();
             bufferedWriter.close();
         } catch (IOException e) {
             e.printStackTrace();

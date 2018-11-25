@@ -1,5 +1,7 @@
 package view.panels;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -11,6 +13,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import model.db.CategoryDB;
+import model.db.QuestionDB;
+import model.domain.Category;
+import model.domain.Question;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewQuestionPane extends GridPane {
 	private Button btnOK, btnCancel;
@@ -22,7 +31,13 @@ public class NewQuestionPane extends GridPane {
 	public NewQuestionPane() {
 		this.setPrefHeight(300);
 		this.setPrefWidth(320);
-		
+		CategoryDB database = new CategoryDB();
+		List<Category> categories = database.getCategories();
+		List<String> categoryTitles = new ArrayList<>();
+		for (Category category : categories) {
+			categoryTitles.add(category.getTitle());
+		}
+		ObservableList<String> categoryTitleList = FXCollections.observableArrayList(categoryTitles);
 		this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
         this.setHgap(5);
@@ -50,7 +65,7 @@ public class NewQuestionPane extends GridPane {
 		add(addRemove, 1, 8, 2, 1);
 
 		add(new Label("Category: "), 0, 9, 1, 1);
-		categoryField = new ComboBox();
+		categoryField = new ComboBox(categoryTitleList);
 		add(categoryField, 1, 9, 2, 1);
 
 		add(new Label("Feedback: "), 0, 10, 1, 1);
@@ -83,5 +98,46 @@ public class NewQuestionPane extends GridPane {
 	public void setCancelButtonHandler(EventHandler<ActionEvent> cancelButtonHandler) {
 		btnCancel.setOnAction(cancelButtonHandler);
 	}
+
+	public TextArea getStatementsArea() {
+		return statementsArea;
+	}
+
+	public void setStatementsArea(TextArea statementsArea) {
+		this.statementsArea = statementsArea;
+	}
+
+	public TextField getQuestionField() {
+		return questionField;
+	}
+
+	public void setQuestionField(TextField questionField) {
+		this.questionField = questionField;
+	}
+
+	public TextField getStatementField() {
+		return statementField;
+	}
+
+	public void setStatementField(TextField statementField) {
+		this.statementField = statementField;
+	}
+
+	public TextField getFeedbackField() {
+		return feedbackField;
+	}
+
+	public void setFeedbackField(TextField feedbackField) {
+		this.feedbackField = feedbackField;
+	}
+
+	public ComboBox getCategoryField() {
+		return categoryField;
+	}
+
+	public void setCategoryField(ComboBox categoryField) {
+		this.categoryField = categoryField;
+	}
+
 
 }
