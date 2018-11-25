@@ -1,18 +1,16 @@
 package view.windows;
 
-import controller.CategoryController;
+import controller.CategoryOverviewController;
 import controller.QuestionOverviewController;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import view.panels.AssesMainPane;
-import view.panels.NewCategoryPane;
-import view.panels.CategoryOverviewPane;
-import view.panels.MessagePane;
-import view.panels.NewQuestionPane;
-import view.panels.QuestionOverviewPane;
-import view.panels.TestPane;
+import view.panes.AssesMainPane;
+import view.panes.CategoryOverviewPane;
+import view.panes.MessagePane;
+import view.panes.QuestionOverviewPane;
+import view.panes.TestPane;
 
 public class MainWindow extends Stage {
 
@@ -26,8 +24,9 @@ public class MainWindow extends Stage {
 		QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
 		questionOverviewController.setPane(questionOverviewPane);
 
-		CategoryController categoryController = new CategoryController();
+		CategoryOverviewController categoryOverviewController = new CategoryOverviewController();
 		CategoryOverviewPane categoryOverviewPane = new CategoryOverviewPane();
+		categoryOverviewController.setPane(categoryOverviewPane);
 
 		TestPane testPane = new TestPane();
 		MessagePane messagePane = new MessagePane();
@@ -41,8 +40,9 @@ public class MainWindow extends Stage {
 		this.setMainPane(borderPane);
 
 		root.getChildren().add(borderPane);
-		stage.setScene(scene);
-		stage.sizeToScene();
+		this.stage.setTitle("Main window");
+		this.stage.setScene(scene);
+		this.stage.sizeToScene();
 	}
 
 	public void setMainPane(BorderPane mainPane) {

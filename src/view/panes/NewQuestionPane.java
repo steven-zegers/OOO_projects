@@ -1,4 +1,4 @@
-package view.panels;
+package view.panes;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,9 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import model.db.CategoryDB;
-import model.db.QuestionDB;
 import model.domain.Category;
-import model.domain.Question;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,19 +40,19 @@ public class NewQuestionPane extends GridPane {
         this.setVgap(5);
         this.setHgap(5);
         
-		add(new Label("Question: "), 0, 0, 1, 1);
+		this.add(new Label("Question: "), 0, 0, 1, 1);
 		questionField = new TextField();
-		add(questionField, 1, 0, 2, 1);
-		
-		add(new Label("Statement: "), 0, 1, 1, 1);
-		statementField = new TextField();
-		add(statementField, 1, 1, 2, 1);
+		this.add(questionField, 1, 0, 2, 1);
 
-		add(new Label("Statements: "), 0, 2, 1, 1);
+		this.add(new Label("Statement: "), 0, 1, 1, 1);
+		statementField = new TextField();
+		this.add(statementField, 1, 1, 2, 1);
+
+		this.add(new Label("Statements: "), 0, 2, 1, 1);
 		statementsArea = new TextArea();
 		statementsArea.setPrefRowCount(5);
 		statementsArea.setEditable(false);
-		add(statementsArea, 1, 2, 2, 5);
+		this.add(statementsArea, 1, 2, 2, 5);
 
 		Pane addRemove = new HBox();
 		btnAdd = new Button("add");
@@ -66,6 +64,7 @@ public class NewQuestionPane extends GridPane {
 
 		add(new Label("Category: "), 0, 9, 1, 1);
 		categoryField = new ComboBox(categoryTitleList);
+		categoryField.getSelectionModel().selectFirst();
 		add(categoryField, 1, 9, 2, 1);
 
 		add(new Label("Feedback: "), 0, 10, 1, 1);

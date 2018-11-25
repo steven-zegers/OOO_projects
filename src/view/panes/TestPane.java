@@ -1,4 +1,4 @@
-package view.panels;
+package view.panes;
 
 import java.util.ArrayList;
 import java.util.List;

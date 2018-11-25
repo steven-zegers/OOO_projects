@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import view.panels.NewQuestionPane;
+import view.panes.NewQuestionPane;
 
 public class NewQuestionWindow extends Stage {
 
@@ -18,6 +18,7 @@ public class NewQuestionWindow extends Stage {
         Scene mainScene = new Scene(this.getPane(), 500,300);
         this.getStage().setTitle("New Question");
         this.getStage().setScene(mainScene);
+        this.setAlwaysOnTop(true);
         sizeToScene();
     }
 

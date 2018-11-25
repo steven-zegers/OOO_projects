@@ -2,14 +2,12 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.db.CategoryDB;
 import model.db.QuestionDB;
 import model.domain.Category;
 import model.domain.Question;
-import view.panels.NewQuestionPane;
-import view.panels.QuestionOverviewPane;
+import view.panes.NewQuestionPane;
 import view.windows.NewQuestionWindow;
 
 import javax.swing.*;
@@ -28,6 +26,7 @@ public class NewQuestionController {
         this.window.setRemoveButtonHandler(new RemoveButtonHandler());
         this.window.setSaveButtonHandler(new SaveButtonHandler());
         this.window.setCancelButtonHandler(new CancelButtonHandler());
+        this.window.setAlwaysOnTop(true);
         this.window.start();
     }
 
@@ -86,7 +85,7 @@ public class NewQuestionController {
                     question.addStatement(statement);
                 }
                 questionDB.addQuestion(question);
-                window.getPane().getScene().getWindow().hide();
+                window.stop();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 e.printStackTrace();
@@ -98,7 +97,7 @@ public class NewQuestionController {
         @Override
         public  void handle(ActionEvent arg0) {
             try {
-                window.getPane().getScene().getWindow().hide();
+                window.stop();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 e.printStackTrace();

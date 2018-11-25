@@ -22,6 +22,9 @@ public class Question {
     }
 
     public void setQuestion(String question) {
+        if (question == null || question.isEmpty()) {
+            throw new DomainException("Question can't be empty");
+        }
         this.question = question;
     }
 
@@ -30,10 +33,16 @@ public class Question {
     }
 
     public void setStatements(List<String> statements) {
+        if (statements == null || statements.isEmpty()) {
+            throw new DomainException("Statements can't be empty");
+        }
         this.statements = statements;
     }
 
     public void addStatement(String statement) {
+        if (statement == null || statement.isEmpty()) {
+            throw new DomainException("Statement can't be empty");
+        }
         this.statements.add(statement);
     }
 
@@ -42,6 +51,9 @@ public class Question {
     }
 
     public void setCategory(Category category) {
+        if (category == null) {
+            throw new DomainException("Category can't be empty");
+        }
         this.category = category;
     }
 
@@ -50,6 +62,9 @@ public class Question {
     }
 
     public void setFeedback(String feedback) {
+        if (feedback == null || feedback.isEmpty()) {
+            throw new DomainException("Feedback can't be empty");
+        }
         this.feedback = feedback;
     }
 
@@ -58,6 +73,10 @@ public class Question {
     }
 
     public void setCategoryTitle(String categoryTitle) {
+        if (categoryTitle == null || categoryTitle.isEmpty()) {
+            throw new DomainException("CategoryTitle can't be empty");
+        }
         this.categoryTitle = categoryTitle;
     }
+
 }

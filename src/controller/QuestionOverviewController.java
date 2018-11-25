@@ -3,7 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import view.panels.QuestionOverviewPane;
+import view.panes.QuestionOverviewPane;
 
 import javax.swing.*;
 

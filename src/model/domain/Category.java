@@ -20,10 +20,16 @@ public class Category {
     }
 
     private void setTitle(String title) {
+        if (title == null || title.isEmpty()) {
+            throw new DomainException("Title can't be empty");
+        }
         this.title = title;
     }
 
     private void setDescription(String description) {
+        if (description == null || description.isEmpty()) {
+            throw new DomainException("Description can't be empty");
+        }
         this.description = description;
     }
 
