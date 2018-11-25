@@ -12,14 +12,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-public class QuestionDetailPane extends GridPane {
+public class NewQuestionPane extends GridPane {
 	private Button btnOK, btnCancel;
 	private TextArea statementsArea;
 	private TextField questionField, statementField, feedbackField;
 	private Button btnAdd, btnRemove;
 	private ComboBox categoryField;
 
-	public QuestionDetailPane() {
+	public NewQuestionPane() {
 		this.setPrefHeight(300);
 		this.setPrefWidth(320);
 		
@@ -43,11 +43,9 @@ public class QuestionDetailPane extends GridPane {
 
 		Pane addRemove = new HBox();
 		btnAdd = new Button("add");
-		btnAdd.setOnAction(new AddStatementListener());
 		addRemove.getChildren().add(btnAdd);
 
 		btnRemove = new Button("remove");
-		btnRemove.setOnAction(new RemoveStatementListener());
 		addRemove.getChildren().add(btnRemove);
 		add(addRemove, 1, 8, 2, 1);
 
@@ -70,23 +68,20 @@ public class QuestionDetailPane extends GridPane {
 		
 	}
 
-	public void setSaveAction(EventHandler<ActionEvent> saveAction) {
-		btnOK.setOnAction(saveAction);
+	public void setAddButtonHandler(EventHandler<ActionEvent> addButtonHandler) {
+		btnAdd.setOnAction(addButtonHandler);
 	}
 
-	public void setCancelAction(EventHandler<ActionEvent> cancelAction) {
-		btnCancel.setOnAction(cancelAction);
+	public void setRemoveButtonHandler(EventHandler<ActionEvent> removeButtonHandler) {
+		btnRemove.setOnAction(removeButtonHandler);
 	}
 
-	class AddStatementListener implements EventHandler<ActionEvent> {
-		@Override
-		public void handle(ActionEvent e) {
-		}
+	public void setSaveButtonHandler(EventHandler<ActionEvent> saveButtonHandler) {
+		btnOK.setOnAction(saveButtonHandler);
 	}
 
-	class RemoveStatementListener implements EventHandler<ActionEvent> {
-		@Override
-		public void handle(ActionEvent e) {
-		}
+	public void setCancelButtonHandler(EventHandler<ActionEvent> cancelButtonHandler) {
+		btnCancel.setOnAction(cancelButtonHandler);
 	}
+
 }

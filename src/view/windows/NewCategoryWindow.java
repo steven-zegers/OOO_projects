@@ -2,21 +2,20 @@ package view.windows;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import view.panels.CategoryDetailPane;
+import view.panels.NewCategoryPane;
 
 public class NewCategoryWindow extends Stage {
 
-	private CategoryDetailPane categoryDetailPane;
+	private NewCategoryPane categoryDetailPane;
 	private Stage stage;
 
 	public NewCategoryWindow(Stage stage) {
-		this.setCategoryDetailPane(new CategoryDetailPane());
+		this.setCategoryDetailPane(new NewCategoryPane());
 		this.setStage(stage);
 	}
 
-	public void setCategoryDetailPane(CategoryDetailPane categoryDetailPane) {
+	public void setCategoryDetailPane(NewCategoryPane categoryDetailPane) {
 		this.categoryDetailPane = categoryDetailPane;
 	}
 
@@ -24,7 +23,7 @@ public class NewCategoryWindow extends Stage {
 		this.stage = stage;
 	}
 
-	public CategoryDetailPane getCategoryDetailPane() {
+	public NewCategoryPane getCategoryDetailPane() {
 		return this.categoryDetailPane;
 	}
 

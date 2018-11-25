@@ -9,12 +9,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-public class CategoryDetailPane extends GridPane {
+public class NewCategoryPane extends GridPane {
 	private Button btnOK, btnCancel;
 	private TextField titleField, descriptionField;
 	private ComboBox categoryField;
 
-	public CategoryDetailPane() {
+	public NewCategoryPane() {
 		this.setPrefHeight(150);
 		this.setPrefWidth(300);
 		

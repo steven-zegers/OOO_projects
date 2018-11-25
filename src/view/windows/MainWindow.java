@@ -1,15 +1,16 @@
 package view.windows;
 
 import controller.CategoryController;
+import controller.QuestionOverviewController;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import view.panels.AssesMainPane;
-import view.panels.CategoryDetailPane;
+import view.panels.NewCategoryPane;
 import view.panels.CategoryOverviewPane;
 import view.panels.MessagePane;
-import view.panels.QuestionDetailPane;
+import view.panels.NewQuestionPane;
 import view.panels.QuestionOverviewPane;
 import view.panels.TestPane;
 
@@ -21,22 +22,20 @@ public class MainWindow extends Stage {
 	public MainWindow(Stage stage) {
 		this.setStage(stage);
 
-		CategoryController categoryController = new CategoryController();
-
+		QuestionOverviewController questionOverviewController = new QuestionOverviewController(stage);
 		QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
+		questionOverviewController.setPane(questionOverviewPane);
 
-		QuestionDetailPane questionDetailPane = new QuestionDetailPane();
-
-		CategoryOverviewPane categoryOverviewPanel = new CategoryOverviewPane();
-		CategoryDetailPane categoryDetailPanel = new CategoryDetailPane();
-
-		Group root = new Group();
-		Scene scene = new Scene(root, 750, 400);
+		CategoryController categoryController = new CategoryController();
+		CategoryOverviewPane categoryOverviewPane = new CategoryOverviewPane();
 
 		TestPane testPane = new TestPane();
 		MessagePane messagePane = new MessagePane();
 
-		BorderPane borderPane = new AssesMainPane(messagePane, categoryOverviewPanel, questionOverviewPane);
+		Group root = new Group();
+		Scene scene = new Scene(root, 750, 400);
+
+		BorderPane borderPane = new AssesMainPane(messagePane, categoryOverviewPane, questionOverviewPane);
 		borderPane.prefHeightProperty().bind(scene.heightProperty());
 		borderPane.prefWidthProperty().bind(scene.widthProperty());
 		this.setMainPane(borderPane);

@@ -48,9 +48,5 @@ public class QuestionOverviewPane extends GridPane {
 	public void setNewAction(EventHandler<ActionEvent> newAction) {
 		btnNew.setOnAction(newAction);
 	}
-	
-	public void setEditAction(EventHandler<MouseEvent> editAction) {
-		table.setOnMouseClicked(editAction);
-	}
 
 }
