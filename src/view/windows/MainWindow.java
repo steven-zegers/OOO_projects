@@ -23,7 +23,7 @@ public class MainWindow extends Stage {
 		this.setStage(stage);
 
 		QuestionOverviewController questionOverviewController = new QuestionOverviewController(stage);
-		QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
+		QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(questionOverviewController);
 		questionOverviewController.setPane(questionOverviewPane);
 
 		CategoryController categoryController = new CategoryController();

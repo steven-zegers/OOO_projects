@@ -1,5 +1,6 @@
 package view.windows;
 
+import controller.NewQuestionController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
