@@ -2,7 +2,7 @@ package model.domain;
 
 /**
  * A Category is a way to group different questions which handle a similar subject matter.
- * @author Steven Zegers
+ * @author
  */
 
 public class Category {
