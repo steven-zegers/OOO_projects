@@ -1,5 +1,6 @@
 package view.panes;
 
+import controller.NewQuestionController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -137,6 +138,4 @@ public class NewQuestionPane extends GridPane {
 	public void setCategoryField(ComboBox categoryField) {
 		this.categoryField = categoryField;
 	}
-
-
 }

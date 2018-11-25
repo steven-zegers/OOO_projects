@@ -1,5 +1,6 @@
 package view.panes;
 
+import controller.QuestionOverviewController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,10 +20,11 @@ public class QuestionOverviewPane extends GridPane {
 	private TableView table;
 	private Button btnNew;
 	private ObservableList<Question> data;
-	
-	public QuestionOverviewPane() {
-		QuestionDB database = new QuestionDB();
-		data = FXCollections.observableArrayList(database.getQuestions());
+	private QuestionOverviewController questionOverviewController;
+
+	public QuestionOverviewPane(QuestionOverviewController controller) {
+		setQuestionOverviewController(controller);
+		 data = this.getQuestionOverviewController().getQuestions();
 
 		this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
@@ -48,8 +50,15 @@ public class QuestionOverviewPane extends GridPane {
 		btnNew.setOnAction(newAction);
 	}
 
-	public void setEditAction(EventHandler<MouseEvent> editAction) {
-		table.setOnMouseClicked(editAction);
+    public void setEditAction(EventHandler<MouseEvent> editAction) {
+        table.setOnMouseClicked(editAction);
+    }
+
+	public QuestionOverviewController getQuestionOverviewController() {
+		return questionOverviewController;
 	}
 
+	public void setQuestionOverviewController(QuestionOverviewController questionOverviewController) {
+		this.questionOverviewController = questionOverviewController;
+	}
 }

@@ -8,15 +8,40 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * QuestionDB contains a List of Questions that is used in tests while the program is running.
+ * It is created using a QuestionDbBuilder to load in all existing Questions from a text file.
+ * @author
+ */
+
 public class QuestionDB {
+
+    /**
+     * A List of Questions to be used in tests while running the program.
+     */
+
     private List<Question> questions;
+
+    /**
+     * The path where the file containing the Questions is located.
+     */
+
     private String path = "src/model/db/vraag.txt";
+
+    /**
+     * Creates a new QuestionDB via the Builder.
+     * No parameters are to be given, since the path is statically determined.
+     */
 
     public QuestionDB() {
         QuestionDbBuilder builder = new QuestionDbBuilder(path);
         this.questions = builder.readQuestions();
         //testQuestions();
     }
+
+    /**
+     * Prints an easily readable version of each existing Question object contained within the List.
+     */
 
     private void testQuestions() {
         for (Question question : questions) {
@@ -27,6 +52,12 @@ public class QuestionDB {
             System.out.print(", feedback: " + question.getFeedback());
         }
     }
+
+    /**
+     * Adds a new Question to this List and writes it to the text file use at a later date.
+     * @param question
+     * The Question that should be stored.
+     */
 
     public void addQuestion(Question question) {
         questions.add(question);
@@ -49,6 +80,12 @@ public class QuestionDB {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Returns a List of Question-objects stored in this database.
+     * @return
+     * questions as a List of Questions
+     */
 
     public List<Question> getQuestions() {
         return questions;
