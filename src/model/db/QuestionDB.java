@@ -11,7 +11,9 @@ import java.util.List;
 /**
  * QuestionDB contains a List of Questions that is used in tests while the program is running.
  * It is created using a QuestionDbBuilder to load in all existing Questions from a text file.
- * @author
+ * @author Steven Zegers
+ * @author Thibault Stroobants
+ * @author Wout De Boeck
  */
 
 public class QuestionDB {

@@ -6,7 +6,9 @@ import java.util.List;
 /**
  * A Question are the objects of which tests consist. Questions are to be answered by the user of the tests, after which feedback will be given.
  * They can be open questions, or be multiple choice, containing statements the user can choose from.
- * @author
+ * @author Steven Zegers
+ * @author Thibault Stroobants
+ * @author Wout De Boeck
  */
 
 public class Question {

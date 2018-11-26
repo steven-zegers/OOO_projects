@@ -9,7 +9,9 @@ import java.util.List;
 
 /**
  * This Builder reads Categories from a text file to convert them into Category-objects. Afterwards a List of those objects will be returned.
- * @author
+ * @author Steven Zegers
+ * @author Thibault Stroobants
+ * @author Wout De Boeck
  */
 
 public class CategoryDbBuilder {
