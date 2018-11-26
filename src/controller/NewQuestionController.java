@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import model.db.CategoryDB;
 import model.db.QuestionDB;
 import model.domain.Category;
+import model.domain.Facade;
 import model.domain.Question;
 import view.panes.NewQuestionPane;
 import view.windows.NewQuestionWindow;
@@ -19,15 +20,25 @@ import java.util.List;
 public class NewQuestionController {
 
     NewQuestionWindow window;
+    private Facade facade;
 
-    public NewQuestionController(Stage primaryStage) {
+    public NewQuestionController(Stage primaryStage, Facade facade) {
         this.window = new NewQuestionWindow(primaryStage);
+        setFacade(facade);
         this.window.setAddButtonHandler(new AddButtonHandler());
         this.window.setRemoveButtonHandler(new RemoveButtonHandler());
         this.window.setSaveButtonHandler(new SaveButtonHandler());
         this.window.setCancelButtonHandler(new CancelButtonHandler());
         this.window.setAlwaysOnTop(true);
         this.window.start();
+    }
+
+    public Facade getFacade() {
+        return facade;
+    }
+
+    public void setFacade(Facade facade) {
+        this.facade = facade;
     }
 
     private class AddButtonHandler implements EventHandler<ActionEvent> {
@@ -73,18 +84,16 @@ public class NewQuestionController {
         public  void handle(ActionEvent arg0) {
             try {
                 NewQuestionPane pane = window.getPane();
-                CategoryDB categoryDB = new CategoryDB();
-                QuestionDB questionDB = new QuestionDB();
                 String questionTitle = pane.getQuestionField().getText();
                 String feedback = pane.getFeedbackField().getText();
-                Category category = categoryDB.getCategory((String) pane.getCategoryField().getValue());
+                Category category = facade.getCategoryDB().getCategory((String) pane.getCategoryField().getValue());
                 Question question = new Question(questionTitle, category, feedback);
                 String[] allStatements = pane.getStatementsArea().getText().split("\n");
                 List<String> statementsList = new ArrayList<>(Arrays.asList(allStatements));
                 for (String statement : statementsList) {
                     question.addStatement(statement);
                 }
-                questionDB.addQuestion(question);
+                facade.getQuestionDB().addQuestion(question);
                 window.stop();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
