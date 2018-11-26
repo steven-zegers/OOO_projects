@@ -20,14 +20,13 @@ public class MainWindow extends Stage {
 
 	public MainWindow(Stage stage) {
 		this.setStage(stage);
-
-		QuestionOverviewController questionOverviewController = new QuestionOverviewController(stage);
 		Facade facade = new Facade();
+		QuestionOverviewController questionOverviewController = new QuestionOverviewController(stage);
 		QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(facade);
 		questionOverviewController.setPane(questionOverviewPane);
 
 		CategoryOverviewController categoryOverviewController = new CategoryOverviewController(facade);
-		CategoryOverviewPane categoryOverviewPane = new CategoryOverviewPane();
+		CategoryOverviewPane categoryOverviewPane = new CategoryOverviewPane(facade);
 		categoryOverviewController.setPane(categoryOverviewPane);
 
 		TestPane testPane = new TestPane();
