@@ -1,3 +1,5 @@
 Design patterns: Welke omschrijving hoort bij het strategy patroon?: Je wordt verondersteld de definitie van een ontwerp patroon te herkennen.: Familie van algoritmes definiëren, inkapselen en verwisselbaar maken; Algoritme vastleggen en sommige stappen overlaten aan subklassen; Definieert een één-op-veel relatie tussen objecten; Converteert één interface naar een andere
 Java: Is deze vraag correct?: Je moet weten of dit correct is.: Ja; Nee
 Design patterns: Is dit een vraag?: Dit is een test.: Zeker en vast; Helemaal niet
+Design principles: Test: test: test; testing
+Java: nogeentest: joepie: hoezeee

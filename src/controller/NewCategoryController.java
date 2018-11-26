@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import model.db.CategoryDB;
 import model.domain.Category;
+import model.domain.Facade;
 import model.domain.SubCategory;
 import view.panes.NewCategoryPane;
 import view.windows.NewCategoryWindow;
@@ -14,13 +15,22 @@ import javax.swing.*;
 public class NewCategoryController {
 
     NewCategoryWindow window;
+    private Facade facade;
 
-    public NewCategoryController(Stage primaryStage) {
-        this.window = new NewCategoryWindow(primaryStage);
+    public NewCategoryController(Stage primaryStage, Facade facade) {
+        this.window = new NewCategoryWindow(primaryStage, facade);
         this.window.setCancelButtonHandler(new CancelButtonHandler());
         this.window.setSaveButtonHandler(new SaveButtonHandler());
         this.window.setAlwaysOnTop(true);
         this.window.start();
+    }
+
+    public Facade getFacade() {
+        return facade;
+    }
+
+    public void setFacade(Facade facade) {
+        this.facade = facade;
     }
 
     private class CancelButtonHandler implements EventHandler<ActionEvent> {

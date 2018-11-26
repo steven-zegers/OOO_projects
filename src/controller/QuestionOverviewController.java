@@ -13,14 +13,10 @@ import javax.swing.*;
 
 public class QuestionOverviewController {
     private QuestionOverviewPane pane;
-    private QuestionDB questionDB;
+
 
     public QuestionOverviewController(Stage primaryStage) {
-        this.questionDB = new QuestionDB();
-    }
 
-    public ObservableList<Question> getQuestions() {
-        return FXCollections.observableArrayList(getQuestionDB().getQuestions());
     }
 
     public void setPane(QuestionOverviewPane pane) {
@@ -30,14 +26,6 @@ public class QuestionOverviewController {
 
     public void setup() {
         this.pane.setNewAction(new NewButtonHandler());
-    }
-
-    public QuestionDB getQuestionDB() {
-        return questionDB;
-    }
-
-    public void setQuestionDB(QuestionDB questionDB) {
-        this.questionDB = questionDB;
     }
 
     private class NewButtonHandler implements EventHandler<ActionEvent> {

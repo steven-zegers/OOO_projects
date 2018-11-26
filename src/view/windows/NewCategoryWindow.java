@@ -4,16 +4,19 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.domain.Facade;
 import view.panes.NewCategoryPane;
 
 public class NewCategoryWindow extends Stage {
 
 	private NewCategoryPane pane;
 	private Stage stage;
+	private Facade facade;
 
-	public NewCategoryWindow(Stage stage) {
+	public NewCategoryWindow(Stage stage, Facade facade) {
+		setFacade(facade);
 		this.setStage(stage);
-		this.setPane(new NewCategoryPane());
+		this.setPane(new NewCategoryPane(facade));
 
 		Scene mainScene = new Scene(this.getPane(), 250,150);
 		this.getStage().setTitle("New Category");
@@ -53,4 +56,11 @@ public class NewCategoryWindow extends Stage {
 		this.getStage().close();
 	}
 
+	public Facade getFacade() {
+		return facade;
+	}
+
+	public void setFacade(Facade facade) {
+		this.facade = facade;
+	}
 }
