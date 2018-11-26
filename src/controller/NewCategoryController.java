@@ -50,7 +50,7 @@ public class NewCategoryController {
         public  void handle(ActionEvent arg0) {
             try {
                 NewCategoryPane pane = window.getPane();
-                CategoryDB db = new CategoryDB();
+                CategoryDB db = facade.getCategoryDB();
                 String title = pane.getTitleField().getText();
                 String description = pane.getDescriptionField().getText();
                 if (pane.getCategoryField().getValue() != null) {
