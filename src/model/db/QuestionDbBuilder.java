@@ -12,6 +12,9 @@ import java.util.List;
 /**
  * QuestionDbBuilder is a tool for creating Questions from information stored within a given text file.
  * The file is read and Question-objects are created and stored in a List for use within the program.
+ * @author Steven Zegers
+ * @author Thibault Stroobants
+ * @author Wout De Boeck
  */
 
 public class QuestionDbBuilder {

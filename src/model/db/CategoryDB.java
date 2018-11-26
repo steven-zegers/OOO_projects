@@ -12,7 +12,9 @@ import java.util.List;
 /**
  * CategoryDB contains all Categories to be used in tests. It is made via the Builder class of the same name.
  * It reads in the Categories stored in a text file and writes new ones to that file as well.
- * @author
+ * @author Steven Zegers
+ * @author Thibault Stroobants
+ * @author Wout De Boeck
  */
 
 public class CategoryDB extends ArrayList<Category> {
