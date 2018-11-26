@@ -101,8 +101,8 @@ public class CategoryDB extends ArrayList<Category> {
             if (category instanceof SubCategory) {
                 string += ": " + ((SubCategory) category).getSuperCategory().getTitle();
             }
-            bufferedWriter.write(string);
             bufferedWriter.newLine();
+            bufferedWriter.write(string);
             bufferedWriter.close();
         } catch (IOException e) {
             e.printStackTrace();

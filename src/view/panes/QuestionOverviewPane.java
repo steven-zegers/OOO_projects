@@ -24,7 +24,7 @@ public class QuestionOverviewPane extends GridPane {
 
 	public QuestionOverviewPane(QuestionOverviewController controller) {
 		setQuestionOverviewController(controller);
-		 data = this.getQuestionOverviewController().getQuestions();
+		data = this.getQuestionOverviewController().getQuestions();
 
 		this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
