@@ -3,13 +3,13 @@ package view.panes;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import model.domain.Question;
 
 public class TestPane extends GridPane {
 	private Label questionField;
@@ -28,6 +28,8 @@ public class TestPane extends GridPane {
 		add(questionField, 0, 0, 1, 1);
 		
 		statementGroup = new ToggleGroup();
+
+		//TODO: Receive statements from facade
 
 		submitButton = new Button("Submit");
 	}
