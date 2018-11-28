@@ -24,7 +24,7 @@ public class TestPane extends GridPane {
         this.setVgap(5);
         this.setHgap(5);
 
-		questionField = new Label();
+		questionField = new Label("Hello");
 		add(questionField, 0, 0, 1, 1);
 		
 		statementGroup = new ToggleGroup();

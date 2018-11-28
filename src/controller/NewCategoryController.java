@@ -54,7 +54,7 @@ public class NewCategoryController {
                 String title = pane.getTitleField().getText();
                 String description = pane.getDescriptionField().getText();
                 if (pane.getCategoryField().getValue() != null) {
-                    Category superCategory = db.getCategory((String) pane.getCategoryField().getValue());
+                    Category superCategory = facade.getCategoryDB().getCategory((String) pane.getCategoryField().getValue());
                     SubCategory newSubCategory = new SubCategory(title, description, superCategory);
                     db.addCategory(newSubCategory);
                 } else {

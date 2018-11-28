@@ -17,7 +17,7 @@ public class QuestionOverviewController {
     private Facade facade;
 
 
-    public QuestionOverviewController(Stage primaryStage, Facade facade) {
+    public QuestionOverviewController(Facade facade) {
         setFacade(facade);
     }
     public Facade getFacade() {

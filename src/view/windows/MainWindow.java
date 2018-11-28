@@ -2,6 +2,7 @@ package view.windows;
 
 import controller.CategoryOverviewController;
 import controller.QuestionOverviewController;
+import controller.TestController;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -21,7 +22,7 @@ public class MainWindow extends Stage {
 	public MainWindow(Stage stage) {
 		this.setStage(stage);
 		Facade facade = new Facade();
-		QuestionOverviewController questionOverviewController = new QuestionOverviewController(stage, facade);
+		QuestionOverviewController questionOverviewController = new QuestionOverviewController(facade);
 		QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(facade);
 		questionOverviewController.setPane(questionOverviewPane);
 
@@ -29,8 +30,11 @@ public class MainWindow extends Stage {
 		CategoryOverviewPane categoryOverviewPane = new CategoryOverviewPane(facade);
 		categoryOverviewController.setPane(categoryOverviewPane);
 
-		TestPane testPane = new TestPane();
+		TestController testController = new TestController(facade);
 		MessagePane messagePane = new MessagePane();
+		testController.setPane(messagePane);
+		TestPane testPane = new TestPane();
+		//MessagePane messagePane = new MessagePane();
 
 		Group root = new Group();
 		Scene scene = new Scene(root, 750, 400);

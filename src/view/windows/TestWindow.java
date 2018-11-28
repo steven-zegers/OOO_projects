@@ -16,25 +16,32 @@ public class TestWindow extends Stage
     private Stage stage;
     private TestPane pane;
 
-    public TestWindow(Stage stage, Facade facade)
+    public TestWindow(Stage stage)
     {
         this.setStage(stage);
         this.setPane(new TestPane());
 
-        setSubmitHandler(new EventHandler<ActionEvent>()
-        {
-            @Override
-            public void handle(ActionEvent event)
-            {
-
-            }
-        });
-
-        Scene mainScene = new Scene(pane, 500,300);
-        this.stage.setTitle("Test");
-        this.stage.setScene(mainScene);
+        Scene mainScene = new Scene(this.getPane(), 500,300);
+        this.getStage().setTitle("Test");
+        this.getStage().setScene(mainScene);
         this.setAlwaysOnTop(true);
         sizeToScene();
+    }
+
+    public TestPane getPane() {
+        return this.pane;
+    }
+
+    public Stage getStage() {
+        return this.stage;
+}
+
+    public void start() {
+        this.getStage().show();
+    }
+
+    public void stop() {
+        this.getStage().close();
     }
 
     public void setStage(Stage stage) {
@@ -45,8 +52,8 @@ public class TestWindow extends Stage
         this.pane = pane;
     }
 
-    public void setSubmitHandler(EventHandler<ActionEvent> submitHandler)
+    public void setProcessAnswerAction(EventHandler<ActionEvent> submitHandler)
     {
-        this.pane.setProcessAnswerAction(submitHandler);
+        this.getPane().setProcessAnswerAction(submitHandler);
     }
 }

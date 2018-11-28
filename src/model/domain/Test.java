@@ -15,9 +15,12 @@ public class Test
     public Test(Facade facade)
     {
         questions = facade.getQuestions();
+        this.setQuestionPointer(0);
     }
 
-
+    public void setQuestionPointer(int i) {
+        this.questionPointer = i;
+    }
     /**
      * Returns the current Question.
      * @return
