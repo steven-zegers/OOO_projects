@@ -3,6 +3,8 @@ package view.panes;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +22,8 @@ public class TestPane extends GridPane {
 	private ToggleGroup statementGroup;
 	private Facade facade;
 	private ObservableList<String> statements;
+	private ListView listView;
+	private StackPane root;
 
 	public TestPane (Facade facade){
 		setFacade(facade);
@@ -31,18 +35,26 @@ public class TestPane extends GridPane {
         this.setHgap(5);
 
 		questionField = new Label(facade.getTitleOfCurrentQuestionOfCurrentTest());
+		questionField.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				System.out.println("Listened");
+				System.out.println(newValue);
+				questionField.setText(newValue);
+			}
+		});
 		add(questionField, 0, 0, 1, 1);
 
 		List<String> statementList = facade.getStatementsOfCurrentQuestion();
 		statements = FXCollections.observableArrayList(statementList);
 		statementGroup = new ToggleGroup();
 
-		ListView listView = new ListView();
+		listView = new ListView();
 		listView.setItems(statements);
 		listView.setCellFactory(param -> new RadioListCell());
 		listView.setPrefWidth(600);
 
-		StackPane root = new StackPane();
+		root = new StackPane();
 		root.getChildren().add(listView);
 
 		add(root, 0, 2, 1, 1);
@@ -89,9 +101,6 @@ public class TestPane extends GridPane {
 	}
 
 	public void updateContents(String questionTitle) {
-		System.out.println(questionTitle);
 		questionField.setText(questionTitle);
-		System.out.println(questionField.getText());
-
 	}
 }

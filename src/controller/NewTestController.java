@@ -28,6 +28,9 @@ public class NewTestController {
     public TestWindow getWindow() {
         return this.window;
     }
+    public void setPane(TestPane pane) {
+        this.pane = pane;
+    }
     public TestPane getPane() {
         return this.pane;
     }
@@ -46,11 +49,7 @@ public class NewTestController {
     private class ProcessAnswerHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
-            System.out.println("kiekeboe");
             facade.advanceCurrentTest();
-            getPane().updateContents(facade.getTitleOfCurrentQuestionOfCurrentTest());
-            getWindow().start();
-
         }
     }
 }
