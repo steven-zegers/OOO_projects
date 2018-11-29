@@ -15,11 +15,13 @@ public class TestWindow extends Stage
 {
     private Stage stage;
     private TestPane pane;
+    private Facade facade;
 
-    public TestWindow(Stage stage)
+    public TestWindow(Stage stage, Facade facade)
     {
+        setFacade(facade);
         this.setStage(stage);
-        this.setPane(new TestPane());
+        this.setPane(new TestPane(getFacade()));
 
         Scene mainScene = new Scene(this.getPane(), 500,300);
         this.getStage().setTitle("Test");
@@ -55,5 +57,13 @@ public class TestWindow extends Stage
     public void setProcessAnswerAction(EventHandler<ActionEvent> submitHandler)
     {
         this.getPane().setProcessAnswerAction(submitHandler);
+    }
+
+    public Facade getFacade() {
+        return facade;
+    }
+
+    public void setFacade(Facade facade) {
+        this.facade = facade;
     }
 }

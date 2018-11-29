@@ -19,9 +19,8 @@ public class MainWindow extends Stage {
 	private BorderPane mainPane;
 	private Stage stage;
 
-	public MainWindow(Stage stage) {
+	public MainWindow(Stage stage, Facade facade) {
 		this.setStage(stage);
-		Facade facade = new Facade();
 		QuestionOverviewController questionOverviewController = new QuestionOverviewController(facade);
 		QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(facade);
 		questionOverviewController.setPane(questionOverviewPane);
@@ -33,7 +32,7 @@ public class MainWindow extends Stage {
 		TestController testController = new TestController(facade);
 		MessagePane messagePane = new MessagePane();
 		testController.setPane(messagePane);
-		TestPane testPane = new TestPane();
+		TestPane testPane = new TestPane(facade);
 		//MessagePane messagePane = new MessagePane();
 
 		Group root = new Group();

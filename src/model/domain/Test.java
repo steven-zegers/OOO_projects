@@ -12,8 +12,7 @@ public class Test
     private int questionPointer;
 
 
-    public Test(Facade facade)
-    {
+    public Test(Facade facade) {
         questions = facade.getQuestions();
         this.setQuestionPointer(0);
     }

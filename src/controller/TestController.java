@@ -19,7 +19,6 @@ public class TestController
 
     public TestController(Facade facade) {
         setFacade(facade);
-
     }
 
     public void setPane(MessagePane pane) {
