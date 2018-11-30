@@ -17,12 +17,10 @@ public class TestWindow extends Stage
     private TestPane pane;
     private Facade facade;
 
-    public TestWindow(Stage stage, Facade facade)
-    {
+    public TestWindow(Stage stage, Facade facade) {
         setFacade(facade);
         this.setStage(stage);
         this.setPane(new TestPane(getFacade()));
-
         Scene mainScene = new Scene(this.getPane(), 500,300);
         this.getStage().setTitle("Test");
         this.getStage().setScene(mainScene);

@@ -1,6 +1,7 @@
 package view.panes;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javafx.beans.value.ChangeListener;
@@ -12,7 +13,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import model.domain.Facade;
 import model.domain.Question;
 
@@ -22,8 +25,7 @@ public class TestPane extends GridPane {
 	private ToggleGroup statementGroup;
 	private Facade facade;
 	private ObservableList<String> statements;
-	private ListView listView;
-	private StackPane root;
+	private List<RadioButton> radioButtons;
 
 	public TestPane (Facade facade){
 		setFacade(facade);
@@ -35,30 +37,25 @@ public class TestPane extends GridPane {
         this.setHgap(5);
 
 		questionField = new Label(facade.getTitleOfCurrentQuestionOfCurrentTest());
-		questionField.textProperty().addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				System.out.println("Listened");
-				System.out.println(newValue);
-				questionField.setText(newValue);
-			}
-		});
+
 		add(questionField, 0, 0, 1, 1);
 
 		List<String> statementList = facade.getStatementsOfCurrentQuestion();
-		statements = FXCollections.observableArrayList(statementList);
+		List<String> shuffledAnswers = new ArrayList<>(statementList);
+		Collections.shuffle(shuffledAnswers);
+		statements = FXCollections.observableArrayList(shuffledAnswers);
 		statementGroup = new ToggleGroup();
+		VBox box = new VBox();
+		radioButtons = new ArrayList<>();
+		for (String statement : statements) {
+			RadioButton radioButton = new RadioButton(statement);
+			radioButtons.add(radioButton);
+			radioButton.setToggleGroup(statementGroup);
+			box.getChildren().add(radioButton);
+		}
 
-		listView = new ListView();
-		listView.setItems(statements);
-		listView.setCellFactory(param -> new RadioListCell());
-		listView.setPrefWidth(600);
-
-		root = new StackPane();
-		root.getChildren().add(listView);
-
-		add(root, 0, 2, 1, 1);
-
+		radioButtons.get(0).setSelected(true);
+		add(box, 0, 2, 1, 1);
 		//TODO: Receive statements from facade
 
 		submitButton = new Button("Submit");
@@ -69,12 +66,13 @@ public class TestPane extends GridPane {
 		submitButton.setOnAction(processAnswerAction);
 	}
 
-	public List<String> getSelectedStatements() {
-		 List<String> selected = new ArrayList<String>();
-		if(statementGroup.getSelectedToggle()!=null){
-			selected.add(statementGroup.getSelectedToggle().getUserData().toString());
+	public String getSelectedStatements() {
+		if(statementGroup.getSelectedToggle()!=null) {
+			RadioButton selectedRadioButton = (RadioButton) statementGroup.getSelectedToggle();
+			return selectedRadioButton.getText();
+		} else {
+			throw new IllegalArgumentException("Je moet een antwoord selecteren");
 		}
-		return selected;
 	}
 
 	public Facade getFacade() {
@@ -85,23 +83,12 @@ public class TestPane extends GridPane {
 		this.facade = facade;
 	}
 
-	private class RadioListCell extends ListCell<String>{
-		@Override
-		public void updateItem(String obj, boolean empty) {
-			super.updateItem(obj, empty);
-			if (empty) {
-				setText(null);
-				setGraphic(null);
-			} else {
-				RadioButton radioButton = new RadioButton(obj);
-				radioButton.setToggleGroup(statementGroup);
-				setGraphic(radioButton);
+	public String getSelectedButton() {
+		for (RadioButton button : this.radioButtons) {
+			if (button.isSelected()) {
+				return button.getText();
 			}
 		}
-	}
-
-	public void updateContents(String questionTitle) {
-		questionField.setText(questionTitle);
-		System.out.println(questionField.getText());
+		return "";
 	}
 }
