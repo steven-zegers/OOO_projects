@@ -10,11 +10,13 @@ public class Test
     private ObservableList<Question> questions;
 
     private int questionPointer;
+    private int score;
 
 
     public Test(Facade facade) {
         questions = facade.getQuestions();
         this.setQuestionPointer(0);
+        this.setScore(0);
     }
 
     public void setQuestionPointer(int i) {
@@ -37,7 +39,7 @@ public class Test
 
     public void advanceTest()
     {
-        if(questionPointer == questions.size())
+        if(questionPointer == questions.size() - 1)
         {
             questionPointer = -1;
         }
@@ -47,6 +49,9 @@ public class Test
         }
     }
 
+    public boolean canAdvance() {
+        return questionPointer + 1 < questions.size();
+    }
     /**
      * Returns whether the test is finished or not.
      * @return
@@ -77,4 +82,11 @@ public class Test
     }
 
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 }

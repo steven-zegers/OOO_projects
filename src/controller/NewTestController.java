@@ -43,10 +43,16 @@ public class NewTestController {
         public void handle(ActionEvent event) {
             if (facade.getStatementsOfCurrentQuestion().get(0).equals(getWindow().getPane().getSelectedStatements())) {
                 System.out.println("Correct geantwoord!");
+                facade.handleCorrectAnswer();
             }
-            facade.advanceCurrentTest();
-            setWindow(new TestWindow(getWindow().getStage(), facade));
-            getWindow().setProcessAnswerAction(new ProcessAnswerHandler());
+            if (facade.getCurrentTest().canAdvance()) {
+                facade.advanceCurrentTest();
+                setWindow(new TestWindow(getWindow().getStage(), facade));
+                getWindow().setProcessAnswerAction(new ProcessAnswerHandler());
+            } else {
+                getWindow().close();
+                System.out.println(facade.getCurrentTest().getScore());
+            }
         }
     }
 }

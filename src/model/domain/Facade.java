@@ -78,6 +78,10 @@ public class Facade implements Subject {
     	this.notifyObservers();
     }
 
+    public void handleCorrectAnswer() {
+        getCurrentTest().setScore(getCurrentTest().getScore() + 1);
+    }
+
     @Override
     public void addObserver(Observer observer) {
         if (observer == null) {

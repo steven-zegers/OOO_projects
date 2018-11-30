@@ -31,7 +31,6 @@ public class MessagePane extends GridPane {
 	}
 
 	public void setNewAction(EventHandler<ActionEvent> newAction) {
-		System.out.println("Setting new action");
 		testButton.setOnAction(newAction);
 	}
 }
