@@ -15,17 +15,18 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import model.db.QuestionDB;
 import model.domain.Facade;
+import model.domain.Observer;
 import model.domain.Question;
 
-public class QuestionOverviewPane extends GridPane {
+public class QuestionOverviewPane extends GridPane implements Observer {
+
 	private TableView table;
 	private Button btnNew;
 	private ObservableList<Question> data;
 	private Facade facade;
 
 	public QuestionOverviewPane(Facade facade) {
-		setFacade(facade);
-		data = facade.getQuestions();
+		this.setFacade(facade);
 
 		this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
@@ -45,6 +46,7 @@ public class QuestionOverviewPane extends GridPane {
 		table.setItems(data);
 		btnNew = new Button("New");
 		this.add(btnNew, 0, 11, 1, 1);
+		this.update();
 	}
 	
 	public void setNewAction(EventHandler<ActionEvent> newAction) {
@@ -62,4 +64,19 @@ public class QuestionOverviewPane extends GridPane {
 	public void setFacade(Facade facade) {
 		this.facade = facade;
 	}
+
+	public ObservableList<Question> getData() {
+		return data;
+	}
+
+	public void setData(ObservableList<Question> data) {
+		this.data = data;
+	}
+
+	@Override
+	public void update() {
+		this.data = this.getFacade().getQuestions();
+		this.table.setItems(data);
+	}
+
 }

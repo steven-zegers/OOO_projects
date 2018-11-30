@@ -17,17 +17,18 @@ public class MainWindow extends Stage {
 
 	private BorderPane mainPane;
 	private Stage stage;
+	private Facade facade;
 
 	public MainWindow(Stage stage) {
 		this.setStage(stage);
+		this.facade = new Facade();
 
-		QuestionOverviewController questionOverviewController = new QuestionOverviewController(stage);
-		Facade facade = new Facade();
-		QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(facade);
+		QuestionOverviewController questionOverviewController = new QuestionOverviewController(this.facade);
+		QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(this.facade);
 		questionOverviewController.setPane(questionOverviewPane);
 
-		CategoryOverviewController categoryOverviewController = new CategoryOverviewController(facade);
-		CategoryOverviewPane categoryOverviewPane = new CategoryOverviewPane();
+		CategoryOverviewController categoryOverviewController = new CategoryOverviewController(this.facade);
+		CategoryOverviewPane categoryOverviewPane = new CategoryOverviewPane(this.facade);
 		categoryOverviewController.setPane(categoryOverviewPane);
 
 		TestPane testPane = new TestPane();

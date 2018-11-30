@@ -14,16 +14,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import model.db.CategoryDB;
 import model.domain.Category;
+import model.domain.Facade;
+import model.domain.Observer;
 
 
-public class CategoryOverviewPane extends GridPane {
+public class CategoryOverviewPane extends GridPane implements Observer {
 	private TableView table;
 	private Button btnNew;
 	private ObservableList<Category> data;
+
+	private Facade facade;
 	
-	public CategoryOverviewPane() {
-		CategoryDB database = new CategoryDB();
-		data = FXCollections.observableArrayList(database.getCategories());
+	public CategoryOverviewPane(Facade facade) {
+		this.setFacade(facade);
+
 		this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
         this.setHgap(5);
@@ -43,9 +47,8 @@ public class CategoryOverviewPane extends GridPane {
 		
 		btnNew = new Button("New");
 
-
-
 		this.add(btnNew, 0, 11, 1, 1);
+		this.update();
 	}
 	
 	public void setNewAction(EventHandler<ActionEvent> newAction) {
@@ -56,4 +59,17 @@ public class CategoryOverviewPane extends GridPane {
 		table.setOnMouseClicked(editAction);
 	}
 
+	public Facade getFacade() {
+		return facade;
+	}
+
+	public void setFacade(Facade facade) {
+		this.facade = facade;
+	}
+
+	@Override
+	public void update() {
+		this.data = this.getFacade().getCategories();
+		this.table.setItems(data);
+	}
 }

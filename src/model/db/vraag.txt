@@ -3,3 +3,4 @@ Java: Is deze vraag correct?: Je moet weten of dit correct is.: Ja; Nee
 Design patterns: Is dit een vraag?: Dit is een test.: Zeker en vast; Helemaal niet
 Design principles: Test: test: test; testing
 Java: nogeentest: joepie: hoezeee
+iets: vraag: nee: iets

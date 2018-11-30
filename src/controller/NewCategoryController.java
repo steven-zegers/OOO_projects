@@ -18,6 +18,7 @@ public class NewCategoryController {
     private Facade facade;
 
     public NewCategoryController(Stage primaryStage, Facade facade) {
+        this.setFacade(facade);
         this.window = new NewCategoryWindow(primaryStage, facade);
         this.window.setCancelButtonHandler(new CancelButtonHandler());
         this.window.setSaveButtonHandler(new SaveButtonHandler());
@@ -50,16 +51,15 @@ public class NewCategoryController {
         public  void handle(ActionEvent arg0) {
             try {
                 NewCategoryPane pane = window.getPane();
-                CategoryDB db = new CategoryDB();
                 String title = pane.getTitleField().getText();
                 String description = pane.getDescriptionField().getText();
                 if (pane.getCategoryField().getValue() != null) {
-                    Category superCategory = db.getCategory((String) pane.getCategoryField().getValue());
+                    Category superCategory = facade.getCategory((String) pane.getCategoryField().getValue());
                     SubCategory newSubCategory = new SubCategory(title, description, superCategory);
-                    db.addCategory(newSubCategory);
+                    facade.addCategory(newSubCategory);
                 } else {
                     Category newCategory = new Category(title, description);
-                    db.addCategory(newCategory);
+                    facade.addCategory(newCategory);
                 }
                 window.stop();
             } catch (Exception e) {

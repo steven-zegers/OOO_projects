@@ -4,17 +4,18 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import model.domain.Facade;
+import model.domain.Observer;
 import view.panes.CategoryOverviewPane;
 
 import javax.swing.*;
 
 public class CategoryOverviewController {
 
-	CategoryOverviewPane pane;
+	private CategoryOverviewPane pane;
 	private Facade facade;
 
 	public CategoryOverviewController(Facade facade) {
-		setFacade(facade);
+		this.setFacade(facade);
 	}
 
 	public void setPane(CategoryOverviewPane pane) {
@@ -24,6 +25,7 @@ public class CategoryOverviewController {
 
 	public void setup() {
 		this.pane.setNewAction(new NewButtonHandler());
+		this.getFacade().addObserver(this.pane);
 	}
 
 	public Facade getFacade() {
