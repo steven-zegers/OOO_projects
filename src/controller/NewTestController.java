@@ -44,6 +44,8 @@ public class NewTestController {
             if (facade.getStatementsOfCurrentQuestion().get(0).equals(getWindow().getPane().getSelectedStatements())) {
                 System.out.println("Correct geantwoord!");
                 facade.handleCorrectAnswer();
+                String categoryOfQuestion = facade.getCurrentQuestionCategoryTitle();
+                facade.handleQuestionOfCategoryCorrect(categoryOfQuestion);
             }
             if (facade.getCurrentTest().canAdvance()) {
                 facade.advanceCurrentTest();
@@ -52,6 +54,9 @@ public class NewTestController {
             } else {
                 getWindow().close();
                 System.out.println(facade.getCurrentTest().getScore());
+                for (String category : facade.getCategoryTitles()) {
+                    System.out.println(facade.getScoreOfCategory(category));
+                }
             }
         }
     }

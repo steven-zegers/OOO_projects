@@ -3,7 +3,9 @@ package model.domain;
 import javafx.collections.ObservableList;
 import model.db.QuestionDB;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Test
 {
@@ -11,12 +13,26 @@ public class Test
 
     private int questionPointer;
     private int score;
+    private Map<String, Integer> scoresOfCategories;
 
 
     public Test(Facade facade) {
         questions = facade.getQuestions();
+        List<String> titles = facade.getCategoryTitles();
+        scoresOfCategories = new HashMap<>();
+        for (String title : titles) {
+            scoresOfCategories.put(title, 0);
+        }
         this.setQuestionPointer(0);
         this.setScore(0);
+    }
+
+    public void questionOfCategoryCorrect(String categoryTitle) {
+        scoresOfCategories.put(categoryTitle, scoresOfCategories.get(categoryTitle) + 1);
+    }
+
+    public int getScoreOfCategory(String categoryTitle) {
+        return scoresOfCategories.get(categoryTitle);
     }
 
     public void setQuestionPointer(int i) {
