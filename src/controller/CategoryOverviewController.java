@@ -40,7 +40,7 @@ public class CategoryOverviewController {
 		@Override
 		public  void handle(ActionEvent arg0) {
 			try {
-				new NewCategoryController(new Stage(), facade);
+				new NewCategoryController(new Stage(), getFacade());
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
 				e.printStackTrace();

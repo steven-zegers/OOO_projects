@@ -16,6 +16,7 @@ import model.db.CategoryDB;
 import model.domain.Category;
 import model.domain.Facade;
 import model.domain.Observer;
+import model.domain.Facade;
 
 
 public class CategoryOverviewPane extends GridPane implements Observer {
@@ -24,10 +25,10 @@ public class CategoryOverviewPane extends GridPane implements Observer {
 	private ObservableList<Category> data;
 
 	private Facade facade;
-	
-	public CategoryOverviewPane(Facade facade) {
-		this.setFacade(facade);
 
+	public CategoryOverviewPane(Facade facade) {
+		setFacade(facade);
+		data = facade.getCategories();
 		this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
         this.setHgap(5);

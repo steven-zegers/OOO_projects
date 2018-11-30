@@ -12,6 +12,7 @@ public class Facade implements Subject {
     private CategoryDB categoryDB;
     private QuestionDB questionDB;
     private List<Observer> observers;
+    private Test test;
 
     public Facade() {
         this.categoryDB = new CategoryDB();
@@ -42,6 +43,27 @@ public class Facade implements Subject {
         }
         return titles;
     }
+
+    public void setCurrentTest(Test test){
+        this.test = test;
+    }
+
+    public Test getCurrentTest() {
+        return this.test;
+    }
+
+    public String getTitleOfCurrentQuestionOfCurrentTest() {
+        return getCurrentTest().getCurrentQuestion().getQuestion();
+    }
+
+    public void advanceCurrentTest() {
+        getCurrentTest().advanceTest();
+    }
+
+    public List<String> getStatementsOfCurrentQuestion() {
+        return getCurrentTest().getCurrentQuestion().getStatements();
+    }
+}
 
     public void addCategory(Category category) {
     	this.getCategoryDB().addCategory(category);

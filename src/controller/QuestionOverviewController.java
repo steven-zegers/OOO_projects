@@ -20,7 +20,9 @@ public class QuestionOverviewController {
     public QuestionOverviewController(Facade facade) {
 		this.setFacade(facade);
     }
-
+    public Facade getFacade() {
+        return facade;
+    }
     public void setPane(QuestionOverviewPane pane) {
         this.pane = pane;
         this.setup();
@@ -31,10 +33,6 @@ public class QuestionOverviewController {
         this.getFacade().addObserver(this.pane);
     }
 
-	public Facade getFacade() {
-		return facade;
-	}
-
 	public void setFacade(Facade facade) {
 		this.facade = facade;
 	}
@@ -43,7 +41,7 @@ public class QuestionOverviewController {
         @Override
         public  void handle(ActionEvent arg0) {
             try {
-                new NewQuestionController(new Stage(), facade);
+                new NewQuestionController(new Stage(), getFacade());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 e.printStackTrace();

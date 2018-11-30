@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import model.db.CategoryDB;
 import model.domain.Category;
+import model.domain.Facade;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,17 +27,13 @@ public class NewQuestionPane extends GridPane {
 	private TextField questionField, statementField, feedbackField;
 	private Button btnAdd, btnRemove;
 	private ComboBox categoryField;
+	private Facade facade;
 
-	public NewQuestionPane() {
+	public NewQuestionPane(Facade facade) {
+		setFacade(facade);
 		this.setPrefHeight(300);
 		this.setPrefWidth(320);
-		CategoryDB database = new CategoryDB();
-		List<Category> categories = database.getCategories();
-		List<String> categoryTitles = new ArrayList<>();
-		for (Category category : categories) {
-			categoryTitles.add(category.getTitle());
-		}
-		ObservableList<String> categoryTitleList = FXCollections.observableArrayList(categoryTitles);
+		ObservableList<String> categoryTitleList = FXCollections.observableArrayList(facade.getCategoryTitles());
 		this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
         this.setHgap(5);
@@ -137,5 +134,13 @@ public class NewQuestionPane extends GridPane {
 
 	public void setCategoryField(ComboBox categoryField) {
 		this.categoryField = categoryField;
+	}
+
+	public Facade getFacade() {
+		return facade;
+	}
+
+	public void setFacade(Facade facade) {
+		this.facade = facade;
 	}
 }
