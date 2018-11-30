@@ -20,9 +20,9 @@ public class MainWindow extends Stage {
 	private Stage stage;
 	private Facade facade;
 
-	public MainWindow(Stage stage) {
+	public MainWindow(Stage stage, Facade facade) {
 		this.setStage(stage);
-		this.facade = new Facade();
+		this.setFacade(facade);
 
 		QuestionOverviewController questionOverviewController = new QuestionOverviewController(this.facade);
 		QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(this.facade);
@@ -76,4 +76,7 @@ public class MainWindow extends Stage {
 		this.getStage().close();
 	}
 
+	public void setFacade(Facade facade) {
+		this.facade = facade;
+	}
 }

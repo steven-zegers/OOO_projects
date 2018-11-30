@@ -24,7 +24,7 @@ public class NewQuestionController {
 
     public NewQuestionController(Stage primaryStage, Facade facade) {
         this.setFacade(facade);
-        this.window = new NewQuestionWindow(primaryStage);
+        this.window = new NewQuestionWindow(primaryStage, facade);
         this.window.setAddButtonHandler(new AddButtonHandler());
         this.window.setRemoveButtonHandler(new RemoveButtonHandler());
         this.window.setSaveButtonHandler(new SaveButtonHandler());
