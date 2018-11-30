@@ -102,5 +102,6 @@ public class TestPane extends GridPane {
 
 	public void updateContents(String questionTitle) {
 		questionField.setText(questionTitle);
+		System.out.println(questionField.getText());
 	}
 }

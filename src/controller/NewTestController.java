@@ -50,6 +50,9 @@ public class NewTestController {
         @Override
         public void handle(ActionEvent event) {
             facade.advanceCurrentTest();
+            getPane().updateContents(facade.getTitleOfCurrentQuestionOfCurrentTest());
+            setWindow(new TestWindow(getWindow().getStage(), facade));
+            getWindow().setProcessAnswerAction(new ProcessAnswerHandler());
         }
     }
 }
