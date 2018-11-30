@@ -63,7 +63,6 @@ public class Facade implements Subject {
     public List<String> getStatementsOfCurrentQuestion() {
         return getCurrentTest().getCurrentQuestion().getStatements();
     }
-}
 
     public void addCategory(Category category) {
     	this.getCategoryDB().addCategory(category);
