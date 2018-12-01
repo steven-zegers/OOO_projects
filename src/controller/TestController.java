@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.domain.Facade;
+import sun.plugin2.message.Message;
 import view.panes.MessagePane;
 import view.panes.TestPane;
 import view.windows.TestWindow;
@@ -28,8 +29,12 @@ public class TestController
 
     public void setup() {
         this.pane.setNewAction(new EvaluateButtonHandler());
+        this.getFacade().addObserver(this.pane);
     }
 
+    public MessagePane getPane() {
+        return this.pane;
+    }
 
     public Facade getFacade() {
         return facade;
@@ -43,6 +48,7 @@ public class TestController
         @Override
         public void handle(ActionEvent event) {
             try {
+                System.out.print(getPane().getScores());
                 new NewTestController(new Stage(), getFacade());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);

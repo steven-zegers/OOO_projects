@@ -94,6 +94,11 @@ public class Facade implements Subject {
         return getCurrentTest().getScoreOfCategory(categoryTitle);
     }
 
+    public void setCurrentTestFinished() {
+        getCurrentTest().setTestFinished();
+        this.notifyObservers();
+    }
+
     public Question getCurrentQuestion() {
         return getCurrentTest().getCurrentQuestion();
     }

@@ -1,7 +1,6 @@
 package model.domain;
 
 import javafx.collections.ObservableList;
-import model.db.QuestionDB;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +13,7 @@ public class Test
     private int questionPointer;
     private int score;
     private Map<String, Integer> scoresOfCategories;
+    private boolean isTestFinished = false;
 
 
     public Test(Facade facade) {
@@ -65,6 +65,10 @@ public class Test
         }
     }
 
+    public int getQuestionPointer() {
+        return this.questionPointer;
+    }
+
     public boolean canAdvance() {
         return questionPointer + 1 < questions.size();
     }
@@ -76,14 +80,7 @@ public class Test
 
     public boolean isFinished()
     {
-        if(questionPointer == -1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return isTestFinished;
     }
 
     /**
@@ -105,4 +102,8 @@ public class Test
     public void setScore(int score) {
         this.score = score;
     }
+
+    public void setTestFinished() {
+        this.isTestFinished = true;
+}
 }

@@ -53,7 +53,6 @@ public class TestPane extends GridPane {
 			radioButton.setToggleGroup(statementGroup);
 			box.getChildren().add(radioButton);
 		}
-
 		radioButtons.get(0).setSelected(true);
 		add(box, 0, 2, 1, 1);
 		//TODO: Receive statements from facade
@@ -64,6 +63,10 @@ public class TestPane extends GridPane {
 
 	public void setProcessAnswerAction(EventHandler<ActionEvent> processAnswerAction) {
 		submitButton.setOnAction(processAnswerAction);
+	}
+
+	public Button getSubmitButton() {
+		return this.submitButton;
 	}
 
 	public String getSelectedStatements() {
@@ -83,12 +86,4 @@ public class TestPane extends GridPane {
 		this.facade = facade;
 	}
 
-	public String getSelectedButton() {
-		for (RadioButton button : this.radioButtons) {
-			if (button.isSelected()) {
-				return button.getText();
-			}
-		}
-		return "";
-	}
 }

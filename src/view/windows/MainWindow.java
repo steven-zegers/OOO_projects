@@ -32,8 +32,8 @@ public class MainWindow extends Stage {
 		CategoryOverviewPane categoryOverviewPane = new CategoryOverviewPane(this.facade);
 		categoryOverviewController.setPane(categoryOverviewPane);
 
-		TestController testController = new TestController(facade);
-		MessagePane messagePane = new MessagePane();
+		TestController testController = new TestController(this.facade);
+		MessagePane messagePane = new MessagePane(this.facade);
 		testController.setPane(messagePane);
 		TestPane testPane = new TestPane(this.facade);
 		//MessagePane messagePane = new MessagePane();
