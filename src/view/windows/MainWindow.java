@@ -35,8 +35,6 @@ public class MainWindow extends Stage {
 		TestController testController = new TestController(this.facade);
 		MessagePane messagePane = new MessagePane(this.facade);
 		testController.setPane(messagePane);
-		TestPane testPane = new TestPane(this.facade);
-		//MessagePane messagePane = new MessagePane();
 
 		Group root = new Group();
 		Scene scene = new Scene(root, 750, 400);

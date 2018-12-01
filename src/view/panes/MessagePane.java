@@ -31,15 +31,8 @@ public class MessagePane extends GridPane implements Observer{
         this.setVgap(5);
         this.setHgap(5);
 
-
         scoreField = new Label("");
-		/*scores = "";
-		String totaleScore = Integer.toString(facade.getCurrentTest().getScore());
-		scores += "Your score: " + totaleScore + "\n";
-		for (String categoryTitle : facade.getCategoryTitles()) {
-			scores += "Category " + categoryTitle + ": " + Integer.toString(facade.getScoreOfCategory(categoryTitle)) + "\n";
-		}
-		scoreField.setText(scores);*/
+
 		add(scoreField, 0, 0, 1, 1);
 		setHalignment(scoreField, HPos.CENTER);
 

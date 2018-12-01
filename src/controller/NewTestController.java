@@ -41,23 +41,24 @@ public class NewTestController {
     private class ProcessAnswerHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
-            if (facade.getStatementsOfCurrentQuestion().get(0).equals(getWindow().getPane().getSelectedStatements())) {
-                facade.handleCorrectAnswer();
-                String categoryOfQuestion = facade.getCurrentQuestionCategoryTitle();
-                facade.handleQuestionOfCategoryCorrect(categoryOfQuestion);
-            }
-            if (facade.getCurrentTest().canAdvance()) {
-                facade.advanceCurrentTest();
-                setWindow(new TestWindow(getWindow().getStage(), facade));
-                getWindow().setProcessAnswerAction(new ProcessAnswerHandler());
-            } else {
-                facade.setCurrentTestFinished();
-                getWindow().stop();
-                System.out.println(facade.getCurrentTest().getScore());
-                for (String category : facade.getCategoryTitles()) {
-                    System.out.println(facade.getScoreOfCategory(category));
+            if (!facade.getCurrentTest().isFinished()) {
+                if (facade.getStatementsOfCurrentQuestion().get(0).equals(getWindow().getPane().getSelectedStatements())) {
+                    facade.handleCorrectAnswer();
+                    String categoryOfQuestion = facade.getCurrentQuestionCategoryTitle();
+                    facade.handleQuestionOfCategoryCorrect(categoryOfQuestion);
                 }
+                if (facade.getCurrentTest().canAdvance()) {
+                    facade.advanceCurrentTest();
+                    setWindow(new TestWindow(getWindow().getStage(), facade));
+                    getWindow().setProcessAnswerAction(new ProcessAnswerHandler());
+                } else {
+                    facade.setCurrentTestFinished();
+                    getWindow().stop();
+                }
+            } else {
+                getWindow().stop();
             }
+
         }
     }
 }
