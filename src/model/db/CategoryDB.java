@@ -1,11 +1,11 @@
 package model.db;
 
 import model.domain.Category;
+import model.domain.CategoryFactory;
+import model.domain.Question;
 import model.domain.SubCategory;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
  * @author Wout De Boeck
  */
 
-public class CategoryDB extends ArrayList<Category> {
+public class CategoryDB implements Database<Category> {
 
     /**
      *  A List of Categories in which the Categories are stored when the program is running.
@@ -30,7 +30,6 @@ public class CategoryDB extends ArrayList<Category> {
      */
 
     private String path = "src/model/db/groep.txt";
-	private static final long serialVersionUID = 1L;
 
 
     /**
@@ -40,10 +39,13 @@ public class CategoryDB extends ArrayList<Category> {
      */
 
 	public CategoryDB() {
-		CategoryDbBuilder builder = new CategoryDbBuilder(path);
-		this.categories = builder.readCategories();
+		this.categories = readItems(readFile());
 		//readCategories();
 	}
+
+	public String getPath() {
+	    return this.path;
+    }
 
     /**
      * Reads in all Categories already stored in the List of Categories.
@@ -76,14 +78,57 @@ public class CategoryDB extends ArrayList<Category> {
 		throw new DbException("This title is not recognized as a saved category");
 	}
 
-    /**
-     * Returns the List of Categories.
-     * @return
-     * categories as a List of Category-objects
-     */
+	public List<String> getCategoryTitles() {
+        List<String> titles = new ArrayList<>();
+        for (Category category : categories) {
+            titles.add(category.getTitle());
+        }
+        return titles;
+    }
+    @Override
+    public List<String[]> readFile() {
+        String line;
+        List<String[]> linesInFile = new ArrayList<>();
+        try {
+            FileReader fileReader = new FileReader(this.getPath());
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] lineString = line.split(": ");
+                linesInFile.add(lineString);
+            }
+            bufferedReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return linesInFile;
+    }
 
-	public List<Category> getCategories() {
-	    return this.categories;
+    @Override
+    public List<Category> readItems(List<String[]> text) {
+        List<Category> categories = new ArrayList<>();
+        CategoryFactory factory = new CategoryFactory();
+        for (String[] line : text) {
+            if (line.length == 2) {
+                Category category = factory.createCategory(line[0], line[1], null);
+                categories.add(category);
+            } else {
+                boolean found = false;
+                for (Category category : categories) {
+                    if (category.getTitle().equals(line[2])) {
+                        Category newCategory = factory.createCategory(line[0], line[1], category);
+                        categories.add(newCategory);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    throw new DbException("There is no such super category");
+                }
+            }
+        }
+        return categories;
     }
 
     /**
@@ -91,8 +136,8 @@ public class CategoryDB extends ArrayList<Category> {
      * @param category
      * The Category that should be added to the database.
      */
-
-    public void addCategory(Category category) {
+    @Override
+    public void addItem(Category category) {
 	    categories.add(category);
         try {
             String title = category.getTitle();
@@ -109,5 +154,15 @@ public class CategoryDB extends ArrayList<Category> {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Returns the List of Categories.
+     * @return
+     * categories as a List of Category-objects
+     */
+    @Override
+    public List<Category> getItems() {
+            return this.categories;
     }
 }

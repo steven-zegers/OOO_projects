@@ -3,20 +3,20 @@ package model.db;
 import model.domain.Category;
 import model.domain.Question;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * QuestionDB contains a List of Questions that is used in tests while the program is running.
- * It is created using a QuestionDbBuilder to load in all existing Questions from a text file.
  * @author Steven Zegers
  * @author Thibault Stroobants
  * @author Wout De Boeck
  */
 
-public class QuestionDB {
+public class QuestionDB implements Database<Question> {
 
     /**
      * A List of Questions to be used in tests while running the program.
@@ -30,17 +30,21 @@ public class QuestionDB {
 
     private String path = "src/model/db/vraag.txt";
 
+
+
     /**
      * Creates a new QuestionDB via the Builder.
      * No parameters are to be given, since the path is statically determined.
      */
 
     public QuestionDB() {
-        QuestionDbBuilder builder = new QuestionDbBuilder(path);
-        this.questions = builder.readQuestions();
+        this.questions = readItems(readFile());
         //testQuestions();
     }
 
+    public String getPath() {
+        return this.path;
+    }
     /**
      * Prints an easily readable version of each existing Question object contained within the List.
      */
@@ -51,8 +55,44 @@ public class QuestionDB {
             for (String statement : question.getStatements()) {
                 System.out.print(statement + ", ");
             }
-            System.out.print(", feedback: " + question.getFeedback());
+            System.out.print("feedback: " + question.getFeedback() + "\n");
         }
+    }
+
+    @Override
+    public List<String[]> readFile() {
+        String line;
+        List<String[]> linesInFile = new ArrayList<>();
+        try {
+            FileReader fileReader = new FileReader(this.getPath());
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] lineString = line.split(": ");
+                linesInFile.add(lineString);
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return linesInFile;
+    }
+
+    @Override
+    public List<Question> readItems(List<String[]> text) {
+        CategoryDB categoryDB = new CategoryDB();
+        List<Question> questions = new ArrayList<>();
+        for(String[] line : text) {
+            Category questionCategory = categoryDB.getCategory(line[0]);
+            String question = line[1];
+            String feedback = line[2];
+            Question newQuestion = new Question(question, questionCategory, feedback);
+            String[] statements = line[3].split("; ");
+            for (String statement: statements) {
+                newQuestion.addStatement(statement);
+            }
+            questions.add(newQuestion);
+        }
+        return questions;
     }
 
     /**
@@ -60,8 +100,8 @@ public class QuestionDB {
      * @param question
      * The Question that should be stored.
      */
-
-    public void addQuestion(Question question) {
+    @Override
+    public void addItem(Question question) {
         questions.add(question);
         try {
             String question1 = question.getQuestion();
@@ -89,7 +129,7 @@ public class QuestionDB {
      * questions as a List of Questions
      */
 
-    public List<Question> getQuestions() {
+    public List<Question> getItems() {
         return questions;
     }
 

@@ -8,44 +8,50 @@ import java.util.Map;
 
 public class Test
 {
-    private final HashMap<String, Integer> totalQuestionsOfEachCategory;
     private ObservableList<Question> questions;
     private Facade facade;
 
     private int questionPointer;
     private int score;
-    private Map<String, Integer> scoresOfCategories;
+    private Map<String, Integer> scoresOfCategories = new HashMap<>();
     private boolean isTestFinished = false;
+    private Map<String, Integer> totalQuestionsOfEachCategory = new HashMap<>();;
 
 
     public Test(Facade facade) {
         questions = facade.getQuestions();
         this.facade = facade;
-        List<String> titles = facade.getCategoryTitles();
-        scoresOfCategories = new HashMap<>();
-        for (String title : titles) {
-            scoresOfCategories.put(title, 0);
-        }
-        totalQuestionsOfEachCategory = new HashMap<>();
+        initializeScoresOfCategories();
         initializeQuestionAmountsPerCategory();
         this.setQuestionPointer(0);
         this.setScore(0);
+    }
+
+    public void initializeQuestionAmountsPerCategory() {
+
+        for(String categoryTitle : facade.getCategoryTitles()) {
+            totalQuestionsOfEachCategory.put(categoryTitle, 0);
+        }
+
+        for (Question question : questions) {
+
+            if (totalQuestionsOfEachCategory.containsKey(question.getCategoryTitle())) {
+                totalQuestionsOfEachCategory.put(question.getCategoryTitle(), totalQuestionsOfEachCategory.get(question.getCategoryTitle()) + 1);
+            } else {
+                totalQuestionsOfEachCategory.put(question.getCategoryTitle(), 1);
+            }
+            System.out.println(question.getCategoryTitle() + ": " + totalQuestionsOfEachCategory.get(question.getCategoryTitle()));
+        }
     }
 
     public int getAmountOfQuestionOfCategory(String categoryTitle) {
         return totalQuestionsOfEachCategory.get(categoryTitle);
     }
 
-    private void initializeQuestionAmountsPerCategory() {
-        for (String categoryTitle : facade.getCategoryTitles()) {
-            totalQuestionsOfEachCategory.put(categoryTitle, 0);
-        }
-        for (Question question : facade.getQuestions()) {
-            if (totalQuestionsOfEachCategory.containsKey(question.getCategoryTitle())) {
-                totalQuestionsOfEachCategory.put(question.getCategoryTitle(), totalQuestionsOfEachCategory.get(question.getCategoryTitle()) + 1);
-            } else {
-                totalQuestionsOfEachCategory.put(question.getCategoryTitle(), 1);
-            }
+    public void initializeScoresOfCategories() {
+        List<String> titles = facade.getCategoryTitles();
+        for (String title : titles) {
+            scoresOfCategories.put(title, 0);
         }
     }
 

@@ -29,19 +29,15 @@ public class Facade implements Subject {
     }
 
     public ObservableList<Question> getQuestions() {
-        return FXCollections.observableArrayList(getQuestionDB().getQuestions());
+        return FXCollections.observableArrayList(getQuestionDB().getItems());
     }
 
     public ObservableList<Category> getCategories() {
-        return FXCollections.observableArrayList(getCategoryDB().getCategories());
+        return FXCollections.observableArrayList(getCategoryDB().getItems());
     }
 
     public List<String> getCategoryTitles() {
-        List<String> titles = new ArrayList<>();
-        for (Category category : getCategoryDB().getCategories()) {
-            titles.add(category.getTitle());
-        }
-        return titles;
+        return getCategoryDB().getCategoryTitles();
     }
 
     public void setCurrentTest(Test test){
@@ -65,7 +61,9 @@ public class Facade implements Subject {
     }
 
     public void addCategory(Category category) {
-    	this.getCategoryDB().addCategory(category);
+    	this.getCategoryDB().addItem(category);
+    	this.getCurrentTest().initializeScoresOfCategories();
+    	this.getCurrentTest().initializeQuestionAmountsPerCategory();
     	this.notifyObservers();
     }
 
@@ -74,7 +72,8 @@ public class Facade implements Subject {
     }
 
     public void addQuestion(Question question) {
-    	this.getQuestionDB().addQuestion(question);
+    	this.getQuestionDB().addItem(question);
+    	this.getCurrentTest().initializeQuestionAmountsPerCategory();
     	this.notifyObservers();
     }
 

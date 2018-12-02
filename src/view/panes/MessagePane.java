@@ -64,7 +64,9 @@ public class MessagePane extends GridPane implements Observer{
 		String totaleScore = Integer.toString(facade.getCurrentTest().getScore());
 		scores += "Your score: " + totaleScore + "/" + facade.getQuestions().size() + "\n";
 		for (String categoryTitle : facade.getCategoryTitles()) {
+			System.out.println(categoryTitle);
 			scores += "Category " + categoryTitle + ": " + Integer.toString(facade.getScoreOfCategory(categoryTitle)) + "/" + facade.getAmountOfQuestionsOfCategory(categoryTitle) + "\n";
+			System.out.println(scores);
 		}
 		scoreField.setText(scores);
 	}
