@@ -16,13 +16,14 @@ import javafx.scene.paint.Color;
 import model.domain.Facade;
 import model.domain.Observer;
 
-public class MessagePane extends GridPane implements Observer{
+public class TestOverviewPane extends GridPane implements Observer{
 	private Button testButton;
 	private Facade facade;
 	private Label scoreField;
+	private Label feedbackField;
 	private String scores;
 
-	public MessagePane (Facade facade){
+	public TestOverviewPane(Facade facade){
 		this.setFacade(facade);
 		setBorder(new Border(new BorderStroke(Color.BLACK,
 	            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
@@ -36,9 +37,14 @@ public class MessagePane extends GridPane implements Observer{
 		add(scoreField, 0, 0, 1, 1);
 		setHalignment(scoreField, HPos.CENTER);
 
+		feedbackField = new Label("");
+
+		add(feedbackField,0,1,1,1);
+		setHalignment(feedbackField, HPos.CENTER);
+
 		testButton = new Button("Evaluate");
 
-		add(testButton, 0,1,1,1);
+		add(testButton, 0,2,1,1);
 		setHalignment(testButton, HPos.CENTER);
 	}
 
@@ -69,5 +75,6 @@ public class MessagePane extends GridPane implements Observer{
 			System.out.println(scores);
 		}
 		scoreField.setText(scores);
+		feedbackField.setText(facade.getFullFeedback());
 	}
 }

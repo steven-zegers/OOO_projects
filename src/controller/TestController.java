@@ -2,38 +2,33 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.domain.Facade;
-import sun.plugin2.message.Message;
-import view.panes.MessagePane;
-import view.panes.TestPane;
+import model.domain.Question;
+import model.domain.Test;
 import view.windows.TestWindow;
 
-import javax.swing.*;
-
-public class TestController
-{
-    private TestWindow window;
+public class TestController {
     private Facade facade;
-    private MessagePane pane;
+    private TestWindow window;
 
-    public TestController(Facade facade) {
+    public TestController(Stage stage, Facade facade) {
         setFacade(facade);
+        Test test = new Test(facade);
+        facade.setCurrentTest(test);
+        setWindow(new TestWindow(stage, facade));
+
+        this.window.setProcessAnswerAction(new ProcessAnswerHandler());
+        this.window.setAlwaysOnTop(true);
+        this.window.start();
+        
+    }
+    public TestWindow getWindow() {
+        return this.window;
     }
 
-    public void setPane(MessagePane pane) {
-        this.pane = pane;
-        this.setup();
-    }
-
-    public void setup() {
-        this.pane.setNewAction(new EvaluateButtonHandler());
-        this.getFacade().addObserver(this.pane);
-    }
-
-    public MessagePane getPane() {
-        return this.pane;
+    public void setWindow(TestWindow window) {
+        this.window = window;
     }
 
     public Facade getFacade() {
@@ -44,15 +39,30 @@ public class TestController
         this.facade = facade;
     }
 
-    private class EvaluateButtonHandler implements EventHandler<ActionEvent> {
+    private class ProcessAnswerHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
-            try {
-                new NewTestController(new Stage(), getFacade());
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
-                e.printStackTrace();
+            if (!facade.getCurrentTest().isFinished()) {
+                if (facade.getStatementsOfCurrentQuestion().get(0).equals(getWindow().getPane().getSelectedStatements())) {
+                    facade.handleCorrectAnswer();
+                    String categoryOfQuestion = facade.getCurrentQuestionCategoryTitle();
+                    facade.handleQuestionOfCategoryCorrect(categoryOfQuestion);
+                } else {
+                    Question question = facade.getCurrentQuestion();
+                    facade.handleIncorrectAnswer(question);
+                }
+                if (facade.getCurrentTest().canAdvance()) {
+                    facade.advanceCurrentTest();
+                    setWindow(new TestWindow(getWindow().getStage(), facade));
+                    getWindow().setProcessAnswerAction(new ProcessAnswerHandler());
+                } else {
+                    facade.setCurrentTestFinished();
+                    getWindow().stop();
+                }
+            } else {
+                getWindow().stop();
             }
+
         }
     }
 }
