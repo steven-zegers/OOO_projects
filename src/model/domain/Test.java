@@ -15,6 +15,8 @@ public class Test
     private int questionPointer;
     private int score;
     private Map<String, Integer> scoresOfCategories;
+
+    private String fullFeedback = "";
     private boolean isTestFinished = false;
 
 
@@ -49,8 +51,16 @@ public class Test
         }
     }
 
-    public void questionOfCategoryCorrect(String categoryTitle) {
-        scoresOfCategories.put(categoryTitle, scoresOfCategories.get(categoryTitle) + 1);
+	public void questionOfCategoryCorrect(String categoryTitle) {
+		scoresOfCategories.put(categoryTitle, scoresOfCategories.get(categoryTitle) + 1);
+	}
+
+	public void handleIncorrectAnswer(Question question) {
+    	fullFeedback += question.getFeedback() + "\n";
+	}
+
+    public String getFullFeedback() {
+        return fullFeedback;
     }
 
     public int getScoreOfCategory(String categoryTitle) {
@@ -125,5 +135,5 @@ public class Test
 
     public void setTestFinished() {
         this.isTestFinished = true;
-}
+    }
 }

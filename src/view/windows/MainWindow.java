@@ -2,7 +2,7 @@ package view.windows;
 
 import controller.CategoryOverviewController;
 import controller.QuestionOverviewController;
-import controller.TestController;
+import controller.TestOverviewController;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -10,9 +10,8 @@ import javafx.stage.Stage;
 import model.domain.Facade;
 import view.panes.AssesMainPane;
 import view.panes.CategoryOverviewPane;
-import view.panes.MessagePane;
+import view.panes.TestOverviewPane;
 import view.panes.QuestionOverviewPane;
-import view.panes.TestPane;
 
 public class MainWindow extends Stage {
 
@@ -20,9 +19,9 @@ public class MainWindow extends Stage {
 	private Stage stage;
 	private Facade facade;
 
-	public MainWindow(Stage stage, Facade facade) {
+	public MainWindow(Stage stage) {
 		this.setStage(stage);
-		this.setFacade(facade);
+		this.setFacade(new Facade());
 
 		QuestionOverviewController questionOverviewController = new QuestionOverviewController(this.facade);
 		QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(this.facade);
@@ -32,14 +31,14 @@ public class MainWindow extends Stage {
 		CategoryOverviewPane categoryOverviewPane = new CategoryOverviewPane(this.facade);
 		categoryOverviewController.setPane(categoryOverviewPane);
 
-		TestController testController = new TestController(this.facade);
-		MessagePane messagePane = new MessagePane(this.facade);
-		testController.setPane(messagePane);
+		TestOverviewController testOverviewController = new TestOverviewController(this.facade);
+		TestOverviewPane testOverviewPane = new TestOverviewPane(this.facade);
+		testOverviewController.setPane(testOverviewPane);
 
 		Group root = new Group();
 		Scene scene = new Scene(root, 750, 400);
 
-		BorderPane borderPane = new AssesMainPane(messagePane, categoryOverviewPane, questionOverviewPane);
+		BorderPane borderPane = new AssesMainPane(testOverviewPane, categoryOverviewPane, questionOverviewPane);
 		borderPane.prefHeightProperty().bind(scene.heightProperty());
 		borderPane.prefWidthProperty().bind(scene.widthProperty());
 		this.setMainPane(borderPane);

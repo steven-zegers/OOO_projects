@@ -93,6 +93,14 @@ public class Facade implements Subject {
         getCurrentTest().questionOfCategoryCorrect(categoryTitle);
     }
 
+    public void handleIncorrectAnswer(Question question) {
+        getCurrentTest().handleIncorrectAnswer(question);
+    }
+
+    public String getFullFeedback() {
+        return getCurrentTest().getFullFeedback();
+    }
+
     public int getScoreOfCategory(String categoryTitle) {
         return getCurrentTest().getScoreOfCategory(categoryTitle);
     }
