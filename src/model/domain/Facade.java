@@ -82,6 +82,9 @@ public class Facade implements Subject {
         getCurrentTest().setScore(getCurrentTest().getScore() + 1);
     }
 
+    public int getAmountOfQuestionsOfCategory(String categoryTitle) {
+        return getCurrentTest().getAmountOfQuestionOfCategory(categoryTitle);
+    }
     public String getCurrentQuestionCategoryTitle() {
         return getCurrentQuestion().getCategoryTitle();
     }

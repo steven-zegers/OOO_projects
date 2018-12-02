@@ -8,7 +8,9 @@ import java.util.Map;
 
 public class Test
 {
+    private final HashMap<String, Integer> totalQuestionsOfEachCategory;
     private ObservableList<Question> questions;
+    private Facade facade;
 
     private int questionPointer;
     private int score;
@@ -18,13 +20,33 @@ public class Test
 
     public Test(Facade facade) {
         questions = facade.getQuestions();
+        this.facade = facade;
         List<String> titles = facade.getCategoryTitles();
         scoresOfCategories = new HashMap<>();
         for (String title : titles) {
             scoresOfCategories.put(title, 0);
         }
+        totalQuestionsOfEachCategory = new HashMap<>();
+        initializeQuestionAmountsPerCategory();
         this.setQuestionPointer(0);
         this.setScore(0);
+    }
+
+    public int getAmountOfQuestionOfCategory(String categoryTitle) {
+        return totalQuestionsOfEachCategory.get(categoryTitle);
+    }
+
+    private void initializeQuestionAmountsPerCategory() {
+        for (String categoryTitle : facade.getCategoryTitles()) {
+            totalQuestionsOfEachCategory.put(categoryTitle, 0);
+        }
+        for (Question question : facade.getQuestions()) {
+            if (totalQuestionsOfEachCategory.containsKey(question.getCategoryTitle())) {
+                totalQuestionsOfEachCategory.put(question.getCategoryTitle(), totalQuestionsOfEachCategory.get(question.getCategoryTitle()) + 1);
+            } else {
+                totalQuestionsOfEachCategory.put(question.getCategoryTitle(), 1);
+            }
+        }
     }
 
     public void questionOfCategoryCorrect(String categoryTitle) {
@@ -74,8 +96,6 @@ public class Test
     }
     /**
      * Returns whether the test is finished or not.
-     * @return
-     * true if the questionPointer is -1, false if anything else
      */
 
     public boolean isFinished()

@@ -48,7 +48,6 @@ public class TestController
         @Override
         public void handle(ActionEvent event) {
             try {
-                System.out.print(getPane().getScores());
                 new NewTestController(new Stage(), getFacade());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
