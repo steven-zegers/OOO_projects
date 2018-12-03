@@ -21,7 +21,6 @@ public class TestOverviewPane extends GridPane implements Observer{
 	private Facade facade;
 	private Label scoreField;
 	private Label feedbackField;
-	private String scores;
 
 	public TestOverviewPane(Facade facade){
 		this.setFacade(facade);
@@ -48,10 +47,6 @@ public class TestOverviewPane extends GridPane implements Observer{
 		setHalignment(testButton, HPos.CENTER);
 	}
 
-	public String getScores() {
-		return scores;
-	}
-
 	public void setNewAction(EventHandler<ActionEvent> newAction) {
 		testButton.setOnAction(newAction);
 	}
@@ -67,15 +62,14 @@ public class TestOverviewPane extends GridPane implements Observer{
 	@Override
 	public void update() {
 		if(facade.getFeedbackType().equals("score")) {
-			scores = "";
-			String totaleScore = Integer.toString(facade.getCurrentTest().getScore());
-			scores += "Your score: " + totaleScore + "/" + facade.getQuestions().size() + "\n";
-			for (String categoryTitle : facade.getCategoryTitles()) {
-				scores += "Category " + categoryTitle + ": " + Integer.toString(facade.getScoreOfCategory(categoryTitle)) + "/" + facade.getAmountOfQuestionsOfCategory(categoryTitle) + "\n";
-			}
-			scoreField.setText(scores);
+			scoreField.setText(facade.getScoreString());
 		} else if (facade.getFeedbackType().equals("feedback")) {
-			feedbackField.setText(facade.getFullFeedback());
+			if(facade.isItAPerfectTest()) {
+				feedbackField.setText("Schitterend! Alles perfect!");
+			} else {
+				feedbackField.setText(facade.getFullFeedback());
+			}
+
 		}
 
 	}

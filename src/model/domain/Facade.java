@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Facade implements Subject {
+
     private Database categoryDB;
     private Database questionDB;
     private List<Observer> observers;
@@ -110,6 +111,20 @@ public class Facade implements Subject {
 
     public String getFullFeedback() {
         return getCurrentTest().getFullFeedback();
+    }
+
+    public String getScoreString() {
+        String scoreString = "";
+        String totaleScore = Integer.toString(getCurrentTest().getScore());
+        scoreString += "Your score: " + totaleScore + "/" + getQuestions().size() + "\n";
+        for (String categoryTitle : getCategoryTitles()) {
+            scoreString += "Category " + categoryTitle + ": " + Integer.toString(getScoreOfCategory(categoryTitle)) + "/" + getAmountOfQuestionsOfCategory(categoryTitle) + "\n";
+        }
+        return scoreString;
+    }
+
+    public boolean isItAPerfectTest() {
+        return getCurrentTest().getScore() == getQuestions().size();
     }
 
     public void setCurrentTestFinished() {

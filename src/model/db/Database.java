@@ -7,5 +7,4 @@ public interface Database<T> {
     List<T> readItems(List<String[]> text);
     void addItem(T item);
     List<T> getItems();
-
 }
