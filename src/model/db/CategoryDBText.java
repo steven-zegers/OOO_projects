@@ -79,6 +79,7 @@ public class CategoryDBText implements Database<Category> {
 		throw new DbException("This title is not recognized as a saved category");
 	}
 
+	@Override
 	public List<String> getTitles() {
         List<String> titles = new ArrayList<>();
         for (Category category : categories) {
@@ -106,7 +107,7 @@ public class CategoryDBText implements Database<Category> {
         return linesInFile;
     }
 
-    @Override
+	@Override
     public List<Category> readItems(List<String[]> text) {
         List<Category> categories = new ArrayList<>();
         CategoryFactory factory = new CategoryFactory();
@@ -157,7 +158,7 @@ public class CategoryDBText implements Database<Category> {
         }
     }
 
-    /**
+	/**
      * Returns the List of Categories.
      * @return
      * categories as a List of Category-objects
