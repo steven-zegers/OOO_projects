@@ -3,13 +3,15 @@ package model.domain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.db.CategoryDB;
+import model.db.Database;
 import model.db.QuestionDB;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Facade implements Subject {
-    private CategoryDB categoryDB;
+    private Database<Category> categoryDB;
     private QuestionDB questionDB;
     private List<Observer> observers;
     private Test test;
@@ -20,11 +22,11 @@ public class Facade implements Subject {
         this.observers = new ArrayList<>();
     }
 
-    public CategoryDB getCategoryDB() {
+    public Database<Category> getCategoryDB() {
         return categoryDB;
     }
 
-    public QuestionDB getQuestionDB() {
+    public Database<Question> getQuestionDB() {
         return questionDB;
     }
 
@@ -37,7 +39,7 @@ public class Facade implements Subject {
     }
 
     public List<String> getCategoryTitles() {
-        return getCategoryDB().getCategoryTitles();
+        return ((CategoryDB) getCategoryDB()).getCategoryTitles();
     }
 
     public void setCurrentTest(Test test){
@@ -68,7 +70,7 @@ public class Facade implements Subject {
     }
 
     public Category getCategory(String categoryTitle) {
-    	return this.getCategoryDB().getCategory(categoryTitle);
+    	return ((CategoryDB)getCategoryDB()).getCategory(categoryTitle);
     }
 
     public void addQuestion(Question question) {
