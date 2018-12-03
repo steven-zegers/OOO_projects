@@ -66,15 +66,17 @@ public class TestOverviewPane extends GridPane implements Observer{
 
 	@Override
 	public void update() {
-		scores = "";
-		String totaleScore = Integer.toString(facade.getCurrentTest().getScore());
-		scores += "Your score: " + totaleScore + "/" + facade.getQuestions().size() + "\n";
-		for (String categoryTitle : facade.getCategoryTitles()) {
-			System.out.println(categoryTitle);
-			scores += "Category " + categoryTitle + ": " + Integer.toString(facade.getScoreOfCategory(categoryTitle)) + "/" + facade.getAmountOfQuestionsOfCategory(categoryTitle) + "\n";
-			System.out.println(scores);
+		if(facade.getFeedbackType().equals("score")) {
+			scores = "";
+			String totaleScore = Integer.toString(facade.getCurrentTest().getScore());
+			scores += "Your score: " + totaleScore + "/" + facade.getQuestions().size() + "\n";
+			for (String categoryTitle : facade.getCategoryTitles()) {
+				scores += "Category " + categoryTitle + ": " + Integer.toString(facade.getScoreOfCategory(categoryTitle)) + "/" + facade.getAmountOfQuestionsOfCategory(categoryTitle) + "\n";
+			}
+			scoreField.setText(scores);
+		} else if (facade.getFeedbackType().equals("feedback")) {
+			feedbackField.setText(facade.getFullFeedback());
 		}
-		scoreField.setText(scores);
-		feedbackField.setText(facade.getFullFeedback());
+
 	}
 }
