@@ -130,6 +130,9 @@ public class Facade implements Subject {
         return getCurrentTest().getScoreOfCategory(categoryTitle);
     }
 
+    public String getFeedbackType() {
+        return getCurrentTest().getFeedbackType();
+    }
     //Observer
     @Override
     public void addObserver(Observer observer) {
