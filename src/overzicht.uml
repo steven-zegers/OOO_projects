@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>application</OriginalElement>
+  <nodes>
+    <node x="0.0" y="612.0">view.windows.NewCategoryWindow</node>
+    <node x="431.0" y="538.0">model.domain.SubCategory</node>
+    <node x="441.0" y="459.0">model.domain.Category</node>
+    <node x="159.0" y="760.0">view.panes.TestPane</node>
+    <node x="0.0" y="79.0">controller.NewQuestionController.CancelButtonHandler</node>
+    <node x="217.0" y="538.0">controller.TestController.ProcessAnswerHandler</node>
+    <node x="572.0" y="232.0">controller.NewCategoryController.SaveButtonHandler</node>
+    <node x="0.0" y="385.0">model.db.CategoryDB</node>
+    <node x="186.0" y="686.0">model.domain.CategoryFactory</node>
+    <node x="520.0" y="79.0">controller.NewQuestionController.RemoveButtonHandler</node>
+    <node x="229.0" y="153.0">model.domain.Observer</node>
+    <node x="311.0" y="385.0">controller.CategoryOverviewController.NewButtonHandler</node>
+    <node x="182.0" y="79.0">controller.NewQuestionController.SaveButtonHandler</node>
+    <node x="705.0" y="686.0">model.db.DbException</node>
+    <node x="418.0" y="612.0">view.panes.NewCategoryPane</node>
+    <node x="0.0" y="232.0">view.panes.QuestionOverviewPane</node>
+    <node x="240.0" y="459.0">controller.TestController</node>
+    <node x="0.0" y="459.0">controller.TestOverviewController</node>
+    <node x="592.0" y="459.0">model.domain.Subject</node>
+    <node x="352.0" y="79.0">controller.NewQuestionController.AddButtonHandler</node>
+    <node x="742.0" y="232.0">controller.NewCategoryController.CancelButtonHandler</node>
+    <node x="255.0" y="0.0">controller.NewQuestionController</node>
+    <node x="609.0" y="612.0">view.panes.NewQuestionPane</node>
+    <node x="724.0" y="459.0">controller.MainWindowController</node>
+    <node x="366.0" y="686.0">view.panes.AssesMainPane</node>
+    <node x="541.0" y="686.0">view.windows.MainWindow</node>
+    <node x="0.0" y="686.0">model.domain.DomainException</node>
+    <node x="382.0" y="232.0">view.panes.TestOverviewPane</node>
+    <node x="191.0" y="232.0">view.panes.CategoryOverviewPane</node>
+    <node x="554.0" y="385.0">controller.QuestionOverviewController.NewButtonHandler</node>
+    <node x="561.0" y="760.0">model.domain.Test</node>
+    <node x="648.5" y="153.0">controller.NewCategoryController</node>
+    <node x="209.0" y="612.0">view.windows.NewQuestionWindow</node>
+    <node x="530.0" y="306.0">controller.QuestionOverviewController</node>
+    <node x="300.0" y="760.0">model.domain.Question</node>
+    <node x="593.0" y="538.0">model.domain.Facade</node>
+    <node x="441.0" y="760.0">application.Main</node>
+    <node x="131.0" y="385.0">model.db.QuestionDB</node>
+    <node x="1.0" y="538.0">controller.TestOverviewController.EvaluateButtonHandler</node>
+    <node x="0.0" y="760.0">view.windows.TestWindow</node>
+    <node x="287.0" y="306.0">controller.CategoryOverviewController</node>
+    <node x="73.0" y="306.0">model.db.Database</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="controller.TestController.ProcessAnswerHandler" target="controller.TestController">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="controller.NewCategoryController.CancelButtonHandler" target="controller.NewCategoryController">
+      <point x="0.0" y="-14.5" />
+      <point x="823.0" y="207.0" />
+      <point x="778.25" y="207.0" />
+      <point x="43.25" y="14.5" />
+    </edge>
+    <edge source="controller.TestOverviewController.EvaluateButtonHandler" target="controller.TestOverviewController">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="controller.NewQuestionController.CancelButtonHandler" target="controller.NewQuestionController">
+      <point x="0.0" y="-14.5" />
+      <point x="81.0" y="49.0" />
+      <point x="276.625" y="49.0" />
+      <point x="-64.875" y="14.5" />
+    </edge>
+    <edge source="view.panes.QuestionOverviewPane" target="model.domain.Observer">
+      <point x="0.0" y="-14.5" />
+      <point x="85.5" y="207.0" />
+      <point x="244.83333333333334" y="207.0" />
+      <point x="-31.666666666666657" y="14.5" />
+    </edge>
+    <edge source="model.domain.SubCategory" target="model.domain.Category">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="controller.NewQuestionController.AddButtonHandler" target="controller.NewQuestionController">
+      <point x="0.0" y="-14.5" />
+      <point x="426.0" y="59.0" />
+      <point x="363.125" y="59.0" />
+      <point x="21.625" y="14.5" />
+    </edge>
+    <edge source="controller.QuestionOverviewController.NewButtonHandler" target="controller.QuestionOverviewController">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="controller.NewQuestionController.RemoveButtonHandler" target="controller.NewQuestionController">
+      <point x="0.0" y="-14.5" />
+      <point x="604.5" y="49.0" />
+      <point x="406.375" y="49.0" />
+      <point x="64.875" y="14.5" />
+    </edge>
+    <edge source="controller.NewCategoryController.SaveButtonHandler" target="controller.NewCategoryController">
+      <point x="0.0" y="-14.5" />
+      <point x="647.0" y="207.0" />
+      <point x="691.75" y="207.0" />
+      <point x="-43.25" y="14.5" />
+    </edge>
+    <edge source="view.panes.CategoryOverviewPane" target="model.domain.Observer">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="controller.NewQuestionController.SaveButtonHandler" target="controller.NewQuestionController">
+      <point x="0.0" y="-14.5" />
+      <point x="257.0" y="59.0" />
+      <point x="319.875" y="59.0" />
+      <point x="-21.625" y="14.5" />
+    </edge>
+    <edge source="model.db.QuestionDB" target="model.db.Database">
+      <point x="0.0" y="-14.5" />
+      <point x="186.5" y="360.0" />
+      <point x="145.0" y="360.0" />
+      <point x="24.0" y="14.5" />
+    </edge>
+    <edge source="controller.CategoryOverviewController.NewButtonHandler" target="controller.CategoryOverviewController">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="model.db.CategoryDB" target="model.db.Database">
+      <point x="0.0" y="-14.5" />
+      <point x="55.5" y="360.0" />
+      <point x="97.0" y="360.0" />
+      <point x="-24.0" y="14.5" />
+    </edge>
+    <edge source="view.panes.TestOverviewPane" target="model.domain.Observer">
+      <point x="0.0" y="-14.5" />
+      <point x="454.5" y="207.0" />
+      <point x="308.1666666666667" y="207.0" />
+      <point x="31.666666666666686" y="14.5" />
+    </edge>
+    <edge source="model.domain.Facade" target="model.domain.Subject">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8625418060200667" x="799.8554168063471" y="645.9899290423512" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
