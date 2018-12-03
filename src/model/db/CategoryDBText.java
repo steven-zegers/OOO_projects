@@ -69,7 +69,8 @@ public class CategoryDBText implements Database<Category> {
      * The asked Category if it exists within the List
      */
 
-    public Category getCategory(String title) {
+    @Override
+    public Category getItem(String title) {
 		for (Category category : categories) {
 			if (category.getTitle().toLowerCase().equals(title.toLowerCase())) {
 				return category;
@@ -78,7 +79,7 @@ public class CategoryDBText implements Database<Category> {
 		throw new DbException("This title is not recognized as a saved category");
 	}
 
-	public List<String> getCategoryTitles() {
+	public List<String> getTitles() {
         List<String> titles = new ArrayList<>();
         for (Category category : categories) {
             titles.add(category.getTitle());

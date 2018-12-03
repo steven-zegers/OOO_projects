@@ -33,14 +33,14 @@ public class Facade implements Subject {
 
     //Category
     public Category getCategory(String categoryTitle) {
-        return (getCategoryDB()).getCategory(categoryTitle);
+        return this.getCategoryDB().getItem(categoryTitle);
     }
 
     public void addCategory(Category category) {
-    	this.getCategoryDB().addItem(category);
-    	this.getCurrentTest().initializeScoresOfCategories();
-    	this.getCurrentTest().initializeQuestionAmountsPerCategory();
-    	this.notifyObservers();
+        this.getCategoryDB().addItem(category);
+        this.getCurrentTest().initializeScoresOfCategories();
+        this.getCurrentTest().initializeQuestionAmountsPerCategory();
+        this.notifyObservers();
     }
 
     public ObservableList<Category> getCategories() {
@@ -48,7 +48,7 @@ public class Facade implements Subject {
     }
 
     public List<String> getCategoryTitles() {
-        return getCategoryDB().getCategoryTitles();
+        return getCategoryDB().getTitles();
     }
 
 
@@ -58,9 +58,9 @@ public class Facade implements Subject {
     }
 
     public void addQuestion(Question question) {
-    	this.getQuestionDB().addItem(question);
-    	this.getCurrentTest().initializeQuestionAmountsPerCategory();
-    	this.notifyObservers();
+        this.getQuestionDB().addItem(question);
+        this.getCurrentTest().initializeQuestionAmountsPerCategory();
+        this.notifyObservers();
     }
 
     public Question getCurrentQuestion() {
@@ -89,10 +89,6 @@ public class Facade implements Subject {
 
     public List<String> getStatementsOfCurrentQuestion() {
         return getCurrentTest().getCurrentQuestion().getStatements();
-    }
-
-    public Category getCategory(String categoryTitle) {
-    	return this.getCategoryDB().getCategory(categoryTitle);
     }
 
     public void handleCorrectAnswer() {
