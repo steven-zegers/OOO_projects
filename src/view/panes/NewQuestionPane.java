@@ -1,6 +1,5 @@
 package view.panes;
 
-import controller.NewQuestionController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,12 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import model.db.CategoryDB;
-import model.domain.Category;
 import model.domain.Facade;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class NewQuestionPane extends GridPane {
 	private Button btnOK, btnCancel;

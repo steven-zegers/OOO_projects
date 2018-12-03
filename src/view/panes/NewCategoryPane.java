@@ -10,11 +10,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import model.db.CategoryDB;
-import model.domain.Category;
 import model.domain.Facade;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class NewCategoryPane extends GridPane {

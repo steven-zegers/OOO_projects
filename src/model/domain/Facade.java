@@ -2,47 +2,46 @@ package model.domain;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.db.CategoryDB;
+import model.db.CategoryDBText;
+import model.db.QuestionDBText;
 import model.db.Database;
-import model.db.QuestionDB;
 
 import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Facade implements Subject {
-    private Database<Category> categoryDB;
-    private QuestionDB questionDB;
+
+    private Database categoryDB;
+    private Database questionDB;
     private List<Observer> observers;
     private Test test;
 
     public Facade() {
-        this.categoryDB = new CategoryDB();
-        this.questionDB = new QuestionDB();
+        this.categoryDB = new CategoryDBText();
+        this.questionDB = new QuestionDBText();
         this.observers = new ArrayList<>();
     }
 
-
     //DB
-    private Database<Category> getCategoryDB() {
+    public Database<Category> getCategoryDB() {
         return categoryDB;
     }
 
-    private Database<Question> getQuestionDB() {
+    public Database<Question> getQuestionDB() {
         return questionDB;
     }
 
-
     //Category
     public Category getCategory(String categoryTitle) {
-        return ((CategoryDB)getCategoryDB()).getCategory(categoryTitle);
+        return this.getCategoryDB().getItem(categoryTitle);
     }
 
     public void addCategory(Category category) {
-    	this.getCategoryDB().addItem(category);
-    	this.getCurrentTest().initializeScoresOfCategories();
-    	this.getCurrentTest().initializeQuestionAmountsPerCategory();
-    	this.notifyObservers();
+        this.getCategoryDB().addItem(category);
+        this.getCurrentTest().initializeScoresOfCategories();
+        this.getCurrentTest().initializeQuestionAmountsPerCategory();
+        this.notifyObservers();
     }
 
     public ObservableList<Category> getCategories() {
@@ -50,7 +49,7 @@ public class Facade implements Subject {
     }
 
     public List<String> getCategoryTitles() {
-        return ((CategoryDB) getCategoryDB()).getCategoryTitles();
+        return getCategoryDB().getTitles();
     }
 
 
@@ -60,9 +59,9 @@ public class Facade implements Subject {
     }
 
     public void addQuestion(Question question) {
-    	this.getQuestionDB().addItem(question);
-    	this.getCurrentTest().initializeQuestionAmountsPerCategory();
-    	this.notifyObservers();
+        this.getQuestionDB().addItem(question);
+        this.getCurrentTest().initializeQuestionAmountsPerCategory();
+        this.notifyObservers();
     }
 
     public Question getCurrentQuestion() {
@@ -93,13 +92,12 @@ public class Facade implements Subject {
         return getCurrentTest().getCurrentQuestion().getStatements();
     }
 
-    public int getAmountOfQuestionsOfCategory(String categoryTitle) {
-        return getCurrentTest().getAmountOfQuestionOfCategory(categoryTitle);
-    }
-
-
     public void handleCorrectAnswer() {
         getCurrentTest().setScore(getCurrentTest().getScore() + 1);
+    }
+
+    public int getAmountOfQuestionsOfCategory(String categoryTitle) {
+        return getCurrentTest().getAmountOfQuestionOfCategory(categoryTitle);
     }
 
     public void advanceCurrentTest() {
