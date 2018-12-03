@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>application</OriginalElement>
+  <nodes>
+    <node x="1332.4376764758235" y="1152.0">view.windows.NewCategoryWindow</node>
+    <node x="349.75" y="208.0">model.domain.SubCategory</node>
+    <node x="698.496442867478" y="1073.0">view.panes.TestPane</node>
+    <node x="325.2513669520142" y="79.0">model.domain.Category</node>
+    <node x="376.60060953414467" y="386.0">model.db.CategoryDB</node>
+    <node x="490.64342681743585" y="287.0">model.domain.CategoryFactory</node>
+    <node x="774.1751764758235" y="386.0">model.domain.Observer</node>
+    <node x="1341.9376764758235" y="1073.0">view.panes.NewCategoryPane</node>
+    <node x="405.058942867478" y="1073.0">view.panes.QuestionOverviewPane</node>
+    <node x="644.6434268174359" y="287.0">model.db.DbException</node>
+    <node x="648.5035458650548" y="1261.0">controller.TestController</node>
+    <node x="791.399419057954" y="1261.0">controller.TestOverviewController</node>
+    <node x="673.8382574178694" y="495.0">model.domain.Subject</node>
+    <node x="1092.7725934841026" y="1261.0">controller.NewQuestionController</node>
+    <node x="1101.9225934841027" y="1073.0">view.panes.NewQuestionPane</node>
+    <node x="864.7499999999999" y="1499.0">controller.MainWindowController</node>
+    <node x="1866.5400829917207" y="1261.0">view.panes.AssesMainPane</node>
+    <node x="891.2499999999999" y="1420.0">view.windows.MainWindow</node>
+    <node x="61.88301015076911" y="0.0">model.domain.DomainException</node>
+    <node x="887.399419057954" y="1152.0">view.panes.TestOverviewPane</node>
+    <node x="1740.6755552637023" y="1073.0">view.panes.CategoryOverviewPane</node>
+    <node x="35.21875" y="495.0">model.domain.Test</node>
+    <node x="1284.7725934841028" y="1261.0">controller.NewCategoryController</node>
+    <node x="1052.3994190579542" y="1152.0">view.windows.NewQuestionWindow</node>
+    <node x="470.496442867478" y="1152.0">controller.QuestionOverviewController</node>
+    <node x="34.53125" y="386.0">model.domain.Question</node>
+    <node x="703.123106060606" y="734.0">model.domain.Facade</node>
+    <node x="913.2499999999999" y="1578.0">application.Main</node>
+    <node x="153.75" y="495.0">model.db.QuestionDB</node>
+    <node x="717.2297762008111" y="1152.0">view.windows.TestWindow</node>
+    <node x="1522.6755552637023" y="1152.0">controller.CategoryOverviewController</node>
+    <node x="219.75" y="287.0">model.db.Database</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="model.db.CategoryDB" target="model.db.DbException">
+      <point x="48.0" y="-14.5" />
+      <point x="480.60060953414467" y="366.0" />
+      <point x="702.6434268174359" y="366.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="controller.TestOverviewController" target="view.windows.TestWindow">
+      <point x="-68.39999999999998" y="-14.5" />
+      <point x="808.4994190579541" y="1241.0" />
+      <point x="816.1047762008111" y="1241.0" />
+      <point x="42.375" y="14.5" />
+    </edge>
+    <edge source="controller.QuestionOverviewController" target="model.domain.Facade">
+      <point x="24.5" y="-14.5" />
+      <point x="592.996442867478" y="1132.0" />
+      <point x="611.2892601507692" y="1132.0" />
+      <point x="611.2892601507692" y="1023.0" />
+      <point x="709.5625" y="1023.0" />
+      <point x="-36.060606060606005" y="14.5" />
+    </edge>
+    <edge source="view.windows.NewCategoryWindow" target="model.domain.Facade">
+      <point x="-65.60000000000002" y="-14.5" />
+      <point x="1348.8376764758236" y="1132.0" />
+      <point x="1331.4376764758235" y="1132.0" />
+      <point x="1331.4376764758235" y="873.0" />
+      <point x="763.653409090909" y="873.0" />
+      <point x="18.030303030303116" y="14.5" />
+    </edge>
+    <edge source="view.panes.NewQuestionPane" target="model.domain.Facade">
+      <point x="-36.0" y="-14.5" />
+      <point x="1137.9225934841027" y="933.0" />
+      <point x="748.1988636363635" y="933.0" />
+      <point x="2.5757575757576205" y="14.5" />
+    </edge>
+    <edge source="model.domain.Facade" target="model.domain.Test">
+      <point x="-30.0" y="-14.5" />
+      <point x="715.623106060606" y="674.0" />
+      <point x="75.46875" y="674.0" />
+      <point x="5.75" y="14.5" />
+    </edge>
+    <edge source="model.db.QuestionDB" target="model.db.CategoryDB">
+      <point x="47.57142857142867" y="-14.5" />
+      <point x="256.82142857142867" y="475.0" />
+      <point x="418.60060953414467" y="475.0" />
+      <point x="-14.0" y="14.5" />
+    </edge>
+    <edge source="view.windows.MainWindow" target="controller.QuestionOverviewController">
+      <point x="-33.1875" y="-14.5" />
+      <point x="917.0624999999999" y="1370.0" />
+      <point x="545.1642601507692" y="1370.0" />
+      <point x="545.1642601507692" y="1241.0" />
+      <point x="617.496442867478" y="1241.0" />
+      <point x="49.0" y="14.5" />
+    </edge>
+    <edge source="model.domain.Question" target="model.domain.Category">
+      <point x="31.666666666666742" y="-14.5" />
+      <point x="112.83894230769238" y="138.0" />
+      <point x="336.3282900289373" y="138.0" />
+      <point x="-36.923076923076906" y="14.5" />
+    </edge>
+    <edge source="model.domain.Facade" target="model.domain.Question">
+      <point x="-15.0" y="-14.5" />
+      <point x="730.623106060606" y="644.0" />
+      <point x="114.71875" y="644.0" />
+      <point x="114.71875" y="465.0" />
+      <point x="87.96875" y="465.0" />
+      <point x="5.9375" y="14.5" />
+    </edge>
+    <edge source="application.Main" target="controller.MainWindowController">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="model.domain.CategoryFactory" target="model.domain.SubCategory">
+      <point x="-44.66666666666663" y="-14.5" />
+      <point x="512.9767601507692" y="262.0" />
+      <point x="436.75" y="262.0" />
+      <point x="29.0" y="14.5" />
+    </edge>
+    <edge source="model.domain.CategoryFactory" target="model.domain.Category">
+      <point x="0.0" y="-14.5" />
+      <point x="557.6434268174359" y="168.0" />
+      <point x="395.4052131058604" y="168.0" />
+      <point x="22.15384615384619" y="14.5" />
+    </edge>
+    <edge source="controller.CategoryOverviewController" target="model.domain.Facade">
+      <point x="-73.875" y="-14.5" />
+      <point x="1546.5386362057484" y="823.0" />
+      <point x="776.532196969697" y="823.0" />
+      <point x="30.90909090909099" y="14.5" />
+    </edge>
+    <edge source="model.db.QuestionDB" target="model.domain.Question">
+      <point x="-15.85714285714289" y="-14.5" />
+      <point x="193.3928571428571" y="435.0" />
+      <point x="123.59375" y="435.0" />
+      <point x="41.5625" y="14.5" />
+    </edge>
+    <edge source="model.domain.Facade" target="model.domain.DomainException">
+      <point x="-40.0" y="-14.5" />
+      <point x="705.623106060606" y="694.0" />
+      <point x="0.0" y="694.0" />
+      <point x="0.0" y="49.0" />
+      <point x="85.54967681743574" y="49.0" />
+      <point x="-47.33333333333337" y="14.5" />
+    </edge>
+    <edge source="view.windows.NewQuestionWindow" target="model.domain.Facade">
+      <point x="-65.20000000000005" y="-14.5" />
+      <point x="1068.699419057954" y="1132.0" />
+      <point x="1058.4604722719814" y="1132.0" />
+      <point x="1058.4604722719814" y="953.0" />
+      <point x="743.0473484848485" y="953.0" />
+      <point x="-2.575757575757507" y="14.5" />
+    </edge>
+    <edge source="view.windows.TestWindow" target="model.domain.Facade">
+      <point x="45.200000000000045" y="-14.5" />
+      <point x="818.9297762008111" y="1132.0" />
+      <point x="814.996442867478" y="1132.0" />
+      <point x="814.996442867478" y="1013.0" />
+      <point x="727.592803030303" y="1013.0" />
+      <point x="-18.030303030303003" y="14.5" />
+    </edge>
+    <edge source="view.windows.MainWindow" target="controller.TestOverviewController">
+      <point x="-25.8125" y="-14.5" />
+      <point x="924.4374999999999" y="1360.0" />
+      <point x="834.149419057954" y="1360.0" />
+      <point x="-42.75" y="14.5" />
+    </edge>
+    <edge source="view.windows.MainWindow" target="view.panes.AssesMainPane">
+      <point x="55.3125" y="-14.5" />
+      <point x="1005.5624999999999" y="1400.0" />
+      <point x="1930.5400829917207" y="1400.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="view.panes.CategoryOverviewPane" target="model.domain.Facade">
+      <point x="-63.75" y="-14.5" />
+      <point x="1761.9255552637023" y="793.0" />
+      <point x="784.2594696969697" y="793.0" />
+      <point x="38.63636363636374" y="14.5" />
+    </edge>
+    <edge source="model.domain.Facade" target="model.db.Database">
+      <point x="10.0" y="-14.5" />
+      <point x="755.623106060606" y="594.0" />
+      <point x="280.625" y="594.0" />
+      <point x="12.25" y="14.5" />
+    </edge>
+    <edge source="model.db.CategoryDB" target="model.domain.SubCategory">
+      <point x="0.0" y="-14.5" />
+      <point x="432.60060953414467" y="336.0" />
+      <point x="378.75" y="336.0" />
+      <point x="-29.0" y="14.5" />
+    </edge>
+    <edge source="model.domain.Category" target="model.domain.DomainException">
+      <point x="0.0" y="-14.5" />
+      <point x="373.2513669520142" y="59.0" />
+      <point x="180.21634348410248" y="59.0" />
+      <point x="47.33333333333337" y="14.5" />
+    </edge>
+    <edge source="controller.TestOverviewController" target="view.panes.TestOverviewPane">
+      <point x="34.200000000000045" y="-14.5" />
+      <point x="911.099419057954" y="1241.0" />
+      <point x="905.399419057954" y="1241.0" />
+      <point x="-54.0" y="14.5" />
+    </edge>
+    <edge source="view.panes.CategoryOverviewPane" target="model.domain.Category">
+      <point x="63.75" y="-14.5" />
+      <point x="1889.4255552637023" y="1053.0" />
+      <point x="1876.6450876565968" y="1053.0" />
+      <point x="1876.6450876565968" y="138.0" />
+      <point x="417.5590592597066" y="138.0" />
+      <point x="44.30769230769238" y="14.5" />
+    </edge>
+    <edge source="model.domain.Facade" target="model.domain.Category">
+      <point x="-10.0" y="-14.5" />
+      <point x="735.623106060606" y="634.0" />
+      <point x="143.25" y="634.0" />
+      <point x="143.25" y="148.0" />
+      <point x="343.7129054135527" y="148.0" />
+      <point x="-29.538461538461547" y="14.5" />
+    </edge>
+    <edge source="view.panes.QuestionOverviewPane" target="model.domain.Facade">
+      <point x="67.59999999999991" y="-14.5" />
+      <point x="557.1589428674779" y="1013.0" />
+      <point x="706.9867424242423" y="1013.0" />
+      <point x="-38.636363636363626" y="14.5" />
+    </edge>
+    <edge source="model.domain.Subject" target="model.domain.Observer">
+      <point x="0.0" y="-14.5" />
+      <point x="717.3382574178694" y="455.0" />
+      <point x="797.9251764758235" y="455.0" />
+      <point x="-23.75" y="14.5" />
+    </edge>
+    <edge source="model.domain.Facade" target="model.db.CategoryDB">
+      <point x="20.0" y="-14.5" />
+      <point x="765.623106060606" y="574.0" />
+      <point x="451.60060953414467" y="574.0" />
+      <point x="451.60060953414467" y="475.0" />
+      <point x="474.60060953414467" y="475.0" />
+      <point x="42.0" y="14.5" />
+    </edge>
+    <edge source="view.panes.QuestionOverviewPane" target="model.domain.Observer">
+      <point x="0.0" y="-14.5" />
+      <point x="489.558942867478" y="445.0" />
+      <point x="782.0918431424902" y="445.0" />
+      <point x="-39.58333333333337" y="14.5" />
+    </edge>
+    <edge source="model.domain.SubCategory" target="model.domain.Category">
+      <point x="0.0" y="-14.5" />
+      <point x="407.75" y="188.0" />
+      <point x="380.6359823366296" y="188.0" />
+      <point x="7.384615384615358" y="14.5" />
+    </edge>
+    <edge source="view.windows.TestWindow" target="view.panes.TestPane">
+      <point x="-45.200000000000045" y="-14.5" />
+      <point x="728.529776200811" y="1132.0" />
+      <point x="714.3297762008114" y="1132.0" />
+      <point x="-31.66666666666663" y="14.5" />
+    </edge>
+    <edge source="controller.NewQuestionController" target="model.domain.Facade">
+      <point x="21.5" y="-14.5" />
+      <point x="1200.2725934841026" y="1231.0" />
+      <point x="1256.4225934841027" y="1231.0" />
+      <point x="1256.4225934841027" y="913.0" />
+      <point x="753.3503787878788" y="913.0" />
+      <point x="7.727272727272748" y="14.5" />
+    </edge>
+    <edge source="view.windows.NewCategoryWindow" target="view.panes.NewCategoryPane">
+      <point x="32.80000000000001" y="-14.5" />
+      <point x="1447.2376764758237" y="1132.0" />
+      <point x="1462.771009809157" y="1132.0" />
+      <point x="48.33333333333337" y="14.5" />
+    </edge>
+    <edge source="view.windows.MainWindow" target="view.panes.TestOverviewPane">
+      <point x="-11.0625" y="-14.5" />
+      <point x="939.1874999999999" y="1310.0" />
+      <point x="977.399419057954" y="1310.0" />
+      <point x="18.0" y="14.5" />
+    </edge>
+    <edge source="controller.NewCategoryController" target="view.windows.NewCategoryWindow">
+      <point x="21.5" y="-14.5" />
+      <point x="1392.2725934841028" y="1241.0" />
+      <point x="1373.4376764758235" y="1241.0" />
+      <point x="-41.0" y="14.5" />
+    </edge>
+    <edge source="model.domain.Facade" target="model.db.QuestionDB">
+      <point x="-5.0" y="-14.5" />
+      <point x="740.623106060606" y="624.0" />
+      <point x="181.5" y="624.0" />
+      <point x="-27.75" y="14.5" />
+    </edge>
+    <edge source="view.windows.NewQuestionWindow" target="view.panes.NewQuestionPane">
+      <point x="32.59999999999991" y="-14.5" />
+      <point x="1166.4994190579541" y="1132.0" />
+      <point x="1173.9225934841027" y="1132.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="controller.TestController" target="view.windows.TestWindow">
+      <point x="52.285714285714334" y="-14.5" />
+      <point x="761.7892601507691" y="1241.0" />
+      <point x="787.8547762008111" y="1241.0" />
+      <point x="14.125" y="14.5" />
+    </edge>
+    <edge source="view.windows.MainWindow" target="controller.CategoryOverviewController">
+      <point x="18.4375" y="-14.5" />
+      <point x="968.6874999999999" y="1350.0" />
+      <point x="1613.0" y="1350.0" />
+      <point x="1613.0" y="1241.0" />
+      <point x="1571.9255552637023" y="1241.0" />
+      <point x="-49.25" y="14.5" />
+    </edge>
+    <edge source="model.db.QuestionDB" target="model.domain.Category">
+      <point x="0.0" y="-14.5" />
+      <point x="209.25" y="158.0" />
+      <point x="351.09752079816803" y="158.0" />
+      <point x="-22.15384615384619" y="14.5" />
+    </edge>
+    <edge source="view.panes.NewCategoryPane" target="model.domain.Facade">
+      <point x="36.25" y="-14.5" />
+      <point x="1450.6876764758235" y="853.0" />
+      <point x="768.8049242424242" y="853.0" />
+      <point x="23.181818181818244" y="14.5" />
+    </edge>
+    <edge source="view.panes.CategoryOverviewPane" target="model.domain.Observer">
+      <point x="21.25" y="-14.5" />
+      <point x="1846.9255552637023" y="1053.0" />
+      <point x="1858.2604722719816" y="1053.0" />
+      <point x="1858.2604722719816" y="465.0" />
+      <point x="861.258509809157" y="465.0" />
+      <point x="39.58333333333337" y="14.5" />
+    </edge>
+    <edge source="controller.CategoryOverviewController" target="view.panes.CategoryOverviewPane">
+      <point x="73.875" y="-14.5" />
+      <point x="1695.0505552637023" y="1132.0" />
+      <point x="1804.4255552637023" y="1132.0" />
+      <point x="-21.25" y="14.5" />
+    </edge>
+    <edge source="model.db.QuestionDB" target="model.db.Database">
+      <point x="15.85714285714289" y="-14.5" />
+      <point x="225.1071428571429" y="455.0" />
+      <point x="248.5" y="455.0" />
+      <point x="248.5" y="366.0" />
+      <point x="232.0" y="366.0" />
+      <point x="-36.75" y="14.5" />
+    </edge>
+    <edge source="view.panes.QuestionOverviewPane" target="model.domain.Question">
+      <point x="-67.59999999999991" y="-14.5" />
+      <point x="421.9589428674781" y="1053.0" />
+      <point x="13.71875" y="1053.0" />
+      <point x="13.71875" y="455.0" />
+      <point x="40.46875" y="455.0" />
+      <point x="-41.5625" y="14.5" />
+    </edge>
+    <edge source="view.windows.MainWindow" target="model.domain.Facade">
+      <point x="11.0625" y="-14.5" />
+      <point x="961.3124999999999" y="1340.0" />
+      <point x="1512.1755552637023" y="1340.0" />
+      <point x="1512.1755552637023" y="833.0" />
+      <point x="773.9564393939393" y="833.0" />
+      <point x="28.33333333333337" y="14.5" />
+    </edge>
+    <edge source="view.panes.TestOverviewPane" target="model.domain.Facade">
+      <point x="0.0" y="-14.5" />
+      <point x="959.399419057954" y="1132.0" />
+      <point x="942.7725934841026" y="1132.0" />
+      <point x="942.7725934841026" y="973.0" />
+      <point x="737.8958333333333" y="973.0" />
+      <point x="-7.727272727272748" y="14.5" />
+    </edge>
+    <edge source="model.db.CategoryDB" target="model.domain.CategoryFactory">
+      <point x="32.0" y="-14.5" />
+      <point x="464.60060953414467" y="356.0" />
+      <point x="591.1434268174359" y="356.0" />
+      <point x="33.5" y="14.5" />
+    </edge>
+    <edge source="model.domain.Test" target="model.domain.Question">
+      <point x="-17.25" y="-14.5" />
+      <point x="52.46875" y="475.0" />
+      <point x="64.21875" y="475.0" />
+      <point x="-17.8125" y="14.5" />
+    </edge>
+    <edge source="controller.TestOverviewController" target="model.domain.Facade">
+      <point x="-34.200000000000045" y="-14.5" />
+      <point x="842.699419057954" y="1241.0" />
+      <point x="858.4225934841024" y="1241.0" />
+      <point x="858.4225934841024" y="1003.0" />
+      <point x="730.1685606060605" y="1003.0" />
+      <point x="-15.454545454545496" y="14.5" />
+    </edge>
+    <edge source="view.windows.MainWindow" target="view.panes.CategoryOverviewPane">
+      <point x="47.9375" y="-14.5" />
+      <point x="998.1874999999999" y="1390.0" />
+      <point x="1856.0400829917207" y="1390.0" />
+      <point x="1856.0400829917207" y="1132.0" />
+      <point x="1889.4255552637023" y="1132.0" />
+      <point x="63.75" y="14.5" />
+    </edge>
+    <edge source="controller.TestController" target="model.domain.Test">
+      <point x="-52.28571428571422" y="-14.5" />
+      <point x="657.2178315793406" y="1231.0" />
+      <point x="118.29967681743585" y="1231.0" />
+      <point x="118.29967681743585" y="714.0" />
+      <point x="40.96875" y="714.0" />
+      <point x="-28.75" y="14.5" />
+    </edge>
+    <edge source="view.panes.TestPane" target="model.domain.Facade">
+      <point x="23.75" y="-14.5" />
+      <point x="769.746442867478" y="1033.0" />
+      <point x="722.4412878787878" y="1033.0" />
+      <point x="-23.18181818181813" y="14.5" />
+    </edge>
+    <edge source="view.windows.MainWindow" target="view.panes.QuestionOverviewPane">
+      <point x="-55.3125" y="-14.5" />
+      <point x="894.9374999999999" y="1400.0" />
+      <point x="401.2708333333333" y="1400.0" />
+      <point x="401.2708333333333" y="1132.0" />
+      <point x="426.183942867478" y="1132.0" />
+      <point x="-63.375" y="14.5" />
+    </edge>
+    <edge source="controller.TestController" target="model.domain.Facade">
+      <point x="1.1368683772161603E-13" y="-14.5" />
+      <point x="709.5035458650549" y="1201.0" />
+      <point x="687.996442867478" y="1201.0" />
+      <point x="687.996442867478" y="1053.0" />
+      <point x="717.2897727272725" y="1053.0" />
+      <point x="-28.33333333333337" y="14.5" />
+    </edge>
+    <edge source="model.db.CategoryDB" target="model.domain.Category">
+      <point x="-16.0" y="-14.5" />
+      <point x="416.60060953414467" y="346.0" />
+      <point x="339.25" y="346.0" />
+      <point x="339.25" y="178.0" />
+      <point x="365.86675156739886" y="178.0" />
+      <point x="-7.384615384615358" y="14.5" />
+    </edge>
+    <edge source="controller.NewCategoryController" target="model.domain.Facade">
+      <point x="-21.5" y="-14.5" />
+      <point x="1349.2725934841028" y="1241.0" />
+      <point x="1316.6997976879447" y="1241.0" />
+      <point x="1316.6997976879447" y="883.0" />
+      <point x="761.0776515151515" y="883.0" />
+      <point x="15.454545454545496" y="14.5" />
+    </edge>
+    <edge source="model.db.CategoryDB" target="model.db.Database">
+      <point x="-48.0" y="-14.5" />
+      <point x="384.60060953414467" y="366.0" />
+      <point x="305.5" y="366.0" />
+      <point x="36.75" y="14.5" />
+    </edge>
+    <edge source="model.domain.Question" target="model.domain.DomainException">
+      <point x="-31.666666666666742" y="-14.5" />
+      <point x="50.36458333333326" y="366.0" />
+      <point x="53.03125" y="366.0" />
+      <point x="53.03125" y="59.0" />
+      <point x="132.8830101507691" y="59.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="model.domain.Test" target="model.domain.Facade">
+      <point x="28.75" y="14.5" />
+      <point x="98.46875" y="654.0" />
+      <point x="725.623106060606" y="654.0" />
+      <point x="-20.0" y="-14.5" />
+    </edge>
+    <edge source="controller.NewQuestionController" target="view.windows.NewQuestionWindow">
+      <point x="-21.5" y="-14.5" />
+      <point x="1157.2725934841026" y="1241.0" />
+      <point x="1174.6494190579542" y="1241.0" />
+      <point x="40.75" y="14.5" />
+    </edge>
+    <edge source="controller.QuestionOverviewController" target="view.panes.QuestionOverviewPane">
+      <point x="-73.5" y="-14.5" />
+      <point x="494.996442867478" y="1132.0" />
+      <point x="510.683942867478" y="1132.0" />
+      <point x="21.125" y="14.5" />
+    </edge>
+    <edge source="view.panes.TestOverviewPane" target="model.domain.Observer">
+      <point x="48.0" y="-14.5" />
+      <point x="1007.399419057954" y="1122.0" />
+      <point x="953.7725934841026" y="1122.0" />
+      <point x="953.7725934841026" y="475.0" />
+      <point x="845.4251764758235" y="475.0" />
+      <point x="23.75" y="14.5" />
+    </edge>
+    <edge source="model.domain.Facade" target="model.domain.Subject">
+      <point x="25.0" y="-14.5" />
+      <point x="770.623106060606" y="564.0" />
+      <point x="717.3382574178694" y="564.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="model.domain.Facade" target="model.domain.Observer">
+      <point x="30.0" y="-14.5" />
+      <point x="775.623106060606" y="554.0" />
+      <point x="771.3382574178694" y="554.0" />
+      <point x="771.3382574178694" y="465.0" />
+      <point x="813.758509809157" y="465.0" />
+      <point x="-7.916666666666629" y="14.5" />
+    </edge>
+    <edge source="controller.MainWindowController" target="view.windows.MainWindow">
+      <point x="-42.75" y="-14.5" />
+      <point x="907.4999999999999" y="1474.0" />
+      <point x="920.7499999999999" y="1474.0" />
+      <point x="-29.5" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.2625418060200668" x="1363.6626129256429" y="1188.3634468380824" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

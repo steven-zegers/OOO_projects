@@ -2,9 +2,11 @@ package model.domain;
 
 import javafx.collections.ObservableList;
 
+import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 public class Test
 {
@@ -20,6 +22,7 @@ public class Test
 
     private boolean isTestFinished = false;
     private Map<String, Integer> totalQuestionsOfEachCategory = new HashMap<>();;
+    private String feedbackType;
 
 
     public Test(Facade facade) {
@@ -27,8 +30,31 @@ public class Test
         this.facade = facade;
         initializeScoresOfCategories();
         initializeQuestionAmountsPerCategory();
+        initializeFeedBackType();
         this.setQuestionPointer(0);
         this.setScore(0);
+    }
+
+    private void initializeFeedBackType() {
+        Properties properties = new Properties();
+        InputStream input = null;
+        try {
+            input = new FileInputStream("evaluation.properties");
+            properties.load(input);
+
+            String feedbackType = properties.getProperty("mode");
+            this.setFeedbackType(feedbackType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setFeedbackType(String feedbackType) {
+        this.feedbackType = feedbackType;
+    }
+
+    public String getFeedbackType() {
+        return this.feedbackType;
     }
 
     public void initializeQuestionAmountsPerCategory() {
@@ -44,7 +70,6 @@ public class Test
             } else {
                 totalQuestionsOfEachCategory.put(question.getCategoryTitle(), 1);
             }
-            System.out.println(question.getCategoryTitle() + ": " + totalQuestionsOfEachCategory.get(question.getCategoryTitle()));
         }
     }
 
