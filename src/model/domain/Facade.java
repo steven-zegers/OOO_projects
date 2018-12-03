@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Facade implements Subject {
+
     private Database<Category> categoryDB;
     private QuestionDB questionDB;
     private List<Observer> observers;
@@ -22,16 +23,27 @@ public class Facade implements Subject {
         this.observers = new ArrayList<>();
     }
 
-    public Database<Category> getCategoryDB() {
+
+    //DB
+    private Database<Category> getCategoryDB() {
         return categoryDB;
     }
 
-    public Database<Question> getQuestionDB() {
+    private Database<Question> getQuestionDB() {
         return questionDB;
     }
 
-    public ObservableList<Question> getQuestions() {
-        return FXCollections.observableArrayList(getQuestionDB().getItems());
+
+    //Category
+    public Category getCategory(String categoryTitle) {
+        return ((CategoryDB)getCategoryDB()).getCategory(categoryTitle);
+    }
+
+    public void addCategory(Category category) {
+    	this.getCategoryDB().addItem(category);
+    	this.getCurrentTest().initializeScoresOfCategories();
+    	this.getCurrentTest().initializeQuestionAmountsPerCategory();
+    	this.notifyObservers();
     }
 
     public ObservableList<Category> getCategories() {
@@ -42,35 +54,10 @@ public class Facade implements Subject {
         return ((CategoryDB) getCategoryDB()).getCategoryTitles();
     }
 
-    public void setCurrentTest(Test test){
-        this.test = test;
-    }
 
-    public Test getCurrentTest() {
-        return this.test;
-    }
-
-    public String getTitleOfCurrentQuestionOfCurrentTest() {
-        return getCurrentTest().getCurrentQuestion().getQuestion();
-    }
-
-    public void advanceCurrentTest() {
-        getCurrentTest().advanceTest();
-    }
-
-    public List<String> getStatementsOfCurrentQuestion() {
-        return getCurrentTest().getCurrentQuestion().getStatements();
-    }
-
-    public void addCategory(Category category) {
-    	this.getCategoryDB().addItem(category);
-    	this.getCurrentTest().initializeScoresOfCategories();
-    	this.getCurrentTest().initializeQuestionAmountsPerCategory();
-    	this.notifyObservers();
-    }
-
-    public Category getCategory(String categoryTitle) {
-    	return ((CategoryDB)getCategoryDB()).getCategory(categoryTitle);
+    //Question
+    public ObservableList<Question> getQuestions() {
+        return FXCollections.observableArrayList(getQuestionDB().getItems());
     }
 
     public void addQuestion(Question question) {
@@ -79,31 +66,54 @@ public class Facade implements Subject {
     	this.notifyObservers();
     }
 
-    public void handleCorrectAnswer() {
-        getCurrentTest().setScore(getCurrentTest().getScore() + 1);
+    public Question getCurrentQuestion() {
+        return getCurrentTest().getCurrentQuestion();
+    }
+
+
+
+    //Test
+    public void setCurrentTest(Test test){
+        this.test = test;
+    }
+
+    public Test getCurrentTest() {
+        return this.test;
+    }
+
+
+    public String getTitleOfCurrentQuestionOfCurrentTest() {
+        return getCurrentTest().getCurrentQuestion().getQuestion();
+    }
+
+    public String getCurrentQuestionCategoryTitle() {
+        return getCurrentQuestion().getCategoryTitle();
+    }
+
+    public List<String> getStatementsOfCurrentQuestion() {
+        return getCurrentTest().getCurrentQuestion().getStatements();
     }
 
     public int getAmountOfQuestionsOfCategory(String categoryTitle) {
         return getCurrentTest().getAmountOfQuestionOfCategory(categoryTitle);
     }
-    public String getCurrentQuestionCategoryTitle() {
-        return getCurrentQuestion().getCategoryTitle();
+
+
+    public void handleCorrectAnswer() {
+        getCurrentTest().setScore(getCurrentTest().getScore() + 1);
     }
 
-    public void handleQuestionOfCategoryCorrect(String categoryTitle) {
-        getCurrentTest().questionOfCategoryCorrect(categoryTitle);
+    public void advanceCurrentTest() {
+        getCurrentTest().advanceTest();
     }
 
     public void handleIncorrectAnswer(Question question) {
         getCurrentTest().handleIncorrectAnswer(question);
     }
 
+
     public String getFullFeedback() {
         return getCurrentTest().getFullFeedback();
-    }
-
-    public int getScoreOfCategory(String categoryTitle) {
-        return getCurrentTest().getScoreOfCategory(categoryTitle);
     }
 
     public void setCurrentTestFinished() {
@@ -111,9 +121,16 @@ public class Facade implements Subject {
         this.notifyObservers();
     }
 
-    public Question getCurrentQuestion() {
-        return getCurrentTest().getCurrentQuestion();
+
+    public void handleQuestionOfCategoryCorrect(String categoryTitle) {
+        getCurrentTest().questionOfCategoryCorrect(categoryTitle);
     }
+
+    public int getScoreOfCategory(String categoryTitle) {
+        return getCurrentTest().getScoreOfCategory(categoryTitle);
+    }
+
+    //Observer
     @Override
     public void addObserver(Observer observer) {
         if (observer == null) {
