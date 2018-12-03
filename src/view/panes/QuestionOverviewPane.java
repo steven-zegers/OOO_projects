@@ -1,7 +1,5 @@
 package view.panes;
 
-import controller.QuestionOverviewController;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,7 +11,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import model.db.QuestionDB;
 import model.domain.Facade;
 import model.domain.Observer;
 import model.domain.Question;

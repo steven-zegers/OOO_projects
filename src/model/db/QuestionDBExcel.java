@@ -14,9 +14,7 @@ public class QuestionDBExcel implements Database {
 	}
 
 	@Override
-	public void addItem(Object item) {
-
-	}
+	public void addItem(Object item) { }
 
 	@Override
 	public Object getItem(String item) {
