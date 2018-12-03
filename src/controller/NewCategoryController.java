@@ -3,7 +3,6 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import model.db.CategoryDB;
 import model.domain.Category;
 import model.domain.Facade;
 import model.domain.SubCategory;

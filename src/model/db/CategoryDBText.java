@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * CategoryDB contains all Categories to be used in tests. It is made via the Builder class of the same name.
+ * CategoryDBText contains all Categories to be used in tests. It is made via the Builder class of the same name.
  * It reads in the Categories stored in a text file and writes new ones to that file as well.
  * @author Steven Zegers
  * @author Thibault Stroobants
  * @author Wout De Boeck
  */
 
-public class CategoryDB implements Database<Category> {
+public class CategoryDBText implements Database<Category> {
 
     /**
      *  A List of Categories in which the Categories are stored when the program is running.
@@ -33,12 +33,12 @@ public class CategoryDB implements Database<Category> {
 
 
     /**
-     * Creates a new CategoryDB by calling it's Builder class.
+     * Creates a new CategoryDBText by calling it's Builder class.
      * No parameter's are to be given, as the file path is defined statically.
      * Categories will be loaded into the list upon creation.
      */
 
-	public CategoryDB() {
+	public CategoryDBText() {
 		this.categories = readItems(readFile());
 		//readCategories();
 	}
