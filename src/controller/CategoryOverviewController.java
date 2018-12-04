@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import model.domain.Category;
 import model.domain.Facade;
 import model.domain.Observer;
 import view.panes.CategoryOverviewPane;
@@ -54,8 +55,9 @@ public class CategoryOverviewController {
 		@Override
 		public void handle(MouseEvent event) {
 			if(event.getClickCount()==2) {
-				try{
-					new EditCategoryController(new Stage(), getFacade());
+				try {
+					Category selectedCategory = (Category) pane.getTable().getSelectionModel().getSelectedItem();
+					new EditCategoryController(new Stage(), getFacade(), selectedCategory);
 				} catch (Exception e) {
 					JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
 					e.printStackTrace();

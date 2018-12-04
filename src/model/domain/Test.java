@@ -49,7 +49,7 @@ public class Test
         }
     }
 
-    private void setFeedbackType(String feedbackType) {
+    public void setFeedbackType(String feedbackType) {
         this.feedbackType = feedbackType;
     }
 

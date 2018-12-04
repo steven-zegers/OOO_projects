@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.domain.Facade;
+import model.domain.Test;
 import view.panes.AssesMainPane;
 import view.panes.CategoryOverviewPane;
 import view.panes.TestOverviewPane;
@@ -22,6 +23,9 @@ public class MainWindow extends Stage {
 	public MainWindow(Stage stage) {
 		this.setStage(stage);
 		this.setFacade(new Facade());
+
+		Test test = new Test(facade);
+		facade.setCurrentTest(test);
 
 		QuestionOverviewController questionOverviewController = new QuestionOverviewController(this.facade);
 		QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(this.facade);

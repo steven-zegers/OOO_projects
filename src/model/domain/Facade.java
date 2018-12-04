@@ -7,8 +7,12 @@ import model.db.QuestionDBText;
 import model.db.Database;
 
 import javax.xml.crypto.Data;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class Facade implements Subject {
 
@@ -71,6 +75,7 @@ public class Facade implements Subject {
 
 
     //Test
+
     public void setCurrentTest(Test test){
         this.test = test;
     }

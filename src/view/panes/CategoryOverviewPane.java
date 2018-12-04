@@ -65,6 +65,9 @@ public class CategoryOverviewPane extends GridPane implements Observer {
 		this.facade = facade;
 	}
 
+	public TableView getTable() {
+		return this.table;
+	}
 	@Override
 	public void update() {
 		this.data = this.getFacade().getCategories();

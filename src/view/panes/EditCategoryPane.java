@@ -11,21 +11,24 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import model.domain.Facade;
+import model.domain.Observer;
 
 import java.util.List;
 
-public class EditCategoryPane extends GridPane {
+public class EditCategoryPane extends GridPane implements Observer {
     private Button btnOK, btnCancel;
     private TextField titleField, descriptionField;
     private ComboBox categoryField;
     private Facade facade;
+    private String title;
+    private String description;
+    private String mainCategoryTitle;
 
     public EditCategoryPane(Facade facade) {
         setFacade(facade);
         this.setPrefHeight(150);
         this.setPrefWidth(300);
-        List<String> titles = facade.getCategoryTitles();
-        ObservableList<String> categoryTitleList = FXCollections.observableArrayList(titles);
+
         this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
         this.setHgap(5);
@@ -38,6 +41,9 @@ public class EditCategoryPane extends GridPane {
         descriptionField = new TextField();
         this.add(descriptionField, 1, 1, 1, 1);
 
+        List<String> titles = facade.getCategoryTitles();
+        ObservableList<String> categoryTitleList = FXCollections.observableArrayList(titles);
+
         this.add(new Label("Main Category:"), 0, 2, 1, 1);
         categoryField = new ComboBox(categoryTitleList);
         this.add(categoryField, 1, 2, 1, 1);
@@ -48,6 +54,7 @@ public class EditCategoryPane extends GridPane {
         btnOK = new Button("Save");
         btnOK.isDefaultButton();
         this.add(btnOK, 1, 3, 1, 1);
+        this.update();
     }
 
     public void setSaveButtonHandler(EventHandler<ActionEvent> saveButtonHandler) {
@@ -78,9 +85,10 @@ public class EditCategoryPane extends GridPane {
         return categoryField;
     }
 
-    public void setCategoryField(ComboBox categoryField) {
-        this.categoryField = categoryField;
+    public void setCategoryField(String categoryTitle) {
+        getCategoryField().getSelectionModel().select(categoryTitle);
     }
+
 
     private void setFacade(Facade facade) {
         this.facade = facade;
@@ -88,5 +96,36 @@ public class EditCategoryPane extends GridPane {
 
     public Facade getFacade() {
         return facade;
+    }
+
+    @Override
+    public void update() {
+        this.titleField.setText(getTitle());
+        this.descriptionField.setText(getDescription());
+        this.categoryField.getSelectionModel().select(getMainCategoryTitle());
+    }
+
+    private String getTitle() {
+        return this.title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getMainCategoryTitle() {
+        return mainCategoryTitle;
+    }
+
+    public void setMainCategoryTitle(String mainCategoryTitle) {
+        this.mainCategoryTitle = mainCategoryTitle;
     }
 }
