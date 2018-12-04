@@ -45,7 +45,7 @@ public class Test
             String feedbackType = properties.getProperty("mode");
             this.setFeedbackType(feedbackType);
         } catch (IOException e) {
-            
+
         }
     }
 

@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.domain.Facade;
 import model.domain.Observer;
@@ -25,6 +26,7 @@ public class CategoryOverviewController {
 
 	public void setup() {
 		this.pane.setNewAction(new NewButtonHandler());
+		this.pane.setEditAction(new EditCategoryHandler());
 		this.getFacade().addObserver(this.pane);
 	}
 
@@ -48,4 +50,17 @@ public class CategoryOverviewController {
 		}
 	}
 
+	private class EditCategoryHandler implements EventHandler<MouseEvent> {
+		@Override
+		public void handle(MouseEvent event) {
+			if(event.getClickCount()==2) {
+				try{
+					new EditCategoryController(new Stage(), getFacade());
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }
