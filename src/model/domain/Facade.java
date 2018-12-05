@@ -39,13 +39,23 @@ public class Facade implements Subject {
     }
 
     public void deleteCategory(String categoryTitle) {
-        ((CategoryDBText) getCategoryDB()).deleteItem(categoryTitle);
+        getCategoryDB().deleteItem(categoryTitle);
+        this.notifyObservers();
+    }
+
+    public void deleteQuestion(String questionTitle) {
+        getQuestionDB().deleteItem(questionTitle);
         this.notifyObservers();
     }
 
     public void updateCategory(Category category) {
         deleteCategory(category.getTitle());
         addCategory(category);
+    }
+
+    public void updateQuestion(Question question) {
+        getQuestionDB().deleteItem(question.getTitle());
+        addQuestion(question);
     }
 
     //Category

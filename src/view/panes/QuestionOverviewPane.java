@@ -15,6 +15,8 @@ import model.domain.Facade;
 import model.domain.Observer;
 import model.domain.Question;
 
+import javax.swing.*;
+
 public class QuestionOverviewPane extends GridPane implements Observer {
 
 	private TableView table;
@@ -76,4 +78,7 @@ public class QuestionOverviewPane extends GridPane implements Observer {
 		this.table.setItems(data);
 	}
 
+    public TableView getTable() {
+	    return this.table;
+    }
 }

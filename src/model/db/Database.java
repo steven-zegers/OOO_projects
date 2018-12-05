@@ -9,4 +9,5 @@ public interface Database<T> {
     void addItem(T item);
     List<T> getItems();
     T getItem(String item);
+    void deleteItem(String title);
 }

@@ -143,9 +143,53 @@ public class QuestionDBText implements Database<Question> {
 	}
 
 	@Override
-	public Question getItem(String item) {
-		return null;
+	public Question getItem(String title) {
+		for (Question question : questions) {
+			if (question.getTitle().toLowerCase().equals(title.toLowerCase())) {
+				return question;
+			}
+		}
+		throw new DbException("This title is not recognized as a saved question");
 	}
+	@Override
+    public void deleteItem(String title) {
+	    try {
+	        Question question = this.getItem(title);
+	        String stringToDelete = question.toString();
+	        File inputFile = new File(path);
+	        File tempFile = new File("src/model/db/question_temp.txt");
 
+	        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+	        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+
+	        String currentLine;
+	        int currentLineNumber = 0;
+	        while ((currentLine = reader.readLine()) != null) {
+	            String trimmedLine = currentLine.trim();
+	            if(trimmedLine.equals(stringToDelete)) {
+	                continue;
+	            } else {
+	                if (currentLineNumber != 0) {
+	                    writer.newLine();
+	                }
+	                currentLineNumber++;
+	                writer.write(currentLine);
+	            }
+	        }
+	        writer.close();
+	        reader.close();
+	        boolean delete = inputFile.delete();
+	        boolean succesful = tempFile.renameTo(inputFile);
+	        System.out.println(delete);
+	        System.out.println(succesful);
+	        questions.remove(this.getItem(title));
+	    } catch(DbException e) {
+	        throw new DbException(e.getMessage());
+	    } catch (FileNotFoundException e) {
+	        e.printStackTrace();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
 
 }

@@ -24,6 +24,11 @@ public class CategoryDBExcel implements Database {
 	}
 
 	@Override
+	public void deleteItem(String title) {
+
+	}
+
+	@Override
 	public List getItems() {
 		return null;
 	}

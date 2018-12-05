@@ -163,6 +163,7 @@ public class CategoryDBText implements Database<Category> {
             return this.categories;
     }
 
+    @Override
     public void deleteItem(String title) {
         try {
             Category category = this.getItem(title);

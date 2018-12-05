@@ -189,4 +189,17 @@ public class Question {
         this.categoryTitle = categoryTitle;
     }
 
+    public String getTitle() {
+        return this.question;
+    }
+
+    @Override
+    public String toString() {
+        String string = getCategoryTitle() + ": " + getTitle() + ": " + getFeedback() + ": ";
+        for (String statement : getStatements()) {
+            string += statement + "; ";
+        }
+        string = string.substring(0, string.length()-2);
+        return string;
+    }
 }
