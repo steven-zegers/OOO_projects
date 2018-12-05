@@ -13,15 +13,23 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import model.domain.Facade;
+import model.domain.Observer;
 
-public class NewQuestionPane extends GridPane {
+import java.util.List;
+
+public class NewQuestionPane extends GridPane implements Observer {
 	private Button btnOK, btnCancel;
 	private TextArea statementsArea;
 	private TextField questionField, statementField, feedbackField;
 	private Button btnAdd, btnRemove;
 	private ComboBox categoryField;
 	private Facade facade;
+	private String title;
+	private String categoryTitle;
+	private List<String> statements;
+	private String feedback;
 
 	public NewQuestionPane(Facade facade) {
 		setFacade(facade);
@@ -137,4 +145,48 @@ public class NewQuestionPane extends GridPane {
 	public void setFacade(Facade facade) {
 		this.facade = facade;
 	}
+
+	@Override
+	public void update() {
+		this.getQuestionField().setText(getQuestionTitle());
+		this.getFeedbackField().setText(getFeedback());
+		this.getStatementsArea().clear();
+		for (String statement : getStatements()) {
+			this.getStatementsArea().appendText(statement + "\n");
+		}
+		this.categoryField.getSelectionModel().select(getCategoryTitle());
+	}
+
+	public void setCategory(String title) {
+		this.categoryTitle = title;
+	}
+
+	public void setQuestionTitle(String title) {
+		this.title = title;
+	}
+
+	public void setStatements(List<String> statements) {
+		this.statements = statements;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
+	}
+
+	public String getQuestionTitle() {
+		return title;
+	}
+
+	public String getCategoryTitle() {
+		return categoryTitle;
+	}
+
+	public List<String> getStatements() {
+		return statements;
+	}
+
+	public String getFeedback() {
+		return feedback;
+	}
+
 }

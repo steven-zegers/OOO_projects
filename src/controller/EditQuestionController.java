@@ -6,9 +6,8 @@ import javafx.stage.Stage;
 import model.domain.Category;
 import model.domain.Facade;
 import model.domain.Question;
-import view.panes.EditQuestionPane;
 import view.panes.NewQuestionPane;
-import view.windows.EditQuestionWindow;
+import view.windows.NewQuestionWindow;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -17,14 +16,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class EditQuestionController {
-    EditQuestionWindow window;
+    NewQuestionWindow window;
     private Facade facade;
     private Question selectedQuestion;
 
     public EditQuestionController(Stage primaryStage, Facade facade, Question selectedQuestion) {
         this.setFacade(facade);
         this.setSelectedCategory(selectedQuestion);
-        this.window = new EditQuestionWindow(primaryStage, facade);
+        this.window = new NewQuestionWindow(primaryStage, facade);
         facade.addObserver(this.window.getPane());
         window.getPane().setQuestionTitle(selectedQuestion.getTitle());
         //window.getPane().setDescription(selectedQuestion.getDescription());
@@ -72,7 +71,7 @@ public class EditQuestionController {
         @Override
         public void handle(ActionEvent event) {
             //todo: update category
-            EditQuestionPane pane = window.getPane();
+            NewQuestionPane pane = window.getPane();
             String questionTitle = pane.getQuestionField().getText();
             String feedback = pane.getFeedbackField().getText();
             Category category = facade.getCategory((String) pane.getCategoryField().getValue());
@@ -91,7 +90,7 @@ public class EditQuestionController {
         @Override
         public void handle(ActionEvent event) {
             try {
-                EditQuestionPane pane = window.getPane();
+                NewQuestionPane pane = window.getPane();
                 String statementToDelete = pane.getStatementField().getText();
                 String[] allStatements = pane.getStatementsArea().getText().split("\n");
 
@@ -115,7 +114,7 @@ public class EditQuestionController {
         @Override
         public void handle(ActionEvent event) {
             try {
-                EditQuestionPane pane = window.getPane();
+                NewQuestionPane pane = window.getPane();
                 String statement = pane.getStatementField().getText();
                 pane.getStatementsArea().appendText(statement + "\n");
                 pane.getStatementField().clear();

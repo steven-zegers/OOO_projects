@@ -11,14 +11,19 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import model.domain.Facade;
+import model.domain.Observer;
 
 import java.util.List;
 
-public class NewCategoryPane extends GridPane {
+public class NewCategoryPane extends GridPane implements Observer {
 	private Button btnOK, btnCancel;
 	private TextField titleField, descriptionField;
 	private ComboBox categoryField;
 	private Facade facade;
+	private String title;
+	private String description;
+	private String mainCategoryTitle;
+
 
 	public NewCategoryPane(Facade facade) {
 		setFacade(facade);
@@ -88,5 +93,36 @@ public class NewCategoryPane extends GridPane {
 
 	public void setFacade(Facade facade) {
 		this.facade = facade;
+	}
+
+	@Override
+	public void update() {
+		this.titleField.setText(getTitle());
+		this.descriptionField.setText(getDescription());
+		this.categoryField.getSelectionModel().select(getMainCategoryTitle());
+	}
+
+	private String getTitle() {
+		return this.title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getMainCategoryTitle() {
+		return mainCategoryTitle;
+	}
+
+	public void setMainCategoryTitle(String mainCategoryTitle) {
+		this.mainCategoryTitle = mainCategoryTitle;
 	}
 }

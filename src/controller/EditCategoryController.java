@@ -3,25 +3,23 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import model.db.CategoryDBText;
 import model.domain.Category;
 import model.domain.Facade;
 import model.domain.SubCategory;
-import view.panes.EditCategoryPane;
 import view.panes.NewCategoryPane;
-import view.windows.EditCategoryWindow;
+import view.windows.NewCategoryWindow;
 
 import javax.swing.*;
 
 public class EditCategoryController {
-    EditCategoryWindow window;
+    private NewCategoryWindow window;
     private Facade facade;
     private Category selectedCategory;
 
     public EditCategoryController(Stage primaryStage, Facade facade, Category selectedCategory) {
         this.setFacade(facade);
         this.setSelectedCategory(selectedCategory);
-        this.window = new EditCategoryWindow(primaryStage, facade);
+        this.window = new NewCategoryWindow(primaryStage, facade);
         facade.addObserver(this.window.getPane());
         window.getPane().setTitle(selectedCategory.getTitle());
         window.getPane().setDescription(selectedCategory.getDescription());
@@ -68,7 +66,7 @@ public class EditCategoryController {
         @Override
         public void handle(ActionEvent event) {
             //todo: update category
-            EditCategoryPane pane = window.getPane();
+            NewCategoryPane pane = window.getPane();
             String title = pane.getTitleField().getText();
             String description = pane.getDescriptionField().getText();
             if (pane.getCategoryField().getValue() != null) {
