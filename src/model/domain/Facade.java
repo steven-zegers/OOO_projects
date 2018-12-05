@@ -48,14 +48,14 @@ public class Facade implements Subject {
         this.notifyObservers();
     }
 
-    public void updateCategory(Category category) {
-        deleteCategory(category.getTitle());
-        addCategory(category);
+    public void updateCategory(String oldTitle, Category newCategory) {
+        deleteCategory(oldTitle);
+        addCategory(newCategory);
     }
 
-    public void updateQuestion(Question question) {
-        getQuestionDB().deleteItem(question.getTitle());
-        addQuestion(question);
+    public void updateQuestion(String oldTitle, Question newQuestion) {
+        getQuestionDB().deleteItem(oldTitle);
+        addQuestion(newQuestion);
     }
 
     //Category

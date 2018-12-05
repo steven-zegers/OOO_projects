@@ -19,10 +19,12 @@ public class EditQuestionController {
     NewQuestionWindow window;
     private Facade facade;
     private Question selectedQuestion;
+    private String oldTitle;
 
     public EditQuestionController(Stage primaryStage, Facade facade, Question selectedQuestion) {
         this.setFacade(facade);
         this.setSelectedCategory(selectedQuestion);
+        this.setOldTitle(selectedQuestion.getTitle());
         this.window = new NewQuestionWindow(primaryStage, facade);
         facade.addObserver(this.window.getPane());
         window.getPane().setQuestionTitle(selectedQuestion.getTitle());
@@ -55,6 +57,14 @@ public class EditQuestionController {
         this.selectedQuestion = selectedQuestion;
     }
 
+    public String getOldTitle() {
+        return oldTitle;
+    }
+
+    public void setOldTitle(String oldTitle) {
+        this.oldTitle = oldTitle;
+    }
+
     private class CancelButtonHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
@@ -81,7 +91,7 @@ public class EditQuestionController {
             for (String statement : statementsList) {
                 question.addStatement(statement);
             }
-            facade.updateQuestion(question);
+            facade.updateQuestion(getOldTitle(), question);
             window.stop();
         }
     }

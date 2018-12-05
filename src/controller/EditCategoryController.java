@@ -15,10 +15,12 @@ public class EditCategoryController {
     private NewCategoryWindow window;
     private Facade facade;
     private Category selectedCategory;
+    private String oldTitle;
 
     public EditCategoryController(Stage primaryStage, Facade facade, Category selectedCategory) {
         this.setFacade(facade);
         this.setSelectedCategory(selectedCategory);
+        this.setOldTitle(selectedCategory.getTitle());
         this.window = new NewCategoryWindow(primaryStage, facade);
         facade.addObserver(this.window.getPane());
         window.getPane().setTitle(selectedCategory.getTitle());
@@ -32,6 +34,14 @@ public class EditCategoryController {
         this.window.setSaveButtonHandler(new SaveButtonHandler());
         this.window.setAlwaysOnTop(true);
         this.window.start();
+    }
+
+    private void setOldTitle(String title) {
+        this.oldTitle = title;
+    }
+
+    public String getOldTitle() {
+        return this.oldTitle;
     }
 
     public Facade getFacade() {
@@ -72,10 +82,10 @@ public class EditCategoryController {
             if (pane.getCategoryField().getValue() != null) {
                 Category superCategory = facade.getCategory((String) pane.getCategoryField().getValue());
                 SubCategory newCategory = new SubCategory(title, description, superCategory);
-                facade.updateCategory(newCategory);
+                facade.updateCategory(getOldTitle(), newCategory);
             } else {
                 Category newCategory = new Category(title, description);
-                facade.updateCategory(newCategory);
+                facade.updateCategory(getOldTitle(), newCategory);
             }
             window.stop();
         }
