@@ -22,7 +22,6 @@ public class Test
 
     private boolean isTestFinished = false;
     private Map<String, Integer> totalQuestionsOfEachCategory = new HashMap<>();;
-    private String feedbackType;
 
 
     public Test(Facade facade) {
@@ -30,31 +29,8 @@ public class Test
         this.facade = facade;
         initializeScoresOfCategories();
         initializeQuestionAmountsPerCategory();
-        initializeFeedBackType();
         this.setQuestionPointer(0);
         this.setScore(0);
-    }
-
-    private void initializeFeedBackType() {
-        Properties properties = new Properties();
-        InputStream input = null;
-        try {
-            input = new FileInputStream("evaluation.properties");
-            properties.load(input);
-
-            String feedbackType = properties.getProperty("mode");
-            this.setFeedbackType(feedbackType);
-        } catch (IOException e) {
-
-        }
-    }
-
-    public void setFeedbackType(String feedbackType) {
-        this.feedbackType = feedbackType;
-    }
-
-    public String getFeedbackType() {
-        return this.feedbackType;
     }
 
     public void initializeQuestionAmountsPerCategory() {
@@ -168,5 +144,7 @@ public class Test
 
     public void setTestFinished() {
         this.isTestFinished = true;
+
+        facade.updateProperties();
     }
 }
