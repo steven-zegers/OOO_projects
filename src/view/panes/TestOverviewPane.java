@@ -21,6 +21,7 @@ public class TestOverviewPane extends GridPane implements Observer{
 	private Facade facade;
 	private Label scoreField;
 	private Label feedbackField;
+	private Label finishedField;
 
 	public TestOverviewPane(Facade facade){
 		this.setFacade(facade);
@@ -41,9 +42,25 @@ public class TestOverviewPane extends GridPane implements Observer{
 		add(feedbackField,0,1,1,1);
 		setHalignment(feedbackField, HPos.CENTER);
 
+		String finished = null;
+
+		if(facade.isFinishedBefore())
+		{
+			finished = "You have finished this evaluation before.";
+		}
+		else
+		{
+			finished = "You have never finished this evaluation before.";
+		}
+
+		finishedField = new Label(finished);
+
+		add(finishedField, 0, 2, 1, 1);
+		setHalignment(finishedField, HPos.CENTER);
+
 		testButton = new Button("Evaluate");
 
-		add(testButton, 0,2,1,1);
+		add(testButton, 0,3,1,1);
 		setHalignment(testButton, HPos.CENTER);
 	}
 
@@ -71,6 +88,8 @@ public class TestOverviewPane extends GridPane implements Observer{
 			}
 
 		}
+
+		finishedField.setText("");
 
 	}
 }

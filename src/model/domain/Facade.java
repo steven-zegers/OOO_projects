@@ -6,8 +6,11 @@ import model.db.CategoryDBText;
 import model.db.QuestionDBText;
 import model.db.Database;
 
+import javax.xml.crypto.Data;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class Facade implements Subject {
 
@@ -16,10 +19,14 @@ public class Facade implements Subject {
     private List<Observer> observers;
     private Test test;
 
+    private Properties properties;
+
     public Facade() {
         this.categoryDB = new CategoryDBText();
         this.questionDB = new QuestionDBText();
         this.observers = new ArrayList<>();
+
+        loadProperties();
     }
 
     //DB
@@ -151,9 +158,76 @@ public class Facade implements Subject {
         return getCurrentTest().getScoreOfCategory(categoryTitle);
     }
 
+    /*
     public String getFeedbackType() {
-        return getCurrentTest().getFeedbackType();
+        return properties.getFeedbackType();
     }
+    */
+
+
+    //Properties
+
+    private void loadProperties()
+    {
+        this.properties = new Properties();
+        InputStream input;
+
+        try
+        {
+            input = new FileInputStream("evaluation.properties");
+            this.properties.load(input);
+
+            input.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println(e.getStackTrace());
+        }
+
+    }
+
+    public String getFeedbackType()
+    {
+        return properties.getProperty("mode");
+    }
+
+    public boolean isFinishedBefore()
+    {
+        System.out.println(properties.getProperty("finished"));
+
+        String finished = properties.getProperty("finished");
+
+        if(finished.equals("true"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void updateProperties()
+    {
+        properties.setProperty("finished", "true");
+
+        OutputStream out = null;
+
+        try
+        {
+            out = new FileOutputStream("evaluation.properties");
+
+            properties.store(out, null);
+
+            out.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+
     //Observer
     @Override
     public void addObserver(Observer observer) {
