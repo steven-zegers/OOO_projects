@@ -1,4 +1,4 @@
-package controller;
+package view.windows;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,7 +19,7 @@ public class EditCategoryWindow extends Stage{
         this.setStage(primaryStage);
         this.setPane(new EditCategoryPane(facade));
 
-        Scene mainScene = new Scene(this.getPane(), 250,150);
+        Scene mainScene = new Scene(this.getPane(), 700,150);
         this.getStage().setTitle("Edit category");
         this.getStage().setScene(mainScene);
         sizeToScene();

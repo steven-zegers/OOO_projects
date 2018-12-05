@@ -6,13 +6,8 @@ import model.db.CategoryDBText;
 import model.db.QuestionDBText;
 import model.db.Database;
 
-import javax.xml.crypto.Data;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class Facade implements Subject {
 
@@ -34,6 +29,16 @@ public class Facade implements Subject {
 
     public Database<Question> getQuestionDB() {
         return questionDB;
+    }
+
+    public void deleteCategory(String categoryTitle) {
+        ((CategoryDBText) getCategoryDB()).deleteItem(categoryTitle);
+        this.notifyObservers();
+    }
+
+    public void updateCategory(Category category) {
+        deleteCategory(category.getTitle());
+        addCategory(category);
     }
 
     //Category

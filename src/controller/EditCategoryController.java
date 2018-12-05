@@ -3,9 +3,13 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import model.db.CategoryDBText;
 import model.domain.Category;
 import model.domain.Facade;
 import model.domain.SubCategory;
+import view.panes.EditCategoryPane;
+import view.panes.NewCategoryPane;
+import view.windows.EditCategoryWindow;
 
 import javax.swing.*;
 
@@ -64,7 +68,17 @@ public class EditCategoryController {
         @Override
         public void handle(ActionEvent event) {
             //todo: update category
-
+            EditCategoryPane pane = window.getPane();
+            String title = pane.getTitleField().getText();
+            String description = pane.getDescriptionField().getText();
+            if (pane.getCategoryField().getValue() != null) {
+                Category superCategory = facade.getCategory((String) pane.getCategoryField().getValue());
+                SubCategory newCategory = new SubCategory(title, description, superCategory);
+                facade.updateCategory(newCategory);
+            } else {
+                Category newCategory = new Category(title, description);
+                facade.updateCategory(newCategory);
+            }
             window.stop();
         }
     }

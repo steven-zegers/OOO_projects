@@ -78,4 +78,15 @@ public class Category {
     public String getTitle() {
         return title;
     }
+
+    @Override
+    public String toString() {
+        String title = this.getTitle();
+        String description = this.getDescription();
+        String string = title + ": " + description;
+        if (this instanceof SubCategory) {
+            string += ": " + ((SubCategory) this).getSuperCategory().getTitle();
+        }
+        return string;
+    }
 }

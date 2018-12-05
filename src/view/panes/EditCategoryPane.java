@@ -1,5 +1,7 @@
 package view.panes;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,7 +29,7 @@ public class EditCategoryPane extends GridPane implements Observer {
     public EditCategoryPane(Facade facade) {
         setFacade(facade);
         this.setPrefHeight(150);
-        this.setPrefWidth(300);
+        this.setPrefWidth(600);
 
         this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
@@ -35,11 +37,11 @@ public class EditCategoryPane extends GridPane implements Observer {
 
         this.add(new Label("Title:"), 0, 0, 1, 1);
         titleField = new TextField();
-        this.add(titleField, 1, 0, 1, 1);
+        this.add(titleField, 1, 0, 10, 1);
 
         this.add(new Label("Description:"), 0, 1, 1, 1);
         descriptionField = new TextField();
-        this.add(descriptionField, 1, 1, 1, 1);
+        this.add(descriptionField, 1, 1, 10, 1);
 
         List<String> titles = facade.getCategoryTitles();
         ObservableList<String> categoryTitleList = FXCollections.observableArrayList(titles);

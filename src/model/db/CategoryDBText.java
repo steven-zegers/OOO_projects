@@ -142,14 +142,9 @@ public class CategoryDBText implements Database<Category> {
     public void addItem(Category category) {
 	    categories.add(category);
         try {
-            String title = category.getTitle();
-            String description = category.getDescription();
-            String string = title + ": " + description;
+            String string = category.toString();
             FileWriter fileWriter = new FileWriter(path, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            if (category instanceof SubCategory) {
-                string += ": " + ((SubCategory) category).getSuperCategory().getTitle();
-            }
             bufferedWriter.newLine();
             bufferedWriter.write(string);
             bufferedWriter.close();
@@ -166,5 +161,46 @@ public class CategoryDBText implements Database<Category> {
     @Override
     public List<Category> getItems() {
             return this.categories;
+    }
+
+    public void deleteItem(String title) {
+        try {
+            Category category = this.getItem(title);
+            String stringToDelete = category.toString();
+
+            File inputFile = new File(path);
+            File tempFile = new File("src/model/db/groep_temp.txt");
+
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+
+            String currentLine;
+            int currentLineNumber = 0;
+            while ((currentLine = reader.readLine()) != null) {
+                String trimmedLine = currentLine.trim();
+                if(trimmedLine.equals(stringToDelete)) {
+                    continue;
+                } else {
+                    if (currentLineNumber != 0) {
+                        writer.newLine();
+                    }
+                    currentLineNumber++;
+                    writer.write(currentLine);
+                }
+            }
+            writer.close();
+            reader.close();
+            boolean delete = inputFile.delete();
+            boolean succesful = tempFile.renameTo(inputFile);
+            System.out.println(delete);
+            System.out.println(succesful);
+            categories.remove(this.getItem(title));
+        } catch(DbException e) {
+            throw new DbException(e.getMessage());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
