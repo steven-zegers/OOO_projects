@@ -2,4 +2,3 @@ Design principles: The SOLID design principles
 Java: Java extra's
 Design patterns: Design patterns discussed this year: Java
 UML: Technique of drawing a class diagram
-Testcategory: Testing: Design patterns

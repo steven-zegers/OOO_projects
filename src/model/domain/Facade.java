@@ -184,7 +184,8 @@ public class Facade implements Subject {
 
         try
         {
-            input = new FileInputStream("evaluation.properties");
+            input =  this.getClass().getResourceAsStream("evaluation.properties");
+            //input = new FileInputStream("evaluation.properties");
             this.properties.load(input);
 
             input.close();
