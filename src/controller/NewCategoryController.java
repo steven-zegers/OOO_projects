@@ -11,6 +11,11 @@ import view.windows.NewCategoryWindow;
 
 import javax.swing.*;
 
+/**
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ * @author Thibault Stroobants
+ */
 public class NewCategoryController {
 
     NewCategoryWindow window;
@@ -21,7 +26,7 @@ public class NewCategoryController {
         this.window = new NewCategoryWindow(primaryStage, facade);
         this.window.setCancelButtonHandler(new CancelButtonHandler());
         this.window.setSaveButtonHandler(new SaveButtonHandler());
-        this.window.setAlwaysOnTop(true);
+        this.window.getStage().setAlwaysOnTop(true);
         this.window.start();
     }
 
@@ -62,8 +67,10 @@ public class NewCategoryController {
                 }
                 window.stop();
             } catch (Exception e) {
+                window.getStage().setAlwaysOnTop(false);
                 JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 e.printStackTrace();
+                window.getStage().setAlwaysOnTop(true);
             }
         }
     }

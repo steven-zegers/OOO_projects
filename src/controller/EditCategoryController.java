@@ -32,7 +32,7 @@ public class EditCategoryController {
         facade.notifyObservers();
         this.window.setCancelButtonHandler(new CancelButtonHandler());
         this.window.setSaveButtonHandler(new SaveButtonHandler());
-        this.window.setAlwaysOnTop(true);
+        this.window.getStage().setAlwaysOnTop(true);
         this.window.start();
     }
 
@@ -76,18 +76,27 @@ public class EditCategoryController {
         @Override
         public void handle(ActionEvent event) {
             //todo: update category
-            NewCategoryPane pane = window.getPane();
-            String title = pane.getTitleField().getText();
-            String description = pane.getDescriptionField().getText();
-            if (pane.getCategoryField().getValue() != null) {
-                Category superCategory = facade.getCategory((String) pane.getCategoryField().getValue());
-                SubCategory newCategory = new SubCategory(title, description, superCategory);
-                facade.updateCategory(getOldTitle(), newCategory);
-            } else {
-                Category newCategory = new Category(title, description);
-                facade.updateCategory(getOldTitle(), newCategory);
+            try {
+                NewCategoryPane pane = window.getPane();
+                String title = pane.getTitleField().getText();
+                if (title.contains(":")) throw new IllegalArgumentException("Please do not use any ':' in your question.");
+                String description = pane.getDescriptionField().getText();
+                if (description.contains(":")) throw new IllegalArgumentException("Please do not use any ':' in your question.");
+                if (pane.getCategoryField().getValue() != null) {
+                    Category superCategory = facade.getCategory((String) pane.getCategoryField().getValue());
+                    SubCategory newCategory = new SubCategory(title, description, superCategory);
+                    facade.updateCategory(getOldTitle(), newCategory);
+                } else {
+                    Category newCategory = new Category(title, description);
+                    facade.updateCategory(getOldTitle(), newCategory);
+                }
+                window.stop();
+            } catch (Exception e) {
+                window.getStage().setAlwaysOnTop(false);
+                JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                e.printStackTrace();
+                window.getStage().setAlwaysOnTop(true);
             }
-            window.stop();
         }
     }
 }

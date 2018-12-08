@@ -37,7 +37,7 @@ public class EditQuestionController {
         this.window.setSaveButtonHandler(new SaveButtonHandler());
         this.window.setAddButtonHandler(new AddButtonHandler());
         this.window.setRemoveButtonHandler(new RemoveButtonHandler());
-        this.window.setAlwaysOnTop(true);
+        this.window.getStage().setAlwaysOnTop(true);
         this.window.start();
     }
 
@@ -81,18 +81,26 @@ public class EditQuestionController {
         @Override
         public void handle(ActionEvent event) {
             //todo: update category
-            NewQuestionPane pane = window.getPane();
-            String questionTitle = pane.getQuestionField().getText();
-            String feedback = pane.getFeedbackField().getText();
-            Category category = facade.getCategory((String) pane.getCategoryField().getValue());
-            Question question = new Question(questionTitle, category, feedback);
-            String[] allStatements = pane.getStatementsArea().getText().split("\n");
-            List<String> statementsList = new ArrayList<>(Arrays.asList(allStatements));
-            for (String statement : statementsList) {
-                question.addStatement(statement);
+            try {
+                NewQuestionPane pane = window.getPane();
+                String questionTitle = pane.getQuestionField().getText();
+                String feedback = pane.getFeedbackField().getText();
+                Category category = facade.getCategory((String) pane.getCategoryField().getValue());
+                Question question = new Question(questionTitle, category, feedback);
+                String[] allStatements = pane.getStatementsArea().getText().split("\n");
+                if(allStatements.length < 2) throw new IllegalArgumentException("Your question needs atleast 2 possible answers!");
+                List<String> statementsList = new ArrayList<>(Arrays.asList(allStatements));
+                for (String statement : statementsList) {
+                    question.addStatement(statement);
+                }
+                facade.updateQuestion(getOldTitle(), question);
+                window.stop();
+            } catch (Exception e) {
+                window.getStage().setAlwaysOnTop(false);
+                JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                e.printStackTrace();
+                window.getStage().setAlwaysOnTop(true);
             }
-            facade.updateQuestion(getOldTitle(), question);
-            window.stop();
         }
     }
 
@@ -126,6 +134,7 @@ public class EditQuestionController {
             try {
                 NewQuestionPane pane = window.getPane();
                 String statement = pane.getStatementField().getText();
+                if (statement.contains(":") || statement.contains(";") || statement.isEmpty()) throw new IllegalArgumentException("Please do not use any ':' or ';' in your statements.");
                 pane.getStatementsArea().appendText(statement + "\n");
                 pane.getStatementField().clear();
             } catch (Exception e) {

@@ -22,7 +22,6 @@ public class NewQuestionWindow extends Stage {
         Scene mainScene = new Scene(this.getPane(), 500,300);
         this.getStage().setTitle("New Question");
         this.getStage().setScene(mainScene);
-        this.setAlwaysOnTop(true);
         sizeToScene();
     }
 

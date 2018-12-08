@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -125,4 +126,5 @@ public class NewCategoryPane extends GridPane implements Observer {
 	public void setMainCategoryTitle(String mainCategoryTitle) {
 		this.mainCategoryTitle = mainCategoryTitle;
 	}
+
 }

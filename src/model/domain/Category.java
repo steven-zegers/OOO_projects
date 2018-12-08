@@ -43,6 +43,7 @@ public class Category {
         if (title == null || title.isEmpty()) {
             throw new DomainException("Title can't be empty");
         }
+        if (title.contains(":")) throw new DomainException("Please do not use any ':' in your question.");
         this.title = title;
     }
 
@@ -56,6 +57,7 @@ public class Category {
         if (description == null || description.isEmpty()) {
             throw new DomainException("Description can't be empty");
         }
+        if (description.contains(":")) throw new DomainException("Please do not use any ':' in your question.");
         this.description = description;
     }
 

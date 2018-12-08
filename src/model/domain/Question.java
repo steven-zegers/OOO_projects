@@ -81,6 +81,7 @@ public class Question {
         if (question == null || question.isEmpty()) {
             throw new DomainException("Question can't be empty");
         }
+        if(question.contains(":")) throw new DomainException("Please do not use any ':' in your question.");
         this.question = question;
     }
 

@@ -27,7 +27,7 @@ public class NewQuestionController {
         this.window.setRemoveButtonHandler(new RemoveButtonHandler());
         this.window.setSaveButtonHandler(new SaveButtonHandler());
         this.window.setCancelButtonHandler(new CancelButtonHandler());
-        this.window.setAlwaysOnTop(true);
+        this.window.getStage().setAlwaysOnTop(true);
         this.window.start();
     }
 
@@ -45,6 +45,7 @@ public class NewQuestionController {
             try {
                 NewQuestionPane pane = window.getPane();
                 String statement = pane.getStatementField().getText();
+                if (statement.contains(":") || statement.contains(";") || statement.isEmpty()) throw new IllegalArgumentException("Please do not use any ':' or ';' in your statements.");
                 pane.getStatementsArea().appendText(statement + "\n");
                 pane.getStatementField().clear();
             } catch (Exception e) {
@@ -87,6 +88,7 @@ public class NewQuestionController {
                 Category category = facade.getCategory((String) pane.getCategoryField().getValue());
                 Question question = new Question(questionTitle, category, feedback);
                 String[] allStatements = pane.getStatementsArea().getText().split("\n");
+                if(allStatements.length < 2) throw new IllegalArgumentException("You need atleast 2 answers to your question!");
                 List<String> statementsList = new ArrayList<>(Arrays.asList(allStatements));
                 for (String statement : statementsList) {
                     question.addStatement(statement);
@@ -94,8 +96,10 @@ public class NewQuestionController {
                 facade.addQuestion(question);
                 window.stop();
             } catch (Exception e) {
+                window.getStage().setAlwaysOnTop(false);
                 JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 e.printStackTrace();
+                window.getStage().setAlwaysOnTop(true);
             }
         }
     }
