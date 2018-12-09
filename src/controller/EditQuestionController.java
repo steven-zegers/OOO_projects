@@ -23,7 +23,7 @@ public class EditQuestionController {
 
     public EditQuestionController(Stage primaryStage, Facade facade, Question selectedQuestion) {
         this.setFacade(facade);
-        this.setSelectedCategory(selectedQuestion);
+        this.setSelectedQuestion(selectedQuestion);
         this.setOldTitle(selectedQuestion.getTitle());
         this.window = new NewQuestionWindow(primaryStage, facade);
         facade.addObserver(this.window.getPane());
@@ -53,7 +53,7 @@ public class EditQuestionController {
         return this.selectedQuestion;
     }
 
-    public void setSelectedCategory(Question selectedQuestion) {
+    public void setSelectedQuestion(Question selectedQuestion) {
         this.selectedQuestion = selectedQuestion;
     }
 
