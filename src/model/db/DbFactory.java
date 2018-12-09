@@ -7,13 +7,22 @@ public class DbFactory {
 	}
 
 	public Database getDatabase(String className) {
-		Database output;
-		try {
-			Class dbClass = Class.forName("model.db."+ className);
-			Object dbObject = dbClass.newInstance();
-			output = (Database) dbObject;
-		} catch (Exception e) {
-			throw new DbException(e);
+		Database output = null;
+		switch (className) {
+			case "CategoryDBText":
+				output = CategoryDBText.getInstance();
+				break;
+			case "QuestionDBText":
+				output = QuestionDBText.getInstance();
+				break;
+			case "CategoryDBExcel":
+				output = CategoryDBExcel.getInstance();
+				break;
+			case "QuestionDBExcel":
+				output = QuestionDBExcel.getInstance();
+				break;
+			default:
+				throw new DbException("Classname doesn't exist");
 		}
 		return output;
 	}

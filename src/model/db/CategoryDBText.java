@@ -19,6 +19,8 @@ import java.util.List;
 
 public class CategoryDBText implements Database<Category> {
 
+    private static CategoryDBText uniqueInstance = new CategoryDBText();
+
     /**
      *  A List of Categories in which the Categories are stored when the program is running.
      */
@@ -38,8 +40,9 @@ public class CategoryDBText implements Database<Category> {
      * Categories will be loaded into the list upon creation.
      */
 
-	public CategoryDBText() {
+	private CategoryDBText() {
 		this.categories = readItems(readFile());
+        this.uniqueInstance = this;
 		//readCategories();
 	}
 
@@ -204,4 +207,9 @@ public class CategoryDBText implements Database<Category> {
             e.printStackTrace();
         }
     }
+
+    public static CategoryDBText getInstance() {
+        return uniqueInstance;
+    }
+
 }

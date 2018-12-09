@@ -18,6 +18,8 @@ import java.util.Map;
 
 public class QuestionDBText implements Database<Question> {
 
+	private static QuestionDBText uniqueInstance = new QuestionDBText();
+
 	/**
 	 * A List of Questions to be used in tests while running the program.
 	 */
@@ -37,8 +39,9 @@ public class QuestionDBText implements Database<Question> {
 	 * No parameters are to be given, since the path is statically determined.
 	 */
 
-	public QuestionDBText() {
+	private QuestionDBText() {
 		this.questions = readItems(readFile());
+		this.uniqueInstance = this;
 		//testQuestions();
 	}
 
@@ -88,7 +91,7 @@ public class QuestionDBText implements Database<Question> {
 
 	@Override
 	public List<Question> readItems(List<String[]> text) {
-		CategoryDBText categoryDB = new CategoryDBText();
+		CategoryDBText categoryDB = CategoryDBText.getInstance();
 		List<Question> questions = new ArrayList<>();
 		for(String[] line : text) {
 			Category questionCategory = categoryDB.getItem(line[0]);
@@ -190,6 +193,10 @@ public class QuestionDBText implements Database<Question> {
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
+	}
+
+	public static QuestionDBText getInstance() {
+		return uniqueInstance;
 	}
 
 }
