@@ -2,10 +2,7 @@ package model.domain;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.db.CategoryDBText;
-import model.db.DbFactory;
-import model.db.QuestionDBText;
-import model.db.Database;
+import model.db.*;
 
 import javax.xml.crypto.Data;
 import java.io.*;
@@ -24,8 +21,8 @@ public class Facade implements Subject {
 
     public Facade() {
         this.dbFactory = new DbFactory();
-        this.categoryDB = dbFactory.getDatabase("CategoryDBText"); // change String to change db class used
-        this.questionDB = dbFactory.getDatabase("QuestionDBText"); // change String to change db class used
+        this.categoryDB = dbFactory.getDatabase(DbType.CATEGORYDBTEXT); // change String to change db class used
+        this.questionDB = dbFactory.getDatabase(DbType.QUESTIONDBTEXT); // change String to change db class used
         this.observers = new ArrayList<>();
 
         loadProperties();

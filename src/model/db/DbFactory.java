@@ -6,23 +6,23 @@ public class DbFactory {
 
 	}
 
-	public Database getDatabase(String className) {
+	public Database getDatabase(DbType dbType) {
 		Database output = null;
-		switch (className) {
-			case "CategoryDBText":
+		switch (dbType) {
+			case CATEGORYDBTEXT:
 				output = CategoryDBText.getInstance();
 				break;
-			case "QuestionDBText":
+			case QUESTIONDBTEXT:
 				output = QuestionDBText.getInstance();
 				break;
-			case "CategoryDBExcel":
+			case CATEGORYDBEXCEL:
 				output = CategoryDBExcel.getInstance();
 				break;
-			case "QuestionDBExcel":
+			case QUESTIONDBEXCEL:
 				output = QuestionDBExcel.getInstance();
 				break;
 			default:
-				throw new DbException("Classname doesn't exist");
+				throw new DbException("Database type doesn't exist");
 		}
 		return output;
 	}

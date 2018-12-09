@@ -1,0 +1,10 @@
+package model.db;
+
+public enum DbType {
+
+	CATEGORYDBTEXT,
+	CATEGORYDBEXCEL,
+	QUESTIONDBTEXT,
+	QUESTIONDBEXCEL
+
+}
