@@ -192,9 +192,9 @@ public class CategoryDBText implements Database<Category> {
             writer.close();
             reader.close();
             boolean delete = inputFile.delete();
-            boolean succesful = tempFile.renameTo(inputFile);
+            boolean successful = tempFile.renameTo(inputFile);
             System.out.println(delete);
-            System.out.println(succesful);
+            System.out.println(successful);
             categories.remove(this.getItem(title));
         } catch(DbException e) {
             throw new DbException(e.getMessage());

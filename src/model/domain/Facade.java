@@ -3,6 +3,7 @@ package model.domain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.db.CategoryDBText;
+import model.db.DbFactory;
 import model.db.QuestionDBText;
 import model.db.Database;
 
@@ -18,12 +19,13 @@ public class Facade implements Subject {
     private Database questionDB;
     private List<Observer> observers;
     private Test test;
-
+    private DbFactory dbFactory;
     private Properties properties;
 
     public Facade() {
-        this.categoryDB = new CategoryDBText();
-        this.questionDB = new QuestionDBText();
+        this.dbFactory = new DbFactory();
+        this.categoryDB = dbFactory.getDatabase("CategoryDBText"); // change String to change db class used
+        this.questionDB = dbFactory.getDatabase("QuestionDBText"); // change String to change db class used
         this.observers = new ArrayList<>();
 
         loadProperties();
