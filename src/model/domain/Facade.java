@@ -203,7 +203,7 @@ public class Facade implements Subject {
 
     public boolean isFinishedBefore()
     {
-        System.out.println(properties.getProperty("finished"));
+        System.out.println("hier" + properties.getProperty("finished"));
 
         String finished = properties.getProperty("finished");
 
@@ -225,7 +225,7 @@ public class Facade implements Subject {
 
         try
         {
-            out = new FileOutputStream("evaluation.properties");
+            out = new FileOutputStream("src/model/domain/evaluation.properties");
 
             properties.store(out, null);
 
