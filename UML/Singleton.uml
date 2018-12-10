@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="287.0" y="384.0">model.db.QuestionDBExcel</node>
+    <node x="0.0" y="384.0">model.db.CategoryDBExcel</node>
+    <node x="0.0" y="0.0">model.db.CategoryDBText</node>
+    <node x="332.0" y="0.0">model.db.QuestionDBText</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.867175572519084" x="310.0" y="318.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

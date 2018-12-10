@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="864.0" y="255.0">model.db.QuestionDBExcel</node>
+    <node x="614.0" y="255.0">model.db.CategoryDBExcel</node>
+    <node x="307.0" y="233.0">model.db.CategoryDBText</node>
+    <node x="466.75" y="0.0">model.db.Database</node>
+    <node x="0.0" y="233.0">model.db.QuestionDBText</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="model.db.CategoryDBText" target="model.db.Database">
+      <point x="0.0" y="-124.5" />
+      <point x="450.5" y="213.0" />
+      <point x="559.0" y="213.0" />
+      <point x="-30.75" y="91.5" />
+    </edge>
+    <edge source="model.db.QuestionDBText" target="model.db.Database">
+      <point x="0.0" y="-124.5" />
+      <point x="143.5" y="203.0" />
+      <point x="497.5" y="203.0" />
+      <point x="-92.25" y="91.5" />
+    </edge>
+    <edge source="model.db.CategoryDBExcel" target="model.db.Database">
+      <point x="0.0" y="-102.5" />
+      <point x="729.0" y="213.0" />
+      <point x="620.5" y="213.0" />
+      <point x="30.75" y="91.5" />
+    </edge>
+    <edge source="model.db.QuestionDBExcel" target="model.db.Database">
+      <point x="0.0" y="-102.5" />
+      <point x="979.0" y="203.0" />
+      <point x="682.0" y="203.0" />
+      <point x="92.25" y="91.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="547.0" y="241.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

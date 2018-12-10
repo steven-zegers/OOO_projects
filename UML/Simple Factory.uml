@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="568.5" y="255.0">model.db.QuestionDBExcel</node>
+    <node x="10.5" y="255.0">model.db.CategoryDBExcel</node>
+    <node x="260.5" y="233.0">model.db.CategoryDBText</node>
+    <node x="218.03958333333338" y="831.0">model.db.DbFactory</node>
+    <node x="342.75" y="532.0">model.db.QuestionDBText</node>
+    <node x="277.8104166666667" y="0.0">model.db.Database</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="model.db.CategoryDBText" target="model.db.Database">
+      <point x="0.0" y="-124.5" />
+      <point x="404.0" y="213.0" />
+      <point x="400.8104166666667" y="213.0" />
+      <point x="0.0" y="91.5" />
+    </edge>
+    <edge source="model.db.DbFactory" target="model.db.QuestionDBText">
+      <point x="46.799999999999955" y="-25.5" />
+      <point x="381.83958333333334" y="801.0" />
+      <point x="486.25" y="801.0" />
+      <point x="0.0" y="124.5" />
+    </edge>
+    <edge source="model.db.QuestionDBText" target="model.db.Database">
+      <point x="71.75" y="-124.5" />
+      <point x="558.0" y="213.0" />
+      <point x="450.0104166666667" y="213.0" />
+      <point x="49.19999999999999" y="91.5" />
+    </edge>
+    <edge source="model.db.DbFactory" target="model.db.CategoryDBExcel">
+      <point x="-46.80000000000007" y="-25.5" />
+      <point x="288.2395833333333" y="801.0" />
+      <point x="125.49999999999997" y="801.0" />
+      <point x="0.0" y="102.5" />
+    </edge>
+    <edge source="model.db.DbFactory" target="model.db.QuestionDBExcel">
+      <point x="93.59999999999997" y="-25.5" />
+      <point x="428.63958333333335" y="811.0" />
+      <point x="683.5" y="811.0" />
+      <point x="0.0" y="102.5" />
+    </edge>
+    <edge source="model.db.DbFactory" target="model.db.CategoryDBText">
+      <point x="-5.6843418860808015E-14" y="-25.5" />
+      <point x="335.0395833333333" y="811.0" />
+      <point x="332.25" y="811.0" />
+      <point x="-71.75" y="124.5" />
+    </edge>
+    <edge source="model.db.DbFactory" target="model.db.Database">
+      <point x="-93.60000000000008" y="-25.5" />
+      <point x="241.4395833333333" y="811.0" />
+      <point x="0.0" y="811.0" />
+      <point x="0.0" y="203.0" />
+      <point x="302.4104166666667" y="203.0" />
+      <point x="-98.39999999999998" y="91.5" />
+    </edge>
+    <edge source="model.db.QuestionDBText" target="model.db.CategoryDBText">
+      <point x="-71.75" y="-124.5" />
+      <point x="414.5" y="507.0" />
+      <point x="475.75" y="507.0" />
+      <point x="71.75" y="124.5" />
+    </edge>
+    <edge source="model.db.CategoryDBExcel" target="model.db.Database">
+      <point x="0.0" y="-102.5" />
+      <point x="125.5" y="213.0" />
+      <point x="351.6104166666667" y="213.0" />
+      <point x="-49.19999999999999" y="91.5" />
+    </edge>
+    <edge source="model.db.QuestionDBExcel" target="model.db.Database">
+      <point x="0.0" y="-102.5" />
+      <point x="683.5" y="203.0" />
+      <point x="499.2104166666667" y="203.0" />
+      <point x="98.39999999999998" y="91.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6297117516629712" x="394.5" y="440.99999999999994" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
