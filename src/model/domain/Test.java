@@ -34,13 +34,10 @@ public class Test
     }
 
     public void initializeQuestionAmountsPerCategory() {
-
         for(String categoryTitle : facade.getCategoryTitles()) {
             totalQuestionsOfEachCategory.put(categoryTitle, 0);
         }
-
         for (Question question : questions) {
-
             if (totalQuestionsOfEachCategory.containsKey(question.getCategoryTitle())) {
                 totalQuestionsOfEachCategory.put(question.getCategoryTitle(), totalQuestionsOfEachCategory.get(question.getCategoryTitle()) + 1);
             } else {

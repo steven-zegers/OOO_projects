@@ -61,6 +61,11 @@ public class Question {
         setCategoryTitle(category.getTitle());
     }
 
+    public Question(Question otherQuestion) {
+        this(otherQuestion.getQuestion(), otherQuestion.getCategory(), otherQuestion.getFeedback());
+        this.setCategoryTitle(otherQuestion.getCategoryTitle());
+        this.setStatements(otherQuestion.getStatements());
+    }
     /**
      * Returns the question.
      * @return
@@ -142,6 +147,7 @@ public class Question {
             throw new DomainException("Category can't be empty");
         }
         this.category = category;
+        this.categoryTitle = category.getTitle();
     }
 
     /**

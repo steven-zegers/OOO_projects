@@ -78,18 +78,21 @@ public class TestOverviewPane extends GridPane implements Observer{
 
 	@Override
 	public void update() {
-		if(facade.getFeedbackType().equals("score")) {
-			scoreField.setText(facade.getScoreString());
-		} else if (facade.getFeedbackType().equals("feedback")) {
-			if(facade.isItAPerfectTest()) {
-				feedbackField.setText("Schitterend! Alles perfect!");
-			} else {
-				feedbackField.setText(facade.getFullFeedback());
+		if (facade.getCurrentTest().isFinished()) {
+			if(facade.getFeedbackType().equals("score")) {
+				scoreField.setText(facade.getScoreString());
+			} else if (facade.getFeedbackType().equals("feedback")) {
+				if(facade.isItAPerfectTest()) {
+					feedbackField.setText("Schitterend! Alles perfect!");
+				} else {
+					feedbackField.setText(facade.getFullFeedback());
+				}
+
 			}
 
+			finishedField.setText("");
 		}
 
-		finishedField.setText("");
 
 	}
 }

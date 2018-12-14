@@ -47,13 +47,20 @@ public class Facade implements Subject {
         this.notifyObservers();
     }
 
-    public void updateCategory(String oldTitle, Category newCategory) {
+    public void updateCategory(String oldTitle, Category newCategory) throws CloneNotSupportedException {
+        for (Question question : getQuestions()) {
+            if (question.getCategoryTitle().equals(oldTitle)) {
+                Question questionCopy = new Question(question);
+                questionCopy.setCategory(newCategory);
+                updateQuestion(question.getTitle(), questionCopy);
+            }
+        }
         deleteCategory(oldTitle);
         addCategory(newCategory);
     }
 
     public void updateQuestion(String oldTitle, Question newQuestion) {
-        getQuestionDB().deleteItem(oldTitle);
+        deleteQuestion(oldTitle);
         addQuestion(newQuestion);
     }
 
