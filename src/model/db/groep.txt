@@ -3,4 +3,3 @@ Design Principles: The SOLID design principles
 Design patterns: Design patterns discussed this year: Java
 UML: Technique of drawing a class diagram
 VHDL: Hardware Design Language: Design Principles
-Test: Test: Design patterns
