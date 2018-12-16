@@ -2,10 +2,8 @@ package model.db;
 
 import model.domain.Category;
 import model.domain.CategoryFactory;
-import model.domain.Question;
 import model.domain.SubCategory;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,7 +81,12 @@ public class CategoryDBText extends TextDatabase<Category> {
 		throw new DbException("This title is not recognized as a saved category");
 	}
 
-	@Override
+    @Override
+    protected boolean titleAlreadyExists(Category item) {
+        return this.getTitles().contains(item.getTitle());
+    }
+
+    @Override
 	public List<String> getTitles() {
         List<String> titles = new ArrayList<>();
         for (Category category : this.getItems()) {

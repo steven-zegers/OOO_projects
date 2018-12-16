@@ -100,6 +100,11 @@ public class QuestionDBText extends TextDatabase<Question> {
 		throw new DbException("This title is not recognized as a saved question");
 	}
 
+	@Override
+	protected boolean titleAlreadyExists(Question item) {
+		return this.getTitles().contains(item.getTitle());
+	}
+
 	public static QuestionDBText getInstance() {
 		return uniqueInstance;
 	}

@@ -78,6 +78,7 @@ public abstract class TextDatabase<T> implements Database<T> {
 
     @Override
     public void addItem(T item) {
+        if (titleAlreadyExists(item)) throw new DbException("There is already an item that has this title.");
         items.add(item);
         try {
             String string = item.toString();
@@ -90,6 +91,8 @@ public abstract class TextDatabase<T> implements Database<T> {
             e.printStackTrace();
         }
     }
+
+    protected abstract boolean titleAlreadyExists(T item);
 
     @Override
     public abstract List<T> readItems(List<String[]> text);
