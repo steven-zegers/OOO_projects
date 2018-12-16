@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Wout De Boeck
  */
 
-public class QuestionDBText implements Database<Question> {
+public class QuestionDBText extends TextDatabase<Question> {
 
 	private static QuestionDBText uniqueInstance = new QuestionDBText();
 
@@ -24,7 +24,7 @@ public class QuestionDBText implements Database<Question> {
 	 * A List of Questions to be used in tests while running the program.
 	 */
 
-	private List<Question> questions;
+	//private List<Question> questions;
 
 	/**
 	 * The path where the file containing the Questions is located.
@@ -40,7 +40,8 @@ public class QuestionDBText implements Database<Question> {
 	 */
 
 	private QuestionDBText() {
-		this.questions = readItems(readFile());
+		super("src/model/db/vraag.txt");
+		//this.questions = readItems(readFile());
 		this.uniqueInstance = this;
 		//testQuestions();
 	}
@@ -53,7 +54,7 @@ public class QuestionDBText implements Database<Question> {
 	 */
 
 	private void testQuestions() {
-		for (Question question : questions) {
+		for (Question question : this.getItems()) {
 			System.out.print("Category: " + question.getCategory().getTitle() + ", question: " + question.getQuestion() + "statements: " );
 			for (String statement : question.getStatements()) {
 				System.out.print(statement + ", ");
@@ -63,27 +64,9 @@ public class QuestionDBText implements Database<Question> {
 	}
 
 	@Override
-	public List<String[]> readFile() {
-		String line;
-		List<String[]> linesInFile = new ArrayList<>();
-		try {
-			FileReader fileReader = new FileReader(this.getPath());
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
-			while ((line = bufferedReader.readLine()) != null) {
-				String[] lineString = line.split(": ");
-				linesInFile.add(lineString);
-			}
-			bufferedReader.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return linesInFile;
-	}
-
-	@Override
 	public List<String> getTitles() {
 		List<String> out = new ArrayList<>();
-		for (Question question : this.questions) {
+		for (Question question : this.getItems()) {
 			out.add(question.getQuestion());
 		}
 		return out;
@@ -107,92 +90,14 @@ public class QuestionDBText implements Database<Question> {
 		return questions;
 	}
 
-	/**
-	 * Adds a new Question to this List and writes it to the text file use at a later date.
-	 * @param question
-	 * The Question that should be stored.
-	 */
-	@Override
-	public void addItem(Question question) {
-		questions.add(question);
-		try {
-			String question1 = question.getQuestion();
-			String categoryTitle = question.getCategory().getTitle();
-			String feedback = question.getFeedback();
-			List<String> statements = question.getStatements();
-			FileWriter fileWriter = new FileWriter(path, true);
-			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-			bufferedWriter.newLine();
-			String string = categoryTitle + ": " + question1 + ": " + feedback + ": ";
-			for (String statement : statements) {
-				string += statement + "; ";
-			}
-			string = string.substring(0, string.length()-2);
-			bufferedWriter.write(string);
-			bufferedWriter.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Returns a List of Question-objects stored in this database.
-	 * @return
-	 * questions as a List of Questions
-	 */
-
-	public List<Question> getItems() {
-		return questions;
-	}
-
 	@Override
 	public Question getItem(String title) {
-		for (Question question : questions) {
+		for (Question question : this.getItems()) {
 			if (question.getTitle().toLowerCase().equals(title.toLowerCase())) {
 				return question;
 			}
 		}
 		throw new DbException("This title is not recognized as a saved question");
-	}
-	@Override
-    public void deleteItem(String title) {
-	    try {
-	        Question question = this.getItem(title);
-	        String stringToDelete = question.toString();
-	        File inputFile = new File(path);
-	        File tempFile = new File("src/model/db/question_temp.txt");
-
-	        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-	        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-
-	        String currentLine;
-	        int currentLineNumber = 0;
-	        while ((currentLine = reader.readLine()) != null) {
-	            String trimmedLine = currentLine.trim();
-	            if(trimmedLine.equals(stringToDelete)) {
-	                continue;
-	            } else {
-	                if (currentLineNumber != 0) {
-	                    writer.newLine();
-	                }
-	                currentLineNumber++;
-	                writer.write(currentLine);
-	            }
-	        }
-	        writer.close();
-	        reader.close();
-	        boolean delete = inputFile.delete();
-	        boolean succesful = tempFile.renameTo(inputFile);
-	        System.out.println(delete);
-	        System.out.println(succesful);
-	        questions.remove(this.getItem(title));
-	    } catch(DbException e) {
-	        throw new DbException(e.getMessage());
-	    } catch (FileNotFoundException e) {
-	        e.printStackTrace();
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
 	}
 
 	public static QuestionDBText getInstance() {

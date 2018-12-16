@@ -17,7 +17,7 @@ import java.util.List;
  * @author Wout De Boeck
  */
 
-public class CategoryDBText implements Database<Category> {
+public class CategoryDBText extends TextDatabase<Category> {
 
     private static CategoryDBText uniqueInstance = new CategoryDBText();
 
@@ -25,7 +25,7 @@ public class CategoryDBText implements Database<Category> {
      *  A List of Categories in which the Categories are stored when the program is running.
      */
 
-    List<Category> categories;
+    //List<Category> categories;
 
     /**
      * The path where the file containing the Categories is located.
@@ -41,7 +41,8 @@ public class CategoryDBText implements Database<Category> {
      */
 
 	private CategoryDBText() {
-		this.categories = readItems(readFile());
+	    super("src/model/db/groep.txt");
+		//this.categories = readItems(readFile());
         this.uniqueInstance = this;
 		//readCategories();
 	}
@@ -55,7 +56,7 @@ public class CategoryDBText implements Database<Category> {
      */
 
     private void readCategories() {
-	    for (Category cat : categories) {
+	    for (Category cat : this.getItems()) {
 	        System.out.print(cat.getTitle() + ": " + cat.getDescription());
 	        if (cat instanceof SubCategory) {
 	            SubCategory subCategory = (SubCategory) cat;
@@ -74,7 +75,7 @@ public class CategoryDBText implements Database<Category> {
 
     @Override
     public Category getItem(String title) {
-		for (Category category : categories) {
+		for (Category category : this.getItems()) {
 			if (category.getTitle().toLowerCase().equals(title.toLowerCase())) {
 				return category;
 			}
@@ -85,29 +86,10 @@ public class CategoryDBText implements Database<Category> {
 	@Override
 	public List<String> getTitles() {
         List<String> titles = new ArrayList<>();
-        for (Category category : categories) {
+        for (Category category : this.getItems()) {
             titles.add(category.getTitle());
         }
         return titles;
-    }
-    @Override
-    public List<String[]> readFile() {
-        String line;
-        List<String[]> linesInFile = new ArrayList<>();
-        try {
-            FileReader fileReader = new FileReader(this.getPath());
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] lineString = line.split(": ");
-                linesInFile.add(lineString);
-            }
-            bufferedReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return linesInFile;
     }
 
 	@Override
@@ -134,78 +116,6 @@ public class CategoryDBText implements Database<Category> {
             }
         }
         return categories;
-    }
-
-    /**
-     * Adds a category to the List of Categories and writes it to the text file for later use.
-     * @param category
-     * The Category that should be added to the database.
-     */
-    @Override
-    public void addItem(Category category) {
-	    categories.add(category);
-        try {
-            String string = category.toString();
-            FileWriter fileWriter = new FileWriter(path, true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.newLine();
-            bufferedWriter.write(string);
-            bufferedWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-	/**
-     * Returns the List of Categories.
-     * @return
-     * categories as a List of Category-objects
-     */
-    @Override
-    public List<Category> getItems() {
-            return this.categories;
-    }
-
-    @Override
-    public void deleteItem(String title) {
-        try {
-            Category category = this.getItem(title);
-            String stringToDelete = category.toString();
-
-            File inputFile = new File(path);
-            File tempFile = new File("src/model/db/groep_temp.txt");
-
-            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-
-            String currentLine;
-            int currentLineNumber = 0;
-            while ((currentLine = reader.readLine()) != null) {
-                String trimmedLine = currentLine.trim();
-                if(trimmedLine.equals(stringToDelete)) {
-                    continue;
-                } else {
-                    if (currentLineNumber != 0) {
-                        writer.newLine();
-                    }
-                    currentLineNumber++;
-                    writer.write(currentLine);
-                }
-            }
-            writer.close();
-            reader.close();
-            boolean delete = inputFile.delete();
-            boolean successful = tempFile.renameTo(inputFile);
-            System.out.println(delete);
-            System.out.println(successful);
-            categories.remove(this.getItem(title));
-        } catch(DbException e) {
-            throw new DbException(e.getMessage());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public static CategoryDBText getInstance() {
