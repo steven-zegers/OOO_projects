@@ -10,10 +10,9 @@ public abstract class TextDatabase<T> implements Database<T> {
 
     public TextDatabase(String path) {
         this.path = path;
-        //createLocalFile();
+        createLocalFile();
         this.items = new ArrayList<>();
         this.items = readItems(readFile());
-
     }
 
     private void createLocalFile() {
@@ -62,8 +61,9 @@ public abstract class TextDatabase<T> implements Database<T> {
         String line;
         List<String[]> linesInFile = new ArrayList<>();
         try {
-            InputStream is = getClass().getResourceAsStream(this.path);
-            InputStreamReader fileReader = new InputStreamReader(is);
+            //InputStream is = getClass().getResourceAsStream(this.path);
+            //InputStreamReader fileReader = new InputStreamReader(is);
+            FileReader fileReader = new FileReader(this.path);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             while ((line = bufferedReader.readLine()) != null) {
                 String[] lineString = line.split(": ");
@@ -71,7 +71,7 @@ public abstract class TextDatabase<T> implements Database<T> {
             }
             bufferedReader.close();
             fileReader.close();
-            is.close();
+            //is.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -84,8 +84,8 @@ public abstract class TextDatabase<T> implements Database<T> {
             T question = this.getItem(title);
             String stringToDelete = question.toString();
             File inputFile = new File(path);
-            File tempFile = new File("src/model/db/temp.txt");
-            //File tempFile = new File(File.separator + "ZelfEvaluatieApp" + File.separator + "temp.txt");
+            //File tempFile = new File("src/model/db/temp.txt");
+            File tempFile = new File(File.separator + "ZelfEvaluatieApp" + File.separator + "temp.txt");
 
             BufferedReader reader = new BufferedReader(new FileReader(inputFile));
             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
@@ -126,7 +126,8 @@ public abstract class TextDatabase<T> implements Database<T> {
         items.add(item);
         try {
             String string = item.toString();
-            FileWriter fileWriter = new FileWriter("src/model/db/" + this.path, true);
+            //FileWriter fileWriter = new FileWriter("src/model/db/" + this.path, true);
+            FileWriter fileWriter = new FileWriter(this.path, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.newLine();
             bufferedWriter.write(string);
