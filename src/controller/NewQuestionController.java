@@ -49,8 +49,11 @@ public class NewQuestionController {
                 pane.getStatementsArea().appendText(statement + "\n");
                 pane.getStatementField().clear();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                window.getStage().setAlwaysOnTop(false);
+                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
+                window.getStage().setAlwaysOnTop(true);
             }
         }
     }
@@ -72,8 +75,11 @@ public class NewQuestionController {
                 }
                 pane.getStatementField().clear();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                window.getStage().setAlwaysOnTop(false);
+                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
+                window.getStage().setAlwaysOnTop(true);
             }
         }
     }
@@ -97,7 +103,8 @@ public class NewQuestionController {
                 window.stop();
             } catch (Exception e) {
                 window.getStage().setAlwaysOnTop(false);
-                JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
                 window.getStage().setAlwaysOnTop(true);
             }
@@ -110,8 +117,11 @@ public class NewQuestionController {
             try {
                 window.stop();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                window.getStage().setAlwaysOnTop(false);
+                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
+                window.getStage().setAlwaysOnTop(true);
             }
         }
     }

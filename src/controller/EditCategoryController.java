@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import model.domain.Category;
 import model.domain.Facade;
@@ -66,8 +67,11 @@ public class EditCategoryController {
             try {
                 window.stop();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
-
+                window.getStage().setAlwaysOnTop(false);
+                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                ControllerHelper.showErrorMessage(e);
+                e.printStackTrace();
+                window.getStage().setAlwaysOnTop(true);
             }
         }
     }
@@ -93,7 +97,8 @@ public class EditCategoryController {
                 window.stop();
             } catch (Exception e) {
                 window.getStage().setAlwaysOnTop(false);
-                JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
                 window.getStage().setAlwaysOnTop(true);
             }

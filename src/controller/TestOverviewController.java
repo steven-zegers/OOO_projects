@@ -47,7 +47,8 @@ public class TestOverviewController
             try {
                 new TestController(new Stage(), getFacade());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
+                ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
             }
         }
