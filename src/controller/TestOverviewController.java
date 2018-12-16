@@ -11,7 +11,6 @@ import javax.swing.*;
 
 public class TestOverviewController
 {
-    private TestWindow window;
     private Facade facade;
     private TestOverviewPane pane;
 

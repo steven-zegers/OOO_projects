@@ -10,8 +10,48 @@ public abstract class TextDatabase<T> implements Database<T> {
 
     public TextDatabase(String path) {
         this.path = path;
+        //createLocalFile();
         this.items = new ArrayList<>();
         this.items = readItems(readFile());
+
+    }
+
+    private void createLocalFile() {
+        File localFile = new File(File.separator + "ZelfEvaluatieApp" + File.separator + path);
+        try {
+            boolean createDir = localFile.getParentFile().mkdirs();
+            boolean success = localFile.createNewFile();
+            System.out.println(createDir);
+            System.out.println(success);
+            if(success) {
+                String line;
+                try {
+                    InputStream is = getClass().getResourceAsStream(this.path);
+                    InputStreamReader fileReader = new InputStreamReader(is);
+                    BufferedReader bufferedReader = new BufferedReader(fileReader);
+                    FileWriter fileWriter = new FileWriter(localFile.getPath());
+                    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                    int numberOfLine = 0;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        if (numberOfLine != 0) {
+                            bufferedWriter.newLine();
+                        }
+                        numberOfLine++;
+                        bufferedWriter.write(line);
+                    }
+                    bufferedReader.close();
+                    fileReader.close();
+                    bufferedWriter.close();
+                    fileWriter.close();
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            this.path = localFile.getPath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -22,13 +62,16 @@ public abstract class TextDatabase<T> implements Database<T> {
         String line;
         List<String[]> linesInFile = new ArrayList<>();
         try {
-            FileReader fileReader = new FileReader(this.path);
+            InputStream is = getClass().getResourceAsStream(this.path);
+            InputStreamReader fileReader = new InputStreamReader(is);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             while ((line = bufferedReader.readLine()) != null) {
                 String[] lineString = line.split(": ");
                 linesInFile.add(lineString);
             }
             bufferedReader.close();
+            fileReader.close();
+            is.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -42,6 +85,7 @@ public abstract class TextDatabase<T> implements Database<T> {
             String stringToDelete = question.toString();
             File inputFile = new File(path);
             File tempFile = new File("src/model/db/temp.txt");
+            //File tempFile = new File(File.separator + "ZelfEvaluatieApp" + File.separator + "temp.txt");
 
             BufferedReader reader = new BufferedReader(new FileReader(inputFile));
             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
@@ -82,7 +126,7 @@ public abstract class TextDatabase<T> implements Database<T> {
         items.add(item);
         try {
             String string = item.toString();
-            FileWriter fileWriter = new FileWriter(path, true);
+            FileWriter fileWriter = new FileWriter("src/model/db/" + this.path, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.newLine();
             bufferedWriter.write(string);

@@ -25,12 +25,6 @@ public class CategoryDBText extends TextDatabase<Category> {
 
     //List<Category> categories;
 
-    /**
-     * The path where the file containing the Categories is located.
-     */
-
-    private String path = "src/model/db/groep.txt";
-
 
     /**
      * Creates a new CategoryDBText by calling it's Builder class.
@@ -39,15 +33,12 @@ public class CategoryDBText extends TextDatabase<Category> {
      */
 
 	private CategoryDBText() {
-	    super("src/model/db/groep.txt");
+	    super("groep.txt");
 		//this.categories = readItems(readFile());
         this.uniqueInstance = this;
 		//readCategories();
 	}
 
-	public String getPath() {
-	    return this.path;
-    }
 
     /**
      * Reads in all Categories already stored in the List of Categories.

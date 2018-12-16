@@ -27,28 +27,17 @@ public class QuestionDBText extends TextDatabase<Question> {
 	//private List<Question> questions;
 
 	/**
-	 * The path where the file containing the Questions is located.
-	 */
-
-	private String path = "src/model/db/vraag.txt";
-
-
-
-	/**
 	 * Creates a new QuestionDB via the Builder.
 	 * No parameters are to be given, since the path is statically determined.
 	 */
 
 	private QuestionDBText() {
-		super("src/model/db/vraag.txt");
+		super("vraag.txt");
 		//this.questions = readItems(readFile());
 		this.uniqueInstance = this;
 		//testQuestions();
 	}
 
-	public String getPath() {
-		return this.path;
-	}
 	/**
 	 * Prints an easily readable version of each existing Question object contained within the List.
 	 */
