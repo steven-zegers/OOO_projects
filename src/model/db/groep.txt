@@ -1,4 +1,5 @@
 Java: Java extra's
-Design patterns: Design patterns discussed this year: Java
 UML: Technique of drawing a class diagram
 Design Principles: The SOLID design principles
+VHDL: Hardware Design Language: Design Principles
+Design patterns: Design patterns discussed this year: Java
