@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.db.*;
 
-import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -244,6 +243,30 @@ public class Facade implements Subject {
         }
     }
 
+    public String readOldScore() {
+        String line;
+        List<String> linesInFile = new ArrayList<>();
+        String oldScore = "";
+        try {
+            //InputStream is = getClass().getResourceAsStream(this.path);
+            //InputStreamReader fileReader = new InputStreamReader(is);
+            FileReader fileReader = new FileReader(File.separator + "ZelfEvaluatieApp" + File.separator + "score.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while ((line = bufferedReader.readLine()) != null) {
+                linesInFile.add(line);
+            }
+            for (String score: linesInFile) {
+                oldScore += score + "\n";
+            }
+            bufferedReader.close();
+            fileReader.close();
+            //is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return oldScore;
+    }
+
 
     //Observer
     @Override
@@ -271,5 +294,4 @@ public class Facade implements Subject {
             observer.update();
         }
     }
-
 }

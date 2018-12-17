@@ -140,8 +140,35 @@ public class Test
     }
 
     public void setTestFinished() {
+        writeScore();
         this.isTestFinished = true;
-
         facade.updateProperties();
+    }
+
+    public void writeScore() {
+        File localFile = new File(File.separator + "ZelfEvaluatieApp" + File.separator + "score.txt");
+        try {
+            boolean created = localFile.createNewFile();
+            if (!created) {
+                PrintWriter pw = new PrintWriter(localFile.getPath());
+                pw.close();
+            }
+
+            String[] lines = facade.getScoreString().split("\n");
+            FileWriter fileWriter = new FileWriter(localFile.getPath());
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            int number = 0;
+            for (String line : lines) {
+                if (number != 0) {
+                    bufferedWriter.newLine();
+                }
+                bufferedWriter.write(line);
+                number++;
+            }
+            bufferedWriter.close();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

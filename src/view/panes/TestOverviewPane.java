@@ -32,7 +32,7 @@ public class TestOverviewPane extends GridPane implements Observer{
         this.setVgap(5);
         this.setHgap(5);
 
-        scoreField = new Label("");
+		scoreField = new Label("");
 
 		add(scoreField, 0, 0, 1, 1);
 		setHalignment(scoreField, HPos.CENTER);
@@ -46,19 +46,19 @@ public class TestOverviewPane extends GridPane implements Observer{
 
 		if(facade.isFinishedBefore())
 		{
-			finished = "You have finished this evaluation before.";
+			finished = "You have finished this test before! Previous score: \n" + facade.readOldScore() + "\nWould you like to retake it?";
 		}
 		else
 		{
 			finished = "You have never finished this evaluation before.";
 		}
 
-		finishedField = new Label(finished);
-
-		add(finishedField, 0, 2, 1, 1);
-		setHalignment(finishedField, HPos.CENTER);
+		scoreField.setText(finished);
 
 		testButton = new Button("Evaluate");
+		if (facade.isFinishedBefore()) {
+			testButton.setText("Retake test");
+		}
 
 		add(testButton, 0,3,1,1);
 		setHalignment(testButton, HPos.CENTER);
@@ -82,6 +82,7 @@ public class TestOverviewPane extends GridPane implements Observer{
 			if(facade.getFeedbackType().equals("score")) {
 				scoreField.setText(facade.getScoreString());
 			} else if (facade.getFeedbackType().equals("feedback")) {
+				scoreField.setText("");
 				if(facade.isItAPerfectTest()) {
 					feedbackField.setText("Schitterend! Alles perfect!");
 				} else {
@@ -89,8 +90,10 @@ public class TestOverviewPane extends GridPane implements Observer{
 				}
 
 			}
-
-			finishedField.setText("");
+		} else {
+			if (facade.isFinishedBefore()) {
+				scoreField.setText(facade.readOldScore());
+			}
 		}
 
 
