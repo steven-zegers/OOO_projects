@@ -186,10 +186,33 @@ public class Facade implements Subject {
     {
         this.properties = new Properties();
         InputStream input;
-
+        File localFile = new File(File.separator + "ZelfEvaluatieApp" + File.separator + "evaluation.properties");
         try
         {
-            input =  this.getClass().getResourceAsStream("evaluation.properties");
+            boolean succes = localFile.createNewFile();
+            if (succes) {
+                input =  this.getClass().getResourceAsStream("evaluation.properties");
+                InputStreamReader fileReader = new InputStreamReader(input);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                FileWriter fileWriter = new FileWriter(localFile.getPath());
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                String line;
+                int numberOfLine = 0;
+                while ((line = bufferedReader.readLine()) != null) {
+                    if (numberOfLine != 0) {
+                        bufferedWriter.newLine();
+                    }
+                    numberOfLine++;
+                    bufferedWriter.write(line);
+                }
+                bufferedReader.close();
+                fileReader.close();
+                bufferedWriter.close();
+                fileWriter.close();
+            }
+            input = new FileInputStream(File.separator + "ZelfEvaluatieApp" + File.separator + "evaluation.properties");
+
+
             //input = new FileInputStream("evaluation.properties");
             this.properties.load(input);
 
@@ -197,7 +220,7 @@ public class Facade implements Subject {
         }
         catch(IOException e)
         {
-            System.out.println(e.getStackTrace());
+            e.getStackTrace();
         }
 
     }
@@ -231,7 +254,7 @@ public class Facade implements Subject {
 
         try
         {
-            out = new FileOutputStream("src/model/domain/evaluation.properties");
+            out = new FileOutputStream(File.separator + "ZelfEvaluatieApp" + File.separator + "evaluation.properties");
 
             properties.store(out, null);
 
