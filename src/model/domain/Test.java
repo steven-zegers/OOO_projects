@@ -142,7 +142,7 @@ public class Test
     public void setTestFinished() {
         writeScore();
         this.isTestFinished = true;
-        facade.updateProperties();
+        facade.setPropertyFinishedBefore();
     }
 
     public void writeScore() {

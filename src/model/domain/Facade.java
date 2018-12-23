@@ -184,6 +184,12 @@ public class Facade implements Subject {
 
     private void loadProperties()
     {
+        /*
+        We will store the properties on the home directory of the user of the program in a directory called
+        ZelfEvaluatieApp. The first time the user executes the program we will have to make a copy of the standard
+        property file (which will have mode=score and finished=false). Afterwards we will always update the local
+        property file.
+         */
         this.properties = new Properties();
         InputStream input;
         File localFile = new File(File.separator + "ZelfEvaluatieApp" + File.separator + "evaluation.properties");
@@ -232,8 +238,6 @@ public class Facade implements Subject {
 
     public boolean isFinishedBefore()
     {
-        System.out.println("hier" + properties.getProperty("finished"));
-
         String finished = properties.getProperty("finished");
 
         if(finished.equals("true"))
@@ -246,18 +250,30 @@ public class Facade implements Subject {
         }
     }
 
-    public void updateProperties()
+    public void setPropertyFinishedBefore()
     {
         properties.setProperty("finished", "true");
+        saveProperty();
+    }
 
+    public List<String> getEvaluationTypes() {
+        ArrayList<String> feedbackTypes = new ArrayList<>();
+        feedbackTypes.add("Score");
+        feedbackTypes.add("Feedback");
+        return feedbackTypes;
+    }
+
+    public void updateEvaluationType(String evaluationType) {
+        //TODO check if it is a valid evaluation type and update test
+        properties.setProperty("mode", evaluationType);
+        saveProperty();
+    }
+
+    public void saveProperty() {
         OutputStream out = null;
-
-        try
-        {
+        try {
             out = new FileOutputStream(File.separator + "ZelfEvaluatieApp" + File.separator + "evaluation.properties");
-
             properties.store(out, null);
-
             out.close();
         }
         catch (IOException e)

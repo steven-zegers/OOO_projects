@@ -28,8 +28,8 @@ public class NewCategoryPane extends GridPane implements Observer {
 
 	public NewCategoryPane(Facade facade) {
 		setFacade(facade);
-		this.setPrefHeight(150);
-		this.setPrefWidth(300);
+		this.setPrefHeight(300);
+		this.setPrefWidth(400);
 		List<String> titles = facade.getCategoryTitles();
 		ObservableList<String> categoryTitleList = FXCollections.observableArrayList(titles);
 		this.setPadding(new Insets(5, 5, 5, 5));

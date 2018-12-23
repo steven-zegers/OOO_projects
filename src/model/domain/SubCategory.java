@@ -11,6 +11,7 @@ public class SubCategory extends Category {
         return superCategory;
     }
     public void setSuperCategory(Category superCategory) {
+        if (superCategory.getTitle().equals(this.getTitle())) throw new DomainException("A category cannot be its own main category.");
         this.superCategory = superCategory;
     }
 }
