@@ -65,8 +65,6 @@ public class CategoryDBText extends TextDatabase<Category> {
     @Override
     public Category getItem(String title) {
 		for (Category category : this.getItems()) {
-		    System.out.println(category.getTitle().toLowerCase());
-		    System.out.println(title.toLowerCase());
 			if (category.getTitle().toLowerCase().equals(title.toLowerCase())) {
 				return category;
 			}

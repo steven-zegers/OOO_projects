@@ -6,6 +6,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.domain.Facade;
 import view.panes.NewCategoryPane;
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 
 public class NewCategoryWindow extends Stage {
 

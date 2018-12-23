@@ -11,6 +11,12 @@ import model.domain.Facade;
 import model.domain.Test;
 import view.panes.*;
 
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
+
 public class MainWindow extends Stage {
 
 	private BorderPane mainPane;

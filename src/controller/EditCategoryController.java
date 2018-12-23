@@ -11,7 +11,11 @@ import view.panes.NewCategoryPane;
 import view.windows.NewCategoryWindow;
 
 import javax.swing.*;
-
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 public class EditCategoryController {
     private NewCategoryWindow window;
     private Facade facade;
@@ -68,7 +72,6 @@ public class EditCategoryController {
                 window.stop();
             } catch (Exception e) {
                 window.getStage().setAlwaysOnTop(false);
-                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
                 window.getStage().setAlwaysOnTop(true);
@@ -79,7 +82,6 @@ public class EditCategoryController {
     private class SaveButtonHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
-            //todo: update category
             try {
                 NewCategoryPane pane = window.getPane();
                 String title = pane.getTitleField().getText();
@@ -97,7 +99,6 @@ public class EditCategoryController {
                 window.stop();
             } catch (Exception e) {
                 window.getStage().setAlwaysOnTop(false);
-                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
                 window.getStage().setAlwaysOnTop(true);

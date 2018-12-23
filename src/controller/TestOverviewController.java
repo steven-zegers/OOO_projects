@@ -11,7 +11,11 @@ import view.panes.TestOverviewPane;
 import view.windows.TestWindow;
 
 import javax.swing.*;
-
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 public class TestOverviewController
 {
     private Facade facade;
@@ -58,7 +62,6 @@ public class TestOverviewController
             try {
                 new TestController(new Stage(), getFacade(), evaluation);
             } catch (Exception e) {
-                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
             }

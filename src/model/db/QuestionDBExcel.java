@@ -1,7 +1,11 @@
 package model.db;
 
 import java.util.List;
-
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 public class QuestionDBExcel implements Database {
 
 	private static QuestionDBExcel uniqueInstance = new QuestionDBExcel();

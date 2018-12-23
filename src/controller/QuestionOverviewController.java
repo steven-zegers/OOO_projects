@@ -10,7 +10,11 @@ import model.domain.Question;
 import view.panes.QuestionOverviewPane;
 
 import javax.swing.*;
-
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 public class QuestionOverviewController {
 
     private QuestionOverviewPane pane;
@@ -43,7 +47,6 @@ public class QuestionOverviewController {
             try {
                 new NewQuestionController(new Stage(), getFacade());
             } catch (Exception e) {
-                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
             }

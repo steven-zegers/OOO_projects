@@ -3,7 +3,11 @@ package application;
 import controller.MainWindowController;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 public class Main extends Application {
 
 	@Override
@@ -18,7 +22,6 @@ public class Main extends Application {
             Application.launch(args);
         }
         catch (Exception e) {
-            System.out.println(e.getMessage());
             e.printStackTrace();
         }
 	}

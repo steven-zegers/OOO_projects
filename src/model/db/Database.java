@@ -1,5 +1,9 @@
 package model.db;
-
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 import java.util.List;
 
 public interface Database<T> {
