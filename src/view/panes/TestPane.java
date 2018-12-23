@@ -90,6 +90,7 @@ public class TestPane extends GridPane implements Observer {
 	@Override
 	public void update() {
 		this.box.getChildren().clear();
+		this.questionField.setText(facade.getTitleOfCurrentQuestionOfCurrentTest());
 		List<String> statementList = facade.getStatementsOfCurrentQuestion();
 		List<String> shuffledAnswers = new ArrayList<>(statementList);
 		Collections.shuffle(shuffledAnswers);

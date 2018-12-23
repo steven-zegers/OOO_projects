@@ -148,6 +148,7 @@ public class Facade implements Subject {
 
     public void advanceCurrentTest() {
         getCurrentTest().advanceTest();
+        this.notifyObservers();
     }
 
     public void handleIncorrectAnswer(Question question) {
@@ -239,10 +240,9 @@ public class Facade implements Subject {
 
     }
 
-    public EvaluationType getEvaluationType()
+    public String getEvaluationType()
     {
-        String evaluationTypeString = properties.getProperty("mode");
-        return EvaluationType.valueOf(evaluationTypeString.substring(0,1).toUpperCase() + evaluationTypeString.substring(1));
+        return properties.getProperty("mode");
     }
 
     public boolean isFinishedBefore()
@@ -265,8 +265,17 @@ public class Facade implements Subject {
         saveProperty();
     }
 
+    public List<String> getEvaluationTypes() {
+        ArrayList<String> feedbackTypes = new ArrayList<>();
+        for(EvaluationType evaluationType : EvaluationType.values()) {
+            System.out.println(evaluationType.getType());
+            feedbackTypes.add(evaluationType.getType());
+        }
+        return feedbackTypes;
+    }
+
     public void updateEvaluationType(String evaluationType) {
-        //TODO check if it is a valid evaluation type and update test
+        if (!getEvaluationTypes().contains(evaluationType)) throw new DomainException("This is not a recognized feedback type");
         properties.setProperty("mode", evaluationType);
         saveProperty();
     }

@@ -39,14 +39,14 @@ public class SettingsPane extends GridPane {
         label.setText("Which kind of evaluation would you like?");
         radioButtons = new ArrayList<>();
         feedbackGroup = new ToggleGroup();
-        for (EvaluationType evaluationType : EvaluationType.values()) {
-            RadioButton radioButton = new RadioButton(evaluationType.name());
+        for (String feedbackType : facade.getEvaluationTypes()) {
+            RadioButton radioButton = new RadioButton(feedbackType);
             radioButtons.add(radioButton);
             radioButton.setToggleGroup(feedbackGroup);
             box.getChildren().add(radioButton);
         }
         for (RadioButton button : radioButtons) {
-            if (button.getText().equals(facade.getEvaluationType().name())) {
+            if (button.getText().equals(facade.getEvaluationType())) {
                 button.setSelected(true);
             }
         }
@@ -67,7 +67,7 @@ public class SettingsPane extends GridPane {
         @Override
         public  void handle(ActionEvent arg0) {
             if (!getSelectedStatement().toLowerCase().equals(facade.getEvaluationType())) {
-                facade.updateEvaluationType(getSelectedStatement().toLowerCase());
+                facade.updateEvaluationType(getSelectedStatement());
             }
         }
     }

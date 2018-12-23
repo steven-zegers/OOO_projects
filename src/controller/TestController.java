@@ -64,7 +64,6 @@ public class TestController {
                 }
                 if (facade.getCurrentTest().canAdvance()) {
                     facade.advanceCurrentTest();
-                    facade.notifyObservers();
                 } else {
                     facade.setCurrentTestFinished();
                     getWindow().stop();
