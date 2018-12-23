@@ -22,6 +22,7 @@ public class Facade implements Subject {
     private Test test;
     private DbFactory dbFactory;
     private Properties properties;
+    private Evaluation evaluation;
 
     public Facade() {
         this.dbFactory = new DbFactory();
@@ -104,7 +105,15 @@ public class Facade implements Subject {
         return getCurrentTest().getCurrentQuestion();
     }
 
+    //Evaluation
 
+    public void setEvaluation(Evaluation evaluation) {
+        this.evaluation = evaluation;
+    }
+
+    public Evaluation getEvaluation() {
+        return this.evaluation;
+    }
 
     //Test
 
@@ -147,17 +156,11 @@ public class Facade implements Subject {
 
 
     public String getFullFeedback() {
-        return getCurrentTest().getFullFeedback();
+        return this.test.getEvaluationText();
     }
 
     public String getScoreString() {
-        String scoreString = "";
-        String totaleScore = Integer.toString(getCurrentTest().getScore());
-        scoreString += "Your score: " + totaleScore + "/" + getQuestions().size() + "\n";
-        for (String categoryTitle : getCategoryTitles()) {
-            scoreString += "Category " + categoryTitle + ": " + Integer.toString(getScoreOfCategory(categoryTitle)) + "/" + getAmountOfQuestionsOfCategory(categoryTitle) + "\n";
-        }
-        return scoreString;
+        return this.evaluation.getEvaluationText();
     }
 
     public boolean isItAPerfectTest() {
@@ -236,7 +239,7 @@ public class Facade implements Subject {
 
     }
 
-    public String getFeedbackType()
+    public String getEvaluationType()
     {
         return properties.getProperty("mode");
     }
