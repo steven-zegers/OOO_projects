@@ -21,7 +21,7 @@ public class TestController {
         Test test = new Test(facade);
         facade.setCurrentTest(test);
         setWindow(new TestWindow(stage, facade));
-
+        facade.addObserver(getWindow().getPane());
         this.window.setProcessAnswerAction(new ProcessAnswerHandler());
         this.window.setAlwaysOnTop(true);
         this.window.start();
@@ -52,13 +52,13 @@ public class TestController {
                     String categoryOfQuestion = facade.getCurrentQuestionCategoryTitle();
                     facade.handleQuestionOfCategoryCorrect(categoryOfQuestion);
                 } else {
-                    Question question = facade.getCurrentQuestion();
-                    facade.handleIncorrectAnswer(question);
+                    facade.handleIncorrectAnswer(facade.getCurrentQuestion());
                 }
                 if (facade.getCurrentTest().canAdvance()) {
                     facade.advanceCurrentTest();
-                    setWindow(new TestWindow(getWindow().getStage(), facade));
-                    getWindow().setProcessAnswerAction(new ProcessAnswerHandler());
+                    //setWindow(new TestWindow(getWindow().getStage(), facade));
+                    //getWindow().setProcessAnswerAction(new ProcessAnswerHandler());
+                    getWindow().getPane().update();
                 } else {
                     facade.setCurrentTestFinished();
                     getWindow().stop();

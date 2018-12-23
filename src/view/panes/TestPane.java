@@ -17,15 +17,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import model.domain.Facade;
+import model.domain.Observer;
 import model.domain.Question;
 
-public class TestPane extends GridPane {
+public class TestPane extends GridPane implements Observer {
 	private Label questionField;
 	private Button submitButton;
 	private ToggleGroup statementGroup;
 	private Facade facade;
 	private ObservableList<String> statements;
 	private List<RadioButton> radioButtons;
+	private VBox box;
 
 	public TestPane (Facade facade){
 		setFacade(facade);
@@ -45,7 +47,7 @@ public class TestPane extends GridPane {
 		Collections.shuffle(shuffledAnswers);
 		statements = FXCollections.observableArrayList(shuffledAnswers);
 		statementGroup = new ToggleGroup();
-		VBox box = new VBox();
+		this.box = new VBox();
 		radioButtons = new ArrayList<>();
 		for (String statement : statements) {
 			RadioButton radioButton = new RadioButton(statement);
@@ -85,4 +87,21 @@ public class TestPane extends GridPane {
 		this.facade = facade;
 	}
 
+	@Override
+	public void update() {
+		this.box.getChildren().clear();
+		List<String> statementList = facade.getStatementsOfCurrentQuestion();
+		List<String> shuffledAnswers = new ArrayList<>(statementList);
+		Collections.shuffle(shuffledAnswers);
+		statements = FXCollections.observableArrayList(shuffledAnswers);
+		statementGroup = new ToggleGroup();
+		radioButtons = new ArrayList<>();
+		for (String statement : statements) {
+			RadioButton radioButton = new RadioButton(statement);
+			radioButtons.add(radioButton);
+			radioButton.setToggleGroup(statementGroup);
+			box.getChildren().add(radioButton);
+		}
+		radioButtons.get(0).setSelected(true);
+	}
 }
