@@ -20,8 +20,8 @@ public class TestController {
         Test test = new Test(facade);
         facade.setCurrentTest(test);
         setWindow(new TestWindow(stage, facade));
-		facade.addObserver(getWindow().getPane());
-        setEvaluation(evaluation);
+        facade.addObserver(getWindow().getPane());
+		setEvaluation(evaluation);
         this.window.setProcessAnswerAction(new ProcessAnswerHandler());
         this.window.setAlwaysOnTop(true);
         this.window.start();
