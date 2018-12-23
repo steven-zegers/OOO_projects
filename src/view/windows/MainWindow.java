@@ -9,10 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.domain.Facade;
 import model.domain.Test;
-import view.panes.AssesMainPane;
-import view.panes.CategoryOverviewPane;
-import view.panes.TestOverviewPane;
-import view.panes.QuestionOverviewPane;
+import view.panes.*;
 
 public class MainWindow extends Stage {
 
@@ -39,10 +36,12 @@ public class MainWindow extends Stage {
 		TestOverviewPane testOverviewPane = new TestOverviewPane(this.facade);
 		testOverviewController.setPane(testOverviewPane);
 
+		SettingsPane settingsPane = new SettingsPane(this.facade);
+
 		Group root = new Group();
 		Scene scene = new Scene(root, 750, 400);
 
-		BorderPane borderPane = new AssesMainPane(testOverviewPane, categoryOverviewPane, questionOverviewPane);
+		BorderPane borderPane = new AssesMainPane(testOverviewPane, categoryOverviewPane, questionOverviewPane, settingsPane);
 		borderPane.prefHeightProperty().bind(scene.heightProperty());
 		borderPane.prefWidthProperty().bind(scene.widthProperty());
 		this.setMainPane(borderPane);

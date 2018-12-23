@@ -18,7 +18,7 @@ public class NewCategoryWindow extends Stage {
 		this.setStage(stage);
 		this.setPane(new NewCategoryPane(facade));
 
-		Scene mainScene = new Scene(this.getPane(), 250,150);
+		Scene mainScene = new Scene(this.getPane(), 400,300);
 		this.getStage().setTitle("New Category");
 		this.getStage().setScene(mainScene);
 		sizeToScene();
