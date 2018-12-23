@@ -3,64 +3,30 @@
   <ID>JAVA</ID>
   <OriginalElement>view</OriginalElement>
   <nodes>
-    <node x="348.00000000000006" y="1225.0">view.panes.AssesMainPane</node>
-    <node x="586.0" y="1458.0">view.windows.MainWindow</node>
-    <node x="968.0" y="1114.0">view.panes.TestOverviewPane</node>
-    <node x="620.0" y="1103.0">view.panes.QuestionOverviewPane</node>
-    <node x="435.0" y="0.0">view.panes.NewCategoryPane</node>
-    <node x="435.0" y="455.0">view.windows.NewCategoryWindow</node>
-    <node x="0.0" y="1125.0">view.panes.CategoryOverviewPane</node>
-    <node x="863.0" y="0.0">view.panes.TestPane</node>
-    <node x="863.0" y="345.0">view.windows.TestWindow</node>
-    <node x="0.0" y="675.0">view.windows.NewQuestionWindow</node>
+    <node x="0.0" y="1087.0">view.panes.AssesMainPane</node>
+    <node x="1039.0" y="835.0">view.windows.MainWindow</node>
+    <node x="730.0" y="835.0">view.panes.TestOverviewPane</node>
+    <node x="370.0" y="0.0">view.panes.NewCategoryPane</node>
+    <node x="370.0" y="539.0">view.panes.QuestionOverviewPane</node>
+    <node x="0.0" y="835.0">view.windows.NewCategoryWindow</node>
+    <node x="679.0" y="539.0">view.panes.CategoryOverviewPane</node>
+    <node x="734.0" y="0.0">view.panes.TestPane</node>
+    <node x="364.0" y="835.0">view.windows.TestWindow</node>
+    <node x="0.0" y="539.0">view.windows.NewQuestionWindow</node>
     <node x="0.0" y="0.0">view.panes.NewQuestionPane</node>
   </nodes>
   <notes />
-  <edges>
-    <edge source="view.windows.MainWindow" target="view.panes.CategoryOverviewPane">
-      <point x="-99.42857142857144" y="-136.5" />
-      <point x="602.5714285714287" y="1438.0" />
-      <point x="82.0" y="1438.0" />
-      <point x="-82.0" y="125.5" />
-    </edge>
-    <edge source="view.windows.MainWindow" target="view.panes.AssesMainPane">
-      <point x="-33.14285714285711" y="-136.5" />
-      <point x="668.8571428571429" y="1418.0" />
-      <point x="474.00000000000006" y="1418.0" />
-      <point x="0.0" y="25.5" />
-    </edge>
-    <edge source="view.windows.MainWindow" target="view.panes.QuestionOverviewPane">
-      <point x="33.14285714285711" y="-136.5" />
-      <point x="735.1428571428571" y="1418.0" />
-      <point x="866.0" y="1418.0" />
-      <point x="82.0" y="147.5" />
-    </edge>
-    <edge source="view.windows.MainWindow" target="view.panes.TestOverviewPane">
-      <point x="66.28571428571433" y="-136.5" />
-      <point x="768.2857142857144" y="1428.0" />
-      <point x="1050.0" y="1428.0" />
-      <point x="-82.0" y="136.5" />
-    </edge>
-    <edge source="view.windows.NewQuestionWindow" target="view.panes.NewQuestionPane">
-      <point x="130.0" y="-191.5" />
-      <point x="130.0" y="312.5" />
-    </edge>
-    <edge source="view.windows.TestWindow" target="view.panes.TestPane">
-      <point x="-127.66666666666674" y="-158.5" />
-      <point x="-127.66666666666663" y="147.5" />
-    </edge>
-    <edge source="view.windows.NewCategoryWindow" target="view.panes.NewCategoryPane">
-      <point x="0.0" y="-169.5" />
-      <point x="0.0" y="202.5" />
-    </edge>
-  </edges>
-  <settings layout="Hierarchic Group" zoom="0.2684180468303826" x="648.0" y="865.5000000000001" />
-  <SelectedNodes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.2684180468303826" x="648.0" y="866.0" />
+  <SelectedNodes>
+    <node>view.panes.AssesMainPane</node>
+  </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
     <Category>Constructors</Category>
     <Category>Methods</Category>
     <Category>Inner Classes</Category>
+    <Category>Properties</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>

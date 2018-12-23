@@ -3,55 +3,76 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="310.0" y="89.0">model.db.QuestionDBExcel</node>
-    <node x="152.99999999999997" y="89.0">model.db.CategoryDBExcel</node>
-    <node x="0.0" y="89.0">model.db.CategoryDBText</node>
-    <node x="467.0" y="89.0">model.domain.Facade</node>
-    <node x="385.375" y="0.0">model.db.Database</node>
-    <node x="264.98214285714283" y="168.0">model.db.QuestionDBText</node>
+    <node x="223.58749999999998" y="0.0">model.domain.Evaluation</node>
+    <node x="0.0" y="89.0">model.domain.FeedbackEvaluation</node>
+    <node x="740.0" y="89.0">model.db.QuestionDBExcel</node>
+    <node x="583.0" y="89.0">model.db.CategoryDBExcel</node>
+    <node x="430.0" y="89.0">model.db.CategoryDBText</node>
+    <node x="325.0" y="89.0">model.domain.Facade</node>
+    <node x="173.0" y="89.0">model.domain.ScoreEvaluation</node>
+    <node x="626.68125" y="168.0">model.db.QuestionDBText</node>
+    <node x="526.0" y="0.0">model.db.Database</node>
   </nodes>
   <notes />
   <edges>
     <edge source="model.db.CategoryDBText" target="model.db.Database">
       <point x="0.0" y="-14.5" />
-      <point x="66.5" y="49.0" />
-      <point x="393.375" y="49.0" />
-      <point x="-40.0" y="14.5" />
+      <point x="496.5" y="69.0" />
+      <point x="566.0" y="69.0" />
+      <point x="-8.0" y="14.5" />
     </edge>
     <edge source="model.db.QuestionDBText" target="model.db.Database">
-      <point x="33.25" y="-14.5" />
-      <point x="364.73214285714283" y="143.0" />
-      <point x="562.5" y="143.0" />
-      <point x="562.5" y="49.0" />
-      <point x="473.375" y="49.0" />
+      <point x="33.25000000000003" y="-14.5" />
+      <point x="726.43125" y="143.0" />
+      <point x="887.5" y="143.0" />
+      <point x="887.5" y="49.0" />
+      <point x="614.0" y="49.0" />
       <point x="40.0" y="14.5" />
     </edge>
     <edge source="model.domain.Facade" target="model.db.Database">
-      <point x="21.25" y="-14.5" />
-      <point x="530.75" y="59.0" />
-      <point x="457.375" y="59.0" />
-      <point x="24.0" y="14.5" />
+      <point x="31.875" y="-14.5" />
+      <point x="399.375" y="59.0" />
+      <point x="550.0" y="59.0" />
+      <point x="-24.0" y="14.5" />
+    </edge>
+    <edge source="model.domain.ScoreEvaluation" target="model.domain.Evaluation">
+      <point x="0.0" y="-14.5" />
+      <point x="239.0" y="69.0" />
+      <point x="262.2125" y="69.0" />
+      <point x="-12.875" y="14.5" />
+    </edge>
+    <edge source="model.domain.FeedbackEvaluation" target="model.domain.Evaluation">
+      <point x="0.0" y="-14.5" />
+      <point x="76.5" y="59.0" />
+      <point x="236.46249999999998" y="59.0" />
+      <point x="-38.625" y="14.5" />
+    </edge>
+    <edge source="model.domain.Facade" target="model.domain.Evaluation">
+      <point x="-31.875" y="-14.5" />
+      <point x="335.625" y="69.0" />
+      <point x="287.9625" y="69.0" />
+      <point x="12.875" y="14.5" />
     </edge>
     <edge source="model.db.QuestionDBText" target="model.db.CategoryDBText">
-      <point x="-33.25" y="-14.5" />
-      <point x="298.23214285714283" y="143.0" />
-      <point x="66.5" y="143.0" />
+      <point x="-33.24999999999997" y="-14.5" />
+      <point x="659.93125" y="143.0" />
+      <point x="496.5" y="143.0" />
       <point x="0.0" y="14.5" />
     </edge>
     <edge source="model.db.CategoryDBExcel" target="model.db.Database">
       <point x="0.0" y="-14.5" />
-      <point x="221.49999999999997" y="59.0" />
-      <point x="409.375" y="59.0" />
-      <point x="-24.0" y="14.5" />
+      <point x="651.5" y="69.0" />
+      <point x="582.0" y="69.0" />
+      <point x="8.0" y="14.5" />
     </edge>
     <edge source="model.db.QuestionDBExcel" target="model.db.Database">
       <point x="0.0" y="-14.5" />
-      <point x="378.5" y="69.0" />
-      <point x="425.375" y="69.0" />
-      <point x="-8.0" y="14.5" />
+      <point x="808.5" y="59.0" />
+      <point x="598.0" y="59.0" />
+      <point x="24.0" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.41734019103600295" x="572.5" y="670.5" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="281.5" y="98.5" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
