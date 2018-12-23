@@ -66,6 +66,7 @@ public class QuestionDBText extends TextDatabase<Question> {
 		CategoryDBText categoryDB = CategoryDBText.getInstance();
 		List<Question> questions = new ArrayList<>();
 		for(String[] line : text) {
+			System.out.println(line[1]);
 			Category questionCategory = categoryDB.getItem(line[0]);
 			String question = line[1];
 			String feedback = line[2];

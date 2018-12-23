@@ -142,6 +142,8 @@ public class EditQuestionController {
                 NewQuestionPane pane = window.getPane();
                 String statement = pane.getStatementField().getText();
                 if (statement.contains(":") || statement.contains(";") || statement.trim().isEmpty()) throw new IllegalArgumentException("Please do not use any ':' or ';' in your statements.");
+                ArrayList<String> statements = new ArrayList<>(Arrays.asList(pane.getStatementsArea().getText().split("\n")));
+                if (statements.contains(statement)) throw new IllegalArgumentException("You can't add 2 statements that are the same. ");
                 pane.getStatementsArea().appendText(statement + "\n");
                 pane.getStatementField().clear();
             } catch (Exception e) {
