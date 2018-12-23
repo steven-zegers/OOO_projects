@@ -58,7 +58,7 @@ public class TestController {
                     facade.advanceCurrentTest();
                     //setWindow(new TestWindow(getWindow().getStage(), facade));
                     //getWindow().setProcessAnswerAction(new ProcessAnswerHandler());
-                    getWindow().getPane().update();
+                    facade.notifyObservers();
                 } else {
                     facade.setCurrentTestFinished();
                     getWindow().stop();
