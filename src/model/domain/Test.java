@@ -57,6 +57,7 @@ public class Test
     }
 
     public void initializeQuestionAmountsPerCategory() {
+        System.out.println("now");
         for(String categoryTitle : facade.getCategoryTitles()) {
             totalQuestionsOfEachCategory.put(categoryTitle, 0);
         }

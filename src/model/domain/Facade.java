@@ -76,8 +76,8 @@ public class Facade implements Subject {
 
     public void addCategory(Category category) {
         this.getCategoryDB().addItem(category);
-        this.getCurrentTest().initializeScoresOfCategories();
-        this.getCurrentTest().initializeQuestionAmountsPerCategory();
+        //this.getCurrentTest().initializeScoresOfCategories();
+        //this.getCurrentTest().initializeQuestionAmountsPerCategory();
         this.notifyObservers();
     }
 
@@ -97,7 +97,7 @@ public class Facade implements Subject {
 
     public void addQuestion(Question question) {
         this.getQuestionDB().addItem(question);
-        this.getCurrentTest().initializeQuestionAmountsPerCategory();
+        //this.getCurrentTest().initializeQuestionAmountsPerCategory();
         this.notifyObservers();
     }
 

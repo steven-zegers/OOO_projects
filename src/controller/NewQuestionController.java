@@ -10,6 +10,7 @@ import view.panes.NewQuestionPane;
 import view.windows.NewQuestionWindow;
 
 import javax.swing.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -49,6 +50,8 @@ public class NewQuestionController {
             try {
                 NewQuestionPane pane = window.getPane();
                 String statement = pane.getStatementField().getText();
+                ArrayList<String> statements = new ArrayList<>(Arrays.asList(pane.getStatementsArea().getText().split("\n")));
+                if (statements.contains(statement)) throw new IllegalArgumentException("You can't add 2 statements that are the same. ");
                 if (statement.contains(":") || statement.contains(";") || statement.trim().isEmpty()) throw new IllegalArgumentException("Please do not use any ':' or ';' in your statements.");
                 pane.getStatementsArea().appendText(statement + "\n");
                 pane.getStatementField().clear();
