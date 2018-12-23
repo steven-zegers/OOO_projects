@@ -8,7 +8,11 @@ import view.panes.TestOverviewPane;
 import view.windows.TestWindow;
 
 import javax.swing.*;
-
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 public class TestOverviewController
 {
     private Facade facade;

@@ -8,6 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 public class Test
 {
     private ObservableList<Question> questions;

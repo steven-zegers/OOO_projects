@@ -10,7 +10,11 @@ import model.domain.Question;
 import view.panes.QuestionOverviewPane;
 
 import javax.swing.*;
-
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 public class QuestionOverviewController {
 
     private QuestionOverviewPane pane;

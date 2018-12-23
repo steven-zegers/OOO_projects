@@ -14,7 +14,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 public class EditQuestionController {
     NewQuestionWindow window;
     private Facade facade;
@@ -84,7 +88,6 @@ public class EditQuestionController {
     private class SaveButtonHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
-            //todo: update category
             try {
                 NewQuestionPane pane = window.getPane();
                 String questionTitle = pane.getQuestionField().getText();

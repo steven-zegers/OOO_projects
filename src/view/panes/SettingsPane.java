@@ -19,6 +19,9 @@ import model.domain.SubCategory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Steven Zegers
+ */
 public class SettingsPane extends GridPane {
     private List<RadioButton> radioButtons;
     private ToggleGroup feedbackGroup;

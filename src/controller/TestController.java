@@ -7,7 +7,11 @@ import model.domain.Facade;
 import model.domain.Question;
 import model.domain.Test;
 import view.windows.TestWindow;
-
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 public class TestController {
     private Facade facade;
     private TestWindow window;

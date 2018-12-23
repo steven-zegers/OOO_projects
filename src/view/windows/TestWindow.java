@@ -11,6 +11,12 @@ import view.panes.TestPane;
 
 import java.util.List;
 
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
+
 public class TestWindow extends Stage
 {
     private Stage stage;

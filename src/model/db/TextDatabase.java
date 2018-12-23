@@ -3,7 +3,11 @@ package model.db;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 public abstract class TextDatabase<T> implements Database<T> {
     private List<T> items;
     private String path;
@@ -16,6 +20,12 @@ public abstract class TextDatabase<T> implements Database<T> {
     }
 
     private void createLocalFile() {
+        /*
+        As we also have to be able to use the application when its a jar file we will have to make a copy of the
+        standard database questions and categories that reside outside of the jar (as they won't be editable
+        otherwise). For this reason upon first execution of the application we will make a copy of the text files on the
+        home directory in a new directory ZelfEvaluatieApp.
+         */
         File localFile = new File(File.separator + "ZelfEvaluatieApp" + File.separator + path);
         try {
             boolean createDir = localFile.getParentFile().mkdirs();

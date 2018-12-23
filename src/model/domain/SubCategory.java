@@ -1,5 +1,9 @@
 package model.domain;
-
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 public class SubCategory extends Category {
     private Category superCategory;
     public SubCategory(String title, String description, Category category) {

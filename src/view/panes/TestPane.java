@@ -55,7 +55,6 @@ public class TestPane extends GridPane {
 		}
 		radioButtons.get(0).setSelected(true);
 		add(box, 0, 2, 1, 1);
-		//TODO: Receive statements from facade
 
 		submitButton = new Button("Submit");
 		add(submitButton, 0, 11, 1, 1);

@@ -11,7 +11,11 @@ import model.domain.Observer;
 import view.panes.CategoryOverviewPane;
 
 import javax.swing.*;
-
+/**
+ * @author Thibault Stroobants
+ * @author Steven Zegers
+ * @author Wout De Boeck
+ */
 public class CategoryOverviewController {
 
 	private CategoryOverviewPane pane;
