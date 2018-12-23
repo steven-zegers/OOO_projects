@@ -32,10 +32,10 @@ public class Test
         questions = facade.getQuestions();
         this.facade = facade;
         switch (this.facade.getEvaluationType()){
-            case "score":
+            case "Score":
                 this.setEvaluation(new ScoreEvaluation());
                 break;
-            case "feedback":
+            case "Feedback":
                 this.setEvaluation(new FeedbackEvaluation());
                 break;
             default:
@@ -163,8 +163,8 @@ public class Test
     }
 
     public void setTestFinished() {
-        writeScore();
         this.isTestFinished = true;
+        writeScore();
         facade.setPropertyFinishedBefore();
     }
 
