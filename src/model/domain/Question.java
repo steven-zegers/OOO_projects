@@ -83,7 +83,7 @@ public class Question {
      */
 
     public void setQuestion(String question) {
-        if (question == null || question.isEmpty()) {
+        if (question == null || question.trim().isEmpty()) {
             throw new DomainException("Question can't be empty");
         }
         if(question.contains(":")) throw new DomainException("Please do not use any ':' in your question.");
@@ -120,7 +120,7 @@ public class Question {
      */
 
     public void addStatement(String statement) {
-        if (statement == null || statement.isEmpty()) {
+        if (statement == null || statement.trim().isEmpty()) {
             throw new DomainException("Statement can't be empty");
         }
         this.statements.add(statement);
@@ -167,7 +167,7 @@ public class Question {
      */
 
     public void setFeedback(String feedback) {
-        if (feedback == null || feedback.isEmpty()) {
+        if (feedback == null || feedback.trim().isEmpty()) {
             throw new DomainException("Feedback can't be empty");
         }
         this.feedback = feedback;
@@ -190,7 +190,7 @@ public class Question {
      */
 
     public void setCategoryTitle(String categoryTitle) {
-        if (categoryTitle == null || categoryTitle.isEmpty()) {
+        if (categoryTitle == null || categoryTitle.trim().isEmpty()) {
             throw new DomainException("CategoryTitle can't be empty");
         }
         this.categoryTitle = categoryTitle;

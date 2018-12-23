@@ -49,12 +49,11 @@ public class NewQuestionController {
             try {
                 NewQuestionPane pane = window.getPane();
                 String statement = pane.getStatementField().getText();
-                if (statement.contains(":") || statement.contains(";") || statement.isEmpty()) throw new IllegalArgumentException("Please do not use any ':' or ';' in your statements.");
+                if (statement.contains(":") || statement.contains(";") || statement.trim().isEmpty()) throw new IllegalArgumentException("Please do not use any ':' or ';' in your statements.");
                 pane.getStatementsArea().appendText(statement + "\n");
                 pane.getStatementField().clear();
             } catch (Exception e) {
                 window.getStage().setAlwaysOnTop(false);
-                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
                 window.getStage().setAlwaysOnTop(true);
@@ -80,7 +79,6 @@ public class NewQuestionController {
                 pane.getStatementField().clear();
             } catch (Exception e) {
                 window.getStage().setAlwaysOnTop(false);
-                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
                 window.getStage().setAlwaysOnTop(true);
@@ -107,7 +105,6 @@ public class NewQuestionController {
                 window.stop();
             } catch (Exception e) {
                 window.getStage().setAlwaysOnTop(false);
-                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
                 window.getStage().setAlwaysOnTop(true);
@@ -122,7 +119,6 @@ public class NewQuestionController {
                 window.stop();
             } catch (Exception e) {
                 window.getStage().setAlwaysOnTop(false);
-                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
                 window.getStage().setAlwaysOnTop(true);

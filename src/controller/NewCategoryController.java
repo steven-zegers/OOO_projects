@@ -46,7 +46,6 @@ public class NewCategoryController {
                 window.stop();
             } catch (Exception e) {
                 window.getStage().setAlwaysOnTop(false);
-                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
                 window.getStage().setAlwaysOnTop(true);
@@ -72,7 +71,6 @@ public class NewCategoryController {
                 window.stop();
             } catch (Exception e) {
                 window.getStage().setAlwaysOnTop(false);
-                //JOptionPane.showMessageDialog(null, e.getMessage(), e.getClass().getName(), 0);
                 ControllerHelper.showErrorMessage(e);
                 e.printStackTrace();
                 window.getStage().setAlwaysOnTop(true);

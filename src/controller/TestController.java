@@ -56,8 +56,6 @@ public class TestController {
                 }
                 if (facade.getCurrentTest().canAdvance()) {
                     facade.advanceCurrentTest();
-                    //setWindow(new TestWindow(getWindow().getStage(), facade));
-                    //getWindow().setProcessAnswerAction(new ProcessAnswerHandler());
                     facade.notifyObservers();
                 } else {
                     facade.setCurrentTestFinished();

@@ -22,7 +22,6 @@ public class Main extends Application {
             Application.launch(args);
         }
         catch (Exception e) {
-            System.out.println(e.getMessage());
             e.printStackTrace();
         }
 	}
