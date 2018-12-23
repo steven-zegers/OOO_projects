@@ -239,9 +239,10 @@ public class Facade implements Subject {
 
     }
 
-    public String getEvaluationType()
+    public EvaluationType getEvaluationType()
     {
-        return properties.getProperty("mode");
+        String evaluationTypeString = properties.getProperty("mode");
+        return EvaluationType.valueOf(evaluationTypeString.substring(0,1).toUpperCase() + evaluationTypeString.substring(1));
     }
 
     public boolean isFinishedBefore()
@@ -262,13 +263,6 @@ public class Facade implements Subject {
     {
         properties.setProperty("finished", "true");
         saveProperty();
-    }
-
-    public List<String> getEvaluationTypes() {
-        ArrayList<String> feedbackTypes = new ArrayList<>();
-        feedbackTypes.add("Score");
-        feedbackTypes.add("Feedback");
-        return feedbackTypes;
     }
 
     public void updateEvaluationType(String evaluationType) {

@@ -3,51 +3,60 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="0.0" y="79.0">view.panes.TestOverviewPane</node>
-    <node x="165.0" y="79.0">view.panes.CategoryOverviewPane</node>
-    <node x="1.0" y="232.0">model.domain.Facade</node>
-    <node x="381.5" y="0.0">model.domain.Observer</node>
-    <node x="713.0" y="79.0">view.panes.NewCategoryPane</node>
-    <node x="522.0" y="79.0">view.panes.QuestionOverviewPane</node>
-    <node x="0.0" y="153.0">model.domain.Subject</node>
-    <node x="356.0" y="79.0">view.panes.NewQuestionPane</node>
+    <node x="473.0" y="89.0">view.panes.TestOverviewPane</node>
+    <node x="804.0" y="89.0">view.panes.CategoryOverviewPane</node>
+    <node x="0.0" y="89.0">view.panes.TestPane</node>
+    <node x="1.0" y="242.0">model.domain.Facade</node>
+    <node x="415.25" y="0.0">model.domain.Observer</node>
+    <node x="638.0" y="89.0">view.panes.NewCategoryPane</node>
+    <node x="116.0" y="89.0">view.panes.QuestionOverviewPane</node>
+    <node x="0.0" y="163.0">model.domain.Subject</node>
+    <node x="307.0" y="89.0">view.panes.NewQuestionPane</node>
   </nodes>
   <notes />
   <edges>
     <edge source="view.panes.CategoryOverviewPane" target="model.domain.Observer">
       <point x="0.0" y="-14.5" />
-      <point x="250.5" y="59.0" />
-      <point x="410.0" y="59.0" />
-      <point x="-19.0" y="14.5" />
+      <point x="889.5" y="49.0" />
+      <point x="502.33333333333337" y="49.0" />
+      <point x="39.58333333333337" y="14.5" />
     </edge>
     <edge source="view.panes.NewQuestionPane" target="model.domain.Observer">
       <point x="0.0" y="-14.5" />
-      <point x="0.0" y="14.5" />
+      <point x="380.0" y="69.0" />
+      <point x="454.8333333333333" y="69.0" />
+      <point x="-7.916666666666686" y="14.5" />
     </edge>
     <edge source="view.panes.QuestionOverviewPane" target="model.domain.Observer">
       <point x="0.0" y="-14.5" />
-      <point x="607.5" y="59.0" />
-      <point x="448.0" y="59.0" />
-      <point x="19.0" y="14.5" />
+      <point x="201.5" y="59.0" />
+      <point x="439.0" y="59.0" />
+      <point x="-23.75" y="14.5" />
     </edge>
-    <edge source="view.panes.NewCategoryPane" target="model.domain.Observer">
+    <edge source="view.panes.TestPane" target="model.domain.Observer">
       <point x="0.0" y="-14.5" />
-      <point x="786.0" y="49.0" />
-      <point x="467.0" y="49.0" />
-      <point x="38.0" y="14.5" />
+      <point x="48.0" y="49.0" />
+      <point x="423.1666666666667" y="49.0" />
+      <point x="-39.583333333333314" y="14.5" />
     </edge>
     <edge source="view.panes.TestOverviewPane" target="model.domain.Observer">
       <point x="0.0" y="-14.5" />
-      <point x="72.5" y="49.0" />
-      <point x="391.0" y="49.0" />
-      <point x="-38.0" y="14.5" />
+      <point x="545.5" y="69.0" />
+      <point x="470.6666666666667" y="69.0" />
+      <point x="7.916666666666686" y="14.5" />
+    </edge>
+    <edge source="view.panes.NewCategoryPane" target="model.domain.Observer">
+      <point x="0.0" y="-14.5" />
+      <point x="711.0" y="59.0" />
+      <point x="486.5" y="59.0" />
+      <point x="23.75" y="14.5" />
     </edge>
     <edge source="model.domain.Facade" target="model.domain.Subject">
       <point x="0.0" y="-14.5" />
       <point x="0.0" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="429.5" y="130.5" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="430.0" y="132.5" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>

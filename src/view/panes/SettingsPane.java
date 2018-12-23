@@ -13,6 +13,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import model.domain.Category;
+import model.domain.EvaluationType;
 import model.domain.Facade;
 import model.domain.SubCategory;
 
@@ -35,17 +36,17 @@ public class SettingsPane extends GridPane {
         this.setVgap(5);
         this.setHgap(10);
         VBox box = new VBox();
-        label.setText("Which kind of feedback would you like?");
+        label.setText("Which kind of evaluation would you like?");
         radioButtons = new ArrayList<>();
         feedbackGroup = new ToggleGroup();
-        for (String feedbackType : facade.getEvaluationTypes()) {
-            RadioButton radioButton = new RadioButton(feedbackType);
+        for (EvaluationType evaluationType : EvaluationType.values()) {
+            RadioButton radioButton = new RadioButton(evaluationType.name());
             radioButtons.add(radioButton);
             radioButton.setToggleGroup(feedbackGroup);
             box.getChildren().add(radioButton);
         }
         for (RadioButton button : radioButtons) {
-            if (button.getText().toLowerCase().equals(facade.getEvaluationType())) {
+            if (button.getText().equals(facade.getEvaluationType().name())) {
                 button.setSelected(true);
             }
         }

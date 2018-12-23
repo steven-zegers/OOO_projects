@@ -13,6 +13,7 @@ import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import model.domain.EvaluationType;
 import model.domain.Facade;
 import model.domain.Observer;
 
@@ -72,9 +73,9 @@ public class TestOverviewPane extends GridPane implements Observer{
 	@Override
 	public void update() {
 		if (facade.getCurrentTest().isFinished()) {
-			if(facade.getEvaluationType().equals("score")) {
+			if(facade.getEvaluationType() == EvaluationType.Score) {
 				evaluationField.setText(facade.getScoreString());
-			} else if (facade.getEvaluationType().equals("feedback")) {
+			} else if (facade.getEvaluationType() == EvaluationType.Feedback) {
 				evaluationField.setText("");
 				if(facade.isItAPerfectTest()) {
 					evaluationField.setText("Schitterend! Alles perfect!");
