@@ -42,7 +42,7 @@ public class SettingsPane extends GridPane {
             box.getChildren().add(radioButton);
         }
         for (RadioButton button : radioButtons) {
-            if (button.getText().toLowerCase().equals(facade.getFeedbackType())) {
+            if (button.getText().toLowerCase().equals(facade.getEvaluationType())) {
                 button.setSelected(true);
             }
         }
@@ -62,7 +62,7 @@ public class SettingsPane extends GridPane {
     private class UpdateEvaluationType implements EventHandler<ActionEvent> {
         @Override
         public  void handle(ActionEvent arg0) {
-            if (!getSelectedStatement().toLowerCase().equals(facade.getFeedbackType())) {
+            if (!getSelectedStatement().toLowerCase().equals(facade.getEvaluationType())) {
                 facade.updateEvaluationType(getSelectedStatement().toLowerCase());
             }
         }

@@ -3,20 +3,20 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import model.domain.Facade;
-import model.domain.Question;
-import model.domain.Test;
+import model.domain.*;
 import view.windows.TestWindow;
 
 public class TestController {
     private Facade facade;
     private TestWindow window;
+    private Evaluation evaluation;
 
-    public TestController(Stage stage, Facade facade) {
+    public TestController(Stage stage, Facade facade, Evaluation evaluation) {
         setFacade(facade);
         Test test = new Test(facade);
         facade.setCurrentTest(test);
         setWindow(new TestWindow(stage, facade));
+        setEvaluation(evaluation);
 
         this.window.setProcessAnswerAction(new ProcessAnswerHandler());
         this.window.setAlwaysOnTop(true);
@@ -37,6 +37,14 @@ public class TestController {
 
     public void setFacade(Facade facade) {
         this.facade = facade;
+    }
+
+    public Evaluation getEvaluation() {
+        return this.evaluation;
+    }
+
+    public void setEvaluation(Evaluation evaluation) {
+        this.evaluation = evaluation;
     }
 
     private class ProcessAnswerHandler implements EventHandler<ActionEvent> {

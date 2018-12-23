@@ -3,6 +3,7 @@ package model.domain;
 import javafx.collections.ObservableList;
 
 import java.io.*;
+import java.security.spec.ECField;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,9 +17,7 @@ public class Test
     private int questionPointer;
     private int score;
 
-    private Map<String, Integer> scoresOfCategories = new HashMap<>();
-
-    private String fullFeedback = "";
+    private Evaluation evaluation;
 
     private boolean isTestFinished = false;
     private Map<String, Integer> totalQuestionsOfEachCategory = new HashMap<>();;
@@ -27,10 +26,29 @@ public class Test
     public Test(Facade facade) {
         questions = facade.getQuestions();
         this.facade = facade;
-        initializeScoresOfCategories();
+        switch (this.facade.getEvaluationType()){
+            case "score":
+                this.setEvaluation(new ScoreEvaluation());
+                break;
+            case "feedback":
+                this.setEvaluation(new FeedbackEvaluation());
+                break;
+            default:
+                throw new DomainException("Evaluation type is not recognized");
+        }
+        facade.setEvaluation(this.evaluation);
         initializeQuestionAmountsPerCategory();
+        initializeScoresOfCategories();
         this.setQuestionPointer(0);
         this.setScore(0);
+    }
+
+    public Evaluation getEvaluation() {
+        return this.evaluation;
+    }
+
+    public void setEvaluation(Evaluation evaluation) {
+        this.evaluation = evaluation;
     }
 
     public void initializeQuestionAmountsPerCategory() {
@@ -53,24 +71,24 @@ public class Test
     public void initializeScoresOfCategories() {
         List<String> titles = facade.getCategoryTitles();
         for (String title : titles) {
-            scoresOfCategories.put(title, 0);
+            this.evaluation.addCategory(title, totalQuestionsOfEachCategory.get(title));
         }
     }
 
 	public void questionOfCategoryCorrect(String categoryTitle) {
-		scoresOfCategories.put(categoryTitle, scoresOfCategories.get(categoryTitle) + 1);
+        this.evaluation.questionOfCategoryCorrect(categoryTitle);
 	}
 
 	public void handleIncorrectAnswer(Question question) {
-    	fullFeedback += question.getFeedback() + "\n";
+        this.evaluation.addEvaluationText(question.getFeedback());
 	}
 
-    public String getFullFeedback() {
-        return fullFeedback;
+    public String getEvaluationText() {
+        return evaluation.getEvaluationText();
     }
 
     public int getScoreOfCategory(String categoryTitle) {
-        return scoresOfCategories.get(categoryTitle);
+        return evaluation.getScoreOfCategory(categoryTitle);
     }
 
     public void setQuestionPointer(int i) {

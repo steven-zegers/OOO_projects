@@ -19,9 +19,7 @@ import model.domain.Observer;
 public class TestOverviewPane extends GridPane implements Observer{
 	private Button testButton;
 	private Facade facade;
-	private Label scoreField;
-	private Label feedbackField;
-	private Label finishedField;
+	private Label evaluationField;
 
 	public TestOverviewPane(Facade facade){
 		this.setFacade(facade);
@@ -32,15 +30,10 @@ public class TestOverviewPane extends GridPane implements Observer{
         this.setVgap(5);
         this.setHgap(5);
 
-		scoreField = new Label("");
+		evaluationField = new Label("");
 
-		add(scoreField, 0, 0, 1, 1);
-		setHalignment(scoreField, HPos.CENTER);
-
-		feedbackField = new Label("");
-
-		add(feedbackField,0,1,1,1);
-		setHalignment(feedbackField, HPos.CENTER);
+		add(evaluationField, 0, 0, 1, 1);
+		setHalignment(evaluationField, HPos.CENTER);
 
 		String finished = null;
 
@@ -53,7 +46,7 @@ public class TestOverviewPane extends GridPane implements Observer{
 			finished = "You have never finished this evaluation before.";
 		}
 
-		scoreField.setText(finished);
+		evaluationField.setText(finished);
 
 		testButton = new Button("Evaluate");
 		if (facade.isFinishedBefore()) {
@@ -79,20 +72,20 @@ public class TestOverviewPane extends GridPane implements Observer{
 	@Override
 	public void update() {
 		if (facade.getCurrentTest().isFinished()) {
-			if(facade.getFeedbackType().equals("score")) {
-				scoreField.setText(facade.getScoreString());
-			} else if (facade.getFeedbackType().equals("feedback")) {
-				scoreField.setText("");
+			if(facade.getEvaluationType().equals("score")) {
+				evaluationField.setText(facade.getScoreString());
+			} else if (facade.getEvaluationType().equals("feedback")) {
+				evaluationField.setText("");
 				if(facade.isItAPerfectTest()) {
-					feedbackField.setText("Schitterend! Alles perfect!");
+					evaluationField.setText("Schitterend! Alles perfect!");
 				} else {
-					feedbackField.setText(facade.getFullFeedback());
+					evaluationField.setText(facade.getFullFeedback());
 				}
 
 			}
 		} else {
 			if (facade.isFinishedBefore()) {
-				scoreField.setText(facade.readOldScore());
+				evaluationField.setText(facade.readOldScore());
 			}
 		}
 
