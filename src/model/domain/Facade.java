@@ -55,8 +55,8 @@ public class Facade implements Subject {
     public void updateCategory(String oldTitle, Category newCategory) throws CloneNotSupportedException {
         //To update a category we have to take into account that certain categories are subcategories of others
         //and that questions are also linked to the category that we might update
-        deleteCategory(oldTitle);
         addCategory(newCategory);
+        deleteCategory(oldTitle);
         for (Question question : getQuestions()) {
             if (question.getCategoryTitle().equals(oldTitle)) {
                 Question questionCopy = new Question(question);
