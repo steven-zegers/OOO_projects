@@ -15,6 +15,12 @@ public abstract class TextDatabase<T> implements Database<T> {
     public TextDatabase(String path) {
         this.path = path;
         createLocalFile();
+        createDatabase();
+    }
+
+    //Template method
+    @Override
+    public final void createDatabase() {
         this.items = new ArrayList<>();
         this.items = readItems(readFile());
     }

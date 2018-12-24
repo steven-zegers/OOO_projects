@@ -6,7 +6,7 @@ import java.util.List;
  * @author Steven Zegers
  * @author Wout De Boeck
  */
-public class QuestionDBExcel implements Database {
+public class QuestionDBExcel extends ExcelDatabase {
 
 	private static QuestionDBExcel uniqueInstance = new QuestionDBExcel();
 

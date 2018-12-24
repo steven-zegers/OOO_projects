@@ -6,7 +6,7 @@ import java.util.List;
  * @author Steven Zegers
  * @author Wout De Boeck
  */
-public class CategoryDBExcel implements Database {
+public class CategoryDBExcel extends ExcelDatabase {
 
 	private static CategoryDBExcel uniqueInstance = new CategoryDBExcel();
 

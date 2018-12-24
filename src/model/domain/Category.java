@@ -33,6 +33,7 @@ public class Category {
         setTitle(title);
         setDescription(description);
     }
+
     /**
      * Sets the title of this Category.
      * @param title
